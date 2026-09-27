@@ -76,6 +76,25 @@ def cut_clip(video: Path, start: float, end: float, out: Path, width: int = 1280
     return out
 
 
+def image_clip(image: Path, seconds: float, out: Path, width: int = 1280, height: int = 720, fps: int = 25) -> Path:
+    """A still image as a video clip with silent audio, letterboxed to the output size."""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    vf = (
+        f"scale={width}:{height}:force_original_aspect_ratio=decrease,"
+        f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2:color=black,fps={fps},setsar=1,format=yuv420p"
+    )
+    run(
+        [
+            "-loop", "1", "-framerate", str(fps), "-i", str(image),
+            "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo",
+            "-t", f"{seconds:.3f}", "-vf", vf, "-shortest",
+            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-c:a", "aac", "-ar", "48000",
+            str(out),
+        ]
+    )
+    return out
+
+
 def concat(clips: list[Path], out: Path) -> Path:
     out.parent.mkdir(parents=True, exist_ok=True)
     lst = out.with_suffix(".txt")

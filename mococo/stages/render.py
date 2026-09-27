@@ -32,6 +32,9 @@ def fit_clips(clips: list[dict], target: float, shots: dict) -> list[dict]:
     fitted = []
     for c in clips:
         want = c["seconds"] * target / total
+        if c.get("kind") == "image":
+            fitted.append({**c, "seconds": round(want, 3)})
+            continue
         sh = shots[c["shot_id"]]
         room = sh["end"] - c["in"]
         take = min(want, room)
@@ -40,6 +43,10 @@ def fit_clips(clips: list[dict], target: float, shots: dict) -> list[dict]:
     # give the shortfall to clips that still have room, last clip first
     for c in reversed(fitted):
         if short <= 0.05:
+            break
+        if c.get("kind") == "image":
+            c["seconds"] = round(c["seconds"] + short, 3)
+            short = 0.0
             break
         room = shots[c["shot_id"]]["end"] - c["out"]
         ext = min(room, short)
@@ -65,6 +72,9 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
 
     work = project.render_dir / f"clips.{lang}"
     work.mkdir(parents=True, exist_ok=True)
+    info = ffmpeg.probe(film)
+    out_w = 1280
+    out_h = max(2, round(info["height"] * out_w / max(1, info["width"]) / 2) * 2)  # match cut_clip's scale=1280:-2
     jobs, plan = [], []
     ends = [t["end"] for t in timing.values()]
     for i, unit in enumerate(timeline["units"]):
@@ -83,6 +93,9 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
     def one(job):
         c, path = job
         if path.exists():
+            return
+        if c.get("kind") == "image":
+            ffmpeg.image_clip(project.retrieval_dir / c["file"], c["seconds"], path, width=out_w, height=out_h)
             return
         ffmpeg.cut_clip(film, c["in"], c["out"], path)
         if c.get("freeze"):

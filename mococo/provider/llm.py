@@ -39,6 +39,7 @@ def ask(
     images: list[Path] | None = None,
     schema: dict | None = None,
     system: str | None = None,
+    tools: list[str] | None = None,
     timeout: int = 600,
     log=None,
 ) -> str | dict:
@@ -46,6 +47,7 @@ def ask(
 
     images: local files the model should look at; they are read through the CLI's
     Read tool, so paths must be absolute.
+    tools: extra CLI tools to allow, e.g. ["WebSearch", "WebFetch"]; none by default.
     log: optional callable(kind, **fields) for cost tracing.
     """
     images = [Path(p).resolve() for p in (images or [])]
@@ -62,10 +64,13 @@ def ask(
         "--output-format",
         "json",
         "--tools",
-        "Read" if images else "",
+        ",".join((["Read"] if images else []) + list(tools or [])),
     ]
     if images:
         cmd += ["--add-dir", str(images[0].parent)]
+    if tools:
+        # headless runs cannot answer permission prompts, so pre-approve exactly these
+        cmd += ["--allowedTools", ",".join(tools), "--max-turns", "12"]
     if schema:
         cmd += ["--json-schema", json.dumps(schema)]
     if system:

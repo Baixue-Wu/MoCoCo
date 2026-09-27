@@ -128,11 +128,12 @@ def external(project: Project, unit: dict, max_refs: int = 2) -> list[dict]:
         f'Find up to {max_refs} publicly viewable reference images for this claim in a commentary about the film "{s.title}":\n'
         f'"{unit["text"][project.load().primary_lang]}"\n'
         f"Search query to start from: {unit['context_query']}\n"
-        "Prefer Wikipedia / Wikimedia Commons or official sources. For each, give the direct image URL "
-        "(ending in .jpg/.png), the page it came from, and a one-sentence caption in English."
+        "Use WebSearch to find pages, then WebFetch to confirm a direct image URL on them. Prefer Wikipedia / "
+        "Wikimedia Commons or official sources. For each, give the direct image URL (ending in .jpg/.png), "
+        "the page it came from, and a one-sentence caption in English. Return an empty list if nothing solid is found."
     )
     try:
-        result = llm.ask(prompt, tier="fast", schema=EXTERNAL_SCHEMA, log=project.log_event, timeout=300)
+        result = llm.ask(prompt, tier="fast", schema=EXTERNAL_SCHEMA, tools=["WebSearch", "WebFetch"], log=project.log_event, timeout=300)
     except llm.LLMError as e:
         project.log_event("external_failed", unit=unit["id"], error=str(e)[:500])
         return []

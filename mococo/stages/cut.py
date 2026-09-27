@@ -14,6 +14,9 @@ from mococo import styles
 from mococo.project import Project
 
 
+IMAGE_SECONDS = 3.5
+
+
 def estimated_seconds(text: str, lang: str, style: dict) -> float:
     cpm = style["chars_per_minute"][lang]
     return max(2.0, 60.0 * len(text) / cpm)
@@ -82,6 +85,9 @@ def run(project: Project, *, force: bool = False):
         clips = plan_unit(unit, ordered, shots, used, st, need)
         if not clips:
             raise RuntimeError(f"no usable clips for unit {unit['id']}; rerun retrieve with a larger --top")
+        # DG3: a unit that needed outside knowledge opens on its reference image
+        for ref in c.get("external", [])[:1]:
+            clips.insert(0, {"kind": "image", "file": ref["file"], "caption": ref.get("caption", ""), "seconds": IMAGE_SECONDS, "why": "external reference"})
         units.append({"id": unit["id"], "estimated_seconds": round(need, 2), "clips": clips})
     project.write_json(project.timeline_json, {"style": s.style, "units": units})
     project.log_event("stage_done", stage="cut", units=len(units), clips=sum(len(u["clips"]) for u in units))

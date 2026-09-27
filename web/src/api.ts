@@ -205,13 +205,27 @@ export interface Candidates {
   units: UnitCandidates[]
 }
 
-export interface Clip {
+export interface ShotClip {
+  kind?: 'shot'
   shot_id: string
   in: number
   out: number
   seconds: number
   why: string
   freeze?: number
+}
+
+export interface ImageClip {
+  kind: 'image'
+  file: string
+  caption: string
+  seconds: number
+}
+
+export type Clip = ShotClip | ImageClip
+
+export function isImageClip(c: Clip): c is ImageClip {
+  return c.kind === 'image'
 }
 
 export interface TimelineUnit {

@@ -2,7 +2,6 @@
   "app.title": "MoCoCo",
   "app.tagline": "Movie Commentary Co-creation",
   "nav.home": "Projects",
-
   "common.loading": "Loading…",
   "common.cancel": "Cancel",
   "common.save": "Save",
@@ -18,21 +17,18 @@
   "common.optional": "optional",
   "common.seconds_short": "s",
   "common.minutes_short": "min",
-
   "home.heading": "Projects",
   "home.subtitle": "Co-create a movie commentary video with AI, stage by stage.",
   "home.new_project": "New project",
   "home.empty": "No projects yet. Create one to get started.",
   "home.open": "Open",
   "home.delete_confirm": "Delete project \"{title}\"? This removes all its files.",
-
   "status.ingest": "Setup",
   "status.script": "Script",
   "status.shots": "Shots",
   "status.cut": "Cut",
   "status.voice": "Voice",
   "status.render": "Export",
-
   "newp.title": "New project",
   "newp.slug": "Slug",
   "newp.slug_hint": "Lowercase letters, digits, - or _. Used as the folder name.",
@@ -51,7 +47,6 @@
   "newp.creating": "Creating…",
   "newp.lang.zh": "Chinese",
   "newp.lang.en": "English",
-
   "wizard.run_step": "Run this step",
   "wizard.redo_step": "Redo",
   "wizard.run_all": "Run all remaining",
@@ -60,14 +55,12 @@
   "wizard.not_done": "Not done",
   "wizard.job_failed": "Failed",
   "wizard.busy": "Another stage is already running for this project.",
-
   "step.setup": "Setup",
   "step.script": "Script",
   "step.shots": "Shots",
   "step.cut": "Cut",
   "step.voice": "Voice",
   "step.export": "Export",
-
   "setup.settings": "Settings",
   "setup.title": "Title",
   "setup.style": "Style",
@@ -90,7 +83,6 @@
   "setup.mood": "Mood",
   "setup.tags": "Tags",
   "setup.settings_saved": "Settings saved",
-
   "script.draft": "Draft with AI",
   "script.translate": "Translate from primary",
   "script.segment": "Segment",
@@ -104,7 +96,6 @@
   "script.keywords": "Keywords",
   "script.visual_query": "Visual query",
   "script.placeholder": "Write the commentary here, one paragraph per unit, separated by a blank line.",
-
   "shots.heading": "Shots",
   "shots.hint": "Click a candidate to choose or unchoose it for this unit, then save.",
   "shots.no_units": "Segment the script first.",
@@ -115,12 +106,12 @@
   "shots.why": "Why",
   "shots.external": "External references",
   "shots.chosen": "chosen",
-
   "cut.heading": "Cut",
   "cut.hint": "Reorder, trim, or remove clips within each unit.",
   "cut.no_timeline": "Run this step to assemble a rough cut from the chosen shots.",
   "cut.in": "In (s)",
   "cut.out": "Out (s)",
+  "cut.seconds": "Seconds",
   "cut.up": "Move up",
   "cut.down": "Move down",
   "cut.delete_clip": "Remove clip",
@@ -128,8 +119,8 @@
   "cut.save_timeline": "Save timeline",
   "cut.saved": "Timeline saved",
   "cut.pick_a_shot": "Pick a shot to add",
+  "cut.reference": "reference",
   "cut.estimated": "narration ~{v}s",
-
   "voice.heading": "Voice",
   "voice.no_langs": "No voice languages configured for this project.",
   "voice.voice_name": "Voice",
@@ -142,14 +133,11 @@
   "voice.timing_start": "Start",
   "voice.timing_end": "End",
   "voice.no_timing": "Run this step to synthesize narration and compute per-unit timing.",
-
   "export.heading": "Export",
   "export.render": "Render",
   "export.no_output": "Run this step to render the final video.",
   "export.cost_summary": "Cost so far",
   "export.cost_total": "{n} LLM calls, ${cost}",
-
   "job.error_heading": "Stage failed",
-
   "toast.dismiss": "Dismiss"
 }
