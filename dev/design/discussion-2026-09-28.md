@@ -11,6 +11,9 @@ Written by Claude for Zhaoyang to read on waking. Status, not decisions.
   zh/en UI toggle, edits every stage file, runs stages as background jobs.
 - Title cards and credits are flagged at caption time and never retrieved.
 - Charade (1963, public domain) ingest started as the feature-length demo.
+- Analysis style verified on projects/sintel-analysis: a unit flagged
+  needs_context fetched a Wikimedia reference image via Claude's web search and
+  it appears as a 3.5 s letterboxed still at the start of that unit (DG3).
 
 ## Observed quality
 - Retrieval picks chronologically sensible, mood-matched shots; the reranker's
@@ -23,8 +26,6 @@ Written by Claude for Zhaoyang to read on waking. Status, not decisions.
 
 ## Not done / next
 - Charade end-to-end run and a look at quality on a real film.
-- Analysis style has not been exercised (external-reference retrieval via web
-  search is untested end to end).
 - Upload-narration alignment is implemented but untested with a real recording.
 - macOS / Windows smoke test (ffmpeg libass availability, paths).
 - Tag v0.1 after PR #1 merges.
