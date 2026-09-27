@@ -45,6 +45,14 @@ EXTERNAL_SCHEMA = {
 }
 
 
+def is_text_card(cap: dict) -> bool:
+    """Title cards, credits, logos, blank frames: never footage."""
+    if "text_card" in cap:
+        return bool(cap["text_card"])
+    blob = (cap.get("description_en", "") + " " + " ".join(cap.get("tags", []))).lower()
+    return any(k in blob for k in ("title card", "credits", "opening title", "logo", "black screen", "intertitle"))
+
+
 def _recall(query: str, ids: np.ndarray, vecs: np.ndarray, k: int) -> list[tuple[str, float]]:
     q = embed.embed([query])[0]
     sims = vecs @ q
@@ -61,6 +69,8 @@ def run(project: Project, *, top: int = 6, recall: int | None = None, workers: i
     caps = project.read_json(project.captions_json)
     data = np.load(project.index_npz)
     ids, vecs = data["ids"], data["vecs"]
+    keep = np.array([not is_text_card(caps[str(i)]) for i in ids])
+    ids, vecs = ids[keep], vecs[keep]
     recall = recall or max(top * 3, 12)
 
     def one(unit):

@@ -129,25 +129,50 @@ def _fmt(t: float) -> str:
 
 
 def split_lines(text: str, lang: str, max_chars: int) -> list[str]:
-    """Break unit text into subtitle-sized pieces at punctuation."""
+    """Break unit text into subtitle-sized pieces: split into clauses at
+    punctuation, pack clauses into lines, hard-cut only clauses far over the limit."""
     import re
 
-    marks = "。！？；，、" if lang == "zh" else ".!?;,"
-    pieces, buf = [], ""
-    for ch in text:
-        buf += ch
-        if ch in marks and len(buf) >= max_chars * 0.5:
-            pieces.append(buf.strip())
-            buf = ""
-        elif len(buf) >= max_chars:
-            cut = max(buf.rfind(" "), 0) if lang != "zh" else len(buf)
-            if cut < max_chars * 0.4:
-                cut = len(buf)
-            pieces.append(buf[:cut].strip())
-            buf = buf[cut:]
-    if buf.strip():
-        pieces.append(buf.strip())
-    return [re.sub(r"\s+", " ", p) for p in pieces if p]
+    text = re.sub(r"\s+", " ", text).strip()
+    clauses = [c for c in re.split(r"(?<=[。！？；，、,;:：.!?])\s*|(?<=——)", text) if c and c.strip()]
+    clauses = [c.strip() for c in clauses if c.strip()]
+    lines, buf = [], ""
+    joiner = "" if lang == "zh" else " "
+    for c in clauses:
+        cand = (buf + joiner + c).strip() if buf else c
+        if len(cand) <= max_chars:
+            buf = cand
+            continue
+        if buf:
+            lines.append(buf)
+        buf = c
+        while len(buf) > max_chars * 1.3:
+            if lang == "zh":
+                cut = max_chars
+            else:
+                cut = buf.rfind(" ", 0, max_chars)
+                cut = cut if cut > max_chars * 0.4 else max_chars
+            lines.append(buf[:cut].strip())
+            buf = buf[cut:].strip()
+    if buf:
+        lines.append(buf)
+    return lines
+
+
+def split_into_n(text: str, n: int, lang: str) -> list[str]:
+    """Cut text into exactly n pieces of roughly equal length, at spaces for
+    non-Chinese text. Used to pair a second subtitle language with the first."""
+    import re
+
+    text = re.sub(r"\s+", " ", text).strip()
+    if n <= 1:
+        return [text]
+    if lang == "zh":
+        step = len(text) / n
+        return [text[round(i * step) : round((i + 1) * step)].strip() for i in range(n)]
+    words = text.split()
+    step = len(words) / n
+    return [" ".join(words[round(i * step) : round((i + 1) * step)]) for i in range(n)]
 
 
 def _piece_times(pieces: list[str], t: dict) -> list[tuple[float, float]]:
@@ -188,12 +213,9 @@ def write_srt(project: Project, lang: str, second: str | None = None) -> Path:
     for t in timing:
         text = seg[t["id"]]["text"][lang]
         pieces = split_lines(text, lang, max_chars)
-        second_pieces = split_lines(seg[t["id"]]["text"][second], second, 18 if second == "zh" else 42) if second else []
+        second_pieces = split_into_n(seg[t["id"]]["text"][second], len(pieces), second) if second else []
         for i, (p, (a, b)) in enumerate(zip(pieces, _piece_times(pieces, t))):
-            line = p
-            if second_pieces:
-                j = min(len(second_pieces) - 1, int(i * len(second_pieces) / max(1, len(pieces))))
-                line = p + "\n" + second_pieces[j]
+            line = p + ("\n" + second_pieces[i] if second_pieces else "")
             entries.append(f"{n}\n{_fmt(a)} --> {_fmt(b)}\n{line}\n")
             n += 1
     out = project.subtitles_srt(lang if not second else f"{lang}+{second}")

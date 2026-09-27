@@ -27,8 +27,9 @@ CAPTION_SCHEMA = {
                     "characters": {"type": "array", "items": {"type": "string"}},
                     "setting": {"type": "string"},
                     "tags": {"type": "array", "items": {"type": "string"}},
+                    "text_card": {"type": "boolean"},
                 },
-                "required": ["id", "description_en", "description_zh", "mood", "characters", "setting", "tags"],
+                "required": ["id", "description_en", "description_zh", "mood", "characters", "setting", "tags", "text_card"],
             },
         }
     },

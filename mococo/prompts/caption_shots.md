@@ -20,5 +20,8 @@ For every shot, return:
 - setting: a few words for the location and time of day.
 - tags: 3 to 8 lowercase English keywords useful for search (objects, actions,
   motifs, shot type).
+- text_card: true when the frame is mainly text: a title card, studio logo,
+  opening or closing credits, an intertitle, a black or blank screen. Such shots
+  are never used as footage.
 
 Return only JSON matching the schema.
