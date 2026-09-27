@@ -17,8 +17,8 @@ RERANK_SCHEMA = {
             "type": "array",
             "items": {
                 "type": "object",
-                "properties": {"id": {"type": "string"}, "score": {"type": "number"}, "why": {"type": "string"}},
-                "required": ["id", "score", "why"],
+                "properties": {"id": {"type": "string"}, "score": {"type": "number"}, "why": {"type": "string"}, "why_zh": {"type": "string"}},
+                "required": ["id", "score", "why", "why_zh"],
             },
         }
     },
@@ -98,7 +98,7 @@ def run(project: Project, *, top: int = 6, recall: int | None = None, workers: i
         return {
             "unit_id": unit["id"],
             "shots": [
-                {"shot_id": r["id"], "score": r["score"], "why": r["why"], "similarity": round(sim_by_id[r["id"]], 4)}
+                {"shot_id": r["id"], "score": r["score"], "why": r["why"], "why_zh": r.get("why_zh", ""), "similarity": round(sim_by_id[r["id"]], 4)}
                 for r in ranked[:top]
             ],
             "external": [],

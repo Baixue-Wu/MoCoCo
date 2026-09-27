@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import * as api from '../../api'
-import { isImageClip } from '../../api'
+import { isImageClip, pickWhy } from '../../api'
 import { useI18n } from '../../i18n'
 import { useToast } from '../../components/Toast'
 import { useProject } from '../../state/ProjectContext'
@@ -41,12 +41,12 @@ function ClipCard({
   isFirst: boolean
   isLast: boolean
 }) {
-  const { t } = useI18n()
+  const { t, lang: uiLang } = useI18n()
   const width = Math.max(70, Math.round(clip.seconds * PX_PER_SEC))
   const image = isImageClip(clip)
 
   return (
-    <div className="clip-block" style={{ width }} title={image ? clip.caption : undefined}>
+    <div className="clip-block" style={{ width }} title={image ? clip.caption : pickWhy(clip, uiLang)}>
       <img
         src={image ? api.mediaExternal(slug, basename(clip.file)) : api.mediaFrame(slug, clip.shot_id)}
         alt={image ? clip.caption : clip.shot_id}
@@ -128,7 +128,7 @@ function AddFromCandidates({
             <div
               className="shot-thumb"
               onClick={() => {
-                onAdd({ shot_id: c.shot_id, in: 0, out: 3, seconds: 3, why: c.why ?? '' })
+                onAdd({ shot_id: c.shot_id, in: 0, out: 3, seconds: 3, why: c.why ?? '', why_zh: c.why_zh })
                 onClose()
               }}
             >

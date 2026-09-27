@@ -184,6 +184,7 @@ export interface CandidateShot {
   shot_id: string
   score: number
   why: string
+  why_zh?: string
   similarity: number
 }
 
@@ -212,6 +213,7 @@ export interface ShotClip {
   out: number
   seconds: number
   why: string
+  why_zh?: string
   freeze?: number
 }
 
@@ -226,6 +228,11 @@ export type Clip = ShotClip | ImageClip
 
 export function isImageClip(c: Clip): c is ImageClip {
   return c.kind === 'image'
+}
+
+/** Chinese "why" when the UI is in Chinese and one was given, else the English/default one. */
+export function pickWhy(item: { why: string; why_zh?: string }, uiLang: string): string {
+  return uiLang === 'zh' && item.why_zh ? item.why_zh : item.why
 }
 
 export interface TimelineUnit {

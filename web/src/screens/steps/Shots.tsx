@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../api'
+import { pickWhy } from '../../api'
 import { useI18n } from '../../i18n'
 import { useToast } from '../../components/Toast'
 import { useProject } from '../../state/ProjectContext'
@@ -43,7 +44,7 @@ function UnitRow({
             <div key={c.shot_id} className="cand-thumb">
               <div
                 className={`shot-thumb ${chosen ? 'chosen' : ''}`}
-                title={c.why}
+                title={pickWhy(c, uiLang)}
                 onClick={() => onToggle(c.shot_id, !chosen)}
               >
                 <img src={api.mediaFrame(detail!.slug, c.shot_id)} loading="lazy" alt={c.shot_id} />
@@ -60,7 +61,7 @@ function UnitRow({
                 )}
               </div>
               <div className="cand-meta" style={{ fontStyle: 'italic' }}>
-                {c.why}
+                {pickWhy(c, uiLang)}
               </div>
             </div>
           )

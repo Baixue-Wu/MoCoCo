@@ -18,4 +18,5 @@ Rank the candidates from best to worst fit for this paragraph. Judge on:
 4. variety: avoid near-duplicate shots in the top ranks
 
 Return JSON with "ranked": a list of objects {id, score (0-100), why (one short
-sentence in English)} covering every candidate id once.
+sentence in English), why_zh (the same sentence in Chinese)} covering every
+candidate id once.
