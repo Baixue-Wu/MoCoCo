@@ -65,3 +65,26 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 - **GitHub access: fine-grained PAT stored at ~/.config/gh/mococo-token (600),
   injected per call as GH_TOKEN inside this repo only.** Rationale: Zhaoyang's own gh
   login stays untouched; token to be revoked after handoff.
+
+## 2026-09-28 (overnight build)
+
+- **Multi-language scripts: draft in the primary language, translate paragraph by
+  paragraph into the others; segments carry text per language.** Rationale: units
+  must line up one to one across languages so subtitles, timing, and shot choices
+  are shared. Paragraph-count mismatch is a loud error with a fix command.
+- **Narration drives timing: voice runs before cut when possible; render fits each
+  unit's clips to that language's actual narration span.** Rationale: the cut
+  cannot know durations until speech exists; different languages differ in length,
+  so the timeline stores proportions and render scales them.
+- **Cut assembly is a heuristic (styles.py pacing rules), not a model call.**
+  Rationale: deterministic, free, and the proposal itself calls for
+  "cinematographic pacing heuristics"; a model planner can be added later.
+- **Machine-level settings (model cache dir) live in ~/.config/mococo/config.json,
+  not env vars.** Rationale: the dev box's root disk is full; the rule against env
+  vars stands, and a config file is discoverable.
+- **Subtitles are timed from edge-tts word boundaries; uploaded narration is
+  aligned with whisper word timestamps + difflib.** Rationale: keyless and precise
+  enough for v1.
+- **Web UI is delegated to a React + Vite + TS app under web/, thin client of the
+  FastAPI routes in mococo/server/app.py; jobs run in server threads and are
+  polled.** Rationale: no websockets needed for a single local user.

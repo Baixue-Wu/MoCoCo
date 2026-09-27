@@ -37,13 +37,18 @@ def fit_clips(clips: list[dict], target: float, shots: dict) -> list[dict]:
         take = min(want, room)
         fitted.append({**c, "out": round(c["in"] + take, 3), "seconds": round(take, 3)})
     short = target - sum(c["seconds"] for c in fitted)
-    if short > 0.05:  # extend the last clip with whatever room it has, else freeze on it
-        last = fitted[-1]
-        room = shots[last["shot_id"]]["end"] - last["out"]
+    # give the shortfall to clips that still have room, last clip first
+    for c in reversed(fitted):
+        if short <= 0.05:
+            break
+        room = shots[c["shot_id"]]["end"] - c["out"]
         ext = min(room, short)
-        last["out"] = round(last["out"] + ext, 3)
-        last["seconds"] = round(last["seconds"] + ext, 3)
-        last["freeze"] = round(short - ext, 3) if short - ext > 0.05 else 0.0
+        if ext > 0:
+            c["out"] = round(c["out"] + ext, 3)
+            c["seconds"] = round(c["seconds"] + ext, 3)
+            short -= ext
+    if short > 0.05:  # nothing left to extend: freeze the final frame
+        fitted[-1]["freeze"] = round(short, 3)
     return fitted
 
 

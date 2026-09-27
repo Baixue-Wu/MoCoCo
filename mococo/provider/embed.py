@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import numpy as np
 
+from mococo import config
+
 MODEL_NAME = "BAAI/bge-m3"
 _model = None
 
@@ -13,7 +15,7 @@ def _get():
     if _model is None:
         from sentence_transformers import SentenceTransformer
 
-        _model = SentenceTransformer(MODEL_NAME, device="cpu")
+        _model = SentenceTransformer(MODEL_NAME, device="cpu", cache_folder=str(config.models_dir()))
     return _model
 
 
