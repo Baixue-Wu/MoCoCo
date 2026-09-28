@@ -100,6 +100,15 @@ def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
 
         return tts.list_voices({"zh": "zh-CN", "en": "en-US"}.get(lang, lang))
 
+    @app.get("/api/voices/preview")
+    def voice_preview(voice: str, lang: str, rate: str = "+0%"):
+        from mococo import config
+        from mococo.media import tts
+
+        if not re.match(r"^[A-Za-z]{2}-[A-Za-z]{2,}-[A-Za-z0-9]+Neural$", voice) or not re.match(r"^[+-]\d{1,3}%$", rate):
+            raise HTTPException(400, "bad voice or rate")
+        return FileResponse(tts.preview(voice, lang, config.models_dir() / "voice-previews", rate=rate), media_type="audio/mpeg")
+
     # ---- projects ----
     @app.get("/api/projects")
     def list_projects():

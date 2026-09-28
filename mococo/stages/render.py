@@ -26,8 +26,10 @@ def run(project: Project, *, lang: str | None = None, force: bool = False, worke
     return out
 
 
-def fit_clips(clips: list[dict], target: float, shots: dict) -> list[dict]:
-    """Scale clip lengths to sum to target, never exceeding the shot's real length."""
+def fit_clips(clips: list[dict], target: float, shots: dict, film_end: float | None = None) -> list[dict]:
+    """Scale clip lengths to sum to target, never exceeding the shot's real length.
+    Any shortfall lets the last clip run on into the film (the picture keeps
+    moving); only at the end of the film is a frame frozen."""
     total = sum(c["seconds"] for c in clips) or 1.0
     fitted = []
     for c in clips:
@@ -54,7 +56,18 @@ def fit_clips(clips: list[dict], target: float, shots: dict) -> list[dict]:
             c["out"] = round(c["out"] + ext, 3)
             c["seconds"] = round(c["seconds"] + ext, 3)
             short -= ext
-    if short > 0.05:  # nothing left to extend: freeze the final frame
+    if short > 0.05 and film_end is not None:
+        for c in reversed(fitted):
+            if c.get("kind") == "image":
+                continue
+            ext = min(short, film_end - c["out"])
+            if ext > 0:
+                c["out"] = round(c["out"] + ext, 3)
+                c["seconds"] = round(c["seconds"] + ext, 3)
+                c["why"] = (c.get("why", "") + " (runs on into the next shots)").strip()
+                short -= ext
+            break
+    if short > 0.05:  # at the very end of the film: freeze the final frame
         fitted[-1]["freeze"] = round(short, 3)
     return fitted
 
@@ -81,7 +94,7 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
         t = timing[unit["id"]]
         nxt = timeline["units"][i + 1]["id"] if i + 1 < len(timeline["units"]) else None
         span = (timing[nxt]["start"] if nxt else t["end"]) - t["start"]
-        fitted = fit_clips(unit["clips"], span, shots)
+        fitted = fit_clips(unit["clips"], span, shots, film_end=info["duration"])
         for k, c in enumerate(fitted):
             path = work / f'{unit["id"]}_{k:02d}.mp4'
             jobs.append((c, path))

@@ -88,3 +88,20 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 - **Web UI is delegated to a React + Vite + TS app under web/, thin client of the
   FastAPI routes in mococo/server/app.py; jobs run in server threads and are
   polled.** Rationale: no websockets needed for a single local user.
+
+## 2026-09-28 (morning, after Zhaoyang's first look)
+
+- **A unit whose candidates cannot cover its narration continues with the shots
+  that follow its last clip; render lets the last clip run on into the film;
+  a frozen frame is used only at the very end of the film.** Rationale: the
+  first outputs froze on one frame for up to 12 s while narration kept going,
+  which reads as a broken video. Continuing footage is what a human editor
+  does by default when nothing better is at hand.
+- **Default voices are zh-CN-Xiaoxiao and en-US-Aria; the voice, a preview
+  sample, and the speaking rate are user-selectable in Setup and Voice.**
+  Rationale: the male defaults sounded synthetic to Zhaoyang; edge-tts offers
+  8 Chinese voices and the choice is a taste call the creator should make
+  after hearing them.
+- **Machine scratch space: TMPDIR points at /nvme-disk/zhaoyang/tmp in
+  ~/.zshenv.** Rationale: Claude Code and other tools write under $TMPDIR;
+  the root disk is full.

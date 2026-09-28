@@ -31,10 +31,25 @@ def test_fit_clips_scales_to_target():
     assert fitted[1]["out"] <= 22  # never past the real shot
 
 
-def test_fit_clips_freezes_when_no_room():
+def test_fit_clips_runs_on_into_film_instead_of_freezing():
     shots = {"a": {"start": 0, "end": 2}}
-    fitted = fit_clips([{"shot_id": "a", "in": 0, "out": 2, "seconds": 2}], 5.0, shots)
+    fitted = fit_clips([{"shot_id": "a", "in": 0, "out": 2, "seconds": 2}], 5.0, shots, film_end=100.0)
+    assert fitted[0]["out"] == 5.0 and "freeze" not in fitted[0]
+
+
+def test_fit_clips_freezes_only_at_film_end():
+    shots = {"a": {"start": 0, "end": 2}}
+    fitted = fit_clips([{"shot_id": "a", "in": 0, "out": 2, "seconds": 2}], 5.0, shots, film_end=2.0)
     assert fitted[0]["freeze"] == 3.0
+
+
+def test_plan_unit_continues_with_following_shots():
+    st = styles.get("recap")
+    shots = {f"s{i}": {"start": i * 2.0, "end": i * 2.0 + 2.0, "duration": 2.0} for i in range(6)}
+    cands = [{"shot_id": "s1", "score": 90}]
+    clips = plan_unit({}, cands, shots, set(), st, need=7.0, order=[f"s{i}" for i in range(6)], skip={"s3"})
+    assert [c["shot_id"] for c in clips] == ["s1", "s2", "s4", "s5"]
+    assert abs(sum(c["seconds"] for c in clips) - 7.0) < 0.05
 
 
 def test_piece_times_use_word_boundaries():

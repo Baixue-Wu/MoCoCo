@@ -21,8 +21,8 @@ LANG_NAMES = {"zh": "Chinese", "en": "English"}
 class Voice(BaseModel):
     """Which TTS voice to use per language. Names are edge-tts short names."""
 
-    zh: str = "zh-CN-YunxiNeural"
-    en: str = "en-US-GuyNeural"
+    zh: str = "zh-CN-XiaoxiaoNeural"
+    en: str = "en-US-AriaNeural"
     rate: str = "+0%"
 
 

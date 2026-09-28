@@ -5,6 +5,8 @@ Heuristic assembly (cinematographic pacing rules from styles.py), no model call:
 - a shot is not reused across units unless a unit would otherwise be empty
 - clip lengths follow the style's min/max and the unit's estimated narration time
 - clips inside a unit are ordered by their time in the film
+- when the candidates cannot cover the narration, the unit continues with the
+  shots that follow its last clip in the film, so the picture keeps moving
 The result stores per-unit clip proportions; render fits them to the real narration.
 """
 
@@ -33,7 +35,8 @@ def narration_seconds(project: Project, unit_id: str, lang: str) -> float | None
     return None
 
 
-def plan_unit(unit, cands, shots, used, style, need: float) -> list[dict]:
+def plan_unit(unit, cands, shots, used, style, need: float, order: list[str] | None = None, skip: set[str] | None = None) -> list[dict]:
+    """order: all shot ids in film order; skip: shots never to use (title cards)."""
     lo, hi = style["min_clip"], style["max_clip"]
     clips: list[dict] = []
     total = 0.0
@@ -61,6 +64,21 @@ def plan_unit(unit, cands, shots, used, style, need: float) -> list[dict]:
         used.add(c["shot_id"])
         total += take
     clips.sort(key=lambda c: c["in"])
+    # continuation: the shots right after the last clip, until the narration is covered
+    if order and clips and total < need:
+        i = order.index(clips[-1]["shot_id"]) + 1
+        while total < need - 0.05 and i < len(order):
+            sid = order[i]
+            i += 1
+            if sid in used or (skip and sid in skip):
+                continue
+            sh = shots[sid]
+            take = min(sh["duration"], hi, need - total)
+            if take < 0.4:
+                continue
+            clips.append({"shot_id": sid, "in": round(sh["start"], 3), "out": round(sh["start"] + take, 3), "seconds": round(take, 3), "why": "continues the previous shot"})
+            used.add(sid)
+            total += take
     return clips
 
 
@@ -72,6 +90,11 @@ def run(project: Project, *, force: bool = False):
     seg = project.read_json(project.segments_json)
     cands = {c["unit_id"]: c for c in project.read_json(project.candidates_json)["units"]}
     shots = {sh["id"]: sh for sh in project.read_json(project.shots_json)}
+    order = [sh["id"] for sh in sorted(shots.values(), key=lambda x: x["start"])]
+    caps = project.read_json(project.captions_json) if project.captions_json.exists() else {}
+    from mococo.stages.retrieve import is_text_card
+
+    skip = {sid for sid, cap in caps.items() if is_text_card(cap)}
     lang = seg["primary_lang"]
     used: set[str] = set()
     units = []
@@ -82,7 +105,7 @@ def run(project: Project, *, force: bool = False):
         chosen = c.get("chosen") or []
         if chosen:  # a human pick goes first
             ordered = [x for x in ordered if x["shot_id"] in chosen] + [x for x in ordered if x["shot_id"] not in chosen]
-        clips = plan_unit(unit, ordered, shots, used, st, need)
+        clips = plan_unit(unit, ordered, shots, used, st, need, order=order, skip=skip)
         if not clips:
             raise RuntimeError(f"no usable clips for unit {unit['id']}; rerun retrieve with a larger --top")
         # DG3: a unit that needed outside knowledge opens on its reference image

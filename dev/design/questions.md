@@ -20,3 +20,11 @@ design-decisions.md and delete it here.
   doing; I moved model caches to /nvme-disk/zhaoyang/baixue/mococo-models via
   ~/.config/mococo/config.json. Claude Code's own temp dir also lives on /, so
   tool output can fail with ENOSPC. Worth clearing something on / when awake.
+- **TODO (Zhaoyang): smoke-test on a Mac.** Points to check: `uv sync` (torch
+  CPU wheel), imageio-ffmpeg's binary has libass for the `subtitles` filter,
+  `claude` on PATH, edge-tts reachable. Also `scripts/fetch_film.py sintel`.
+- **Voice quality ceiling.** edge-tts is free and keyless but sounds like TTS.
+  Options if that matters for the user study: a local model (CosyVoice 2,
+  Fish Speech, IndexTTS; needs a GPU or patience) or a paid API (MiniMax,
+  ElevenLabs). The provider boundary (mococo/media/tts.py) is the only file
+  that would change.

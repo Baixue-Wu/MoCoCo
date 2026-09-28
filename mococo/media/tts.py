@@ -39,6 +39,27 @@ def synthesize(text: str, voice: str, out: Path, rate: str = "+0%") -> list[dict
     return words
 
 
-def list_voices(lang_prefix: str) -> list[str]:
+def list_voices(lang_prefix: str) -> list[dict]:
+    """[{name, gender, label}] for voices whose short name starts with lang_prefix."""
     voices = asyncio.run(edge_tts.list_voices())
-    return sorted(v["ShortName"] for v in voices if v["ShortName"].startswith(lang_prefix))
+    out = []
+    for v in voices:
+        if not v["ShortName"].startswith(lang_prefix):
+            continue
+        label = v["ShortName"].split("-")[-1].removesuffix("Neural")
+        out.append({"name": v["ShortName"], "gender": v["Gender"].lower(), "label": f"{label} ({v['Gender'].lower()})"})
+    return sorted(out, key=lambda x: x["name"])
+
+
+PREVIEW_TEXT = {
+    "zh": "雷金娜刚回到巴黎的家,就发现房子已经被搬空了。她的丈夫查尔斯,死在了开往波尔多的火车轨道边。",
+    "en": "Regina comes home to Paris to find the apartment stripped bare. Her husband Charles is dead, found beside the tracks to Bordeaux.",
+}
+
+
+def preview(voice: str, lang: str, cache_dir: Path, rate: str = "+0%") -> Path:
+    """A short sample of one voice, synthesized once and cached."""
+    out = cache_dir / f"{voice}.{rate.replace('%', '').replace('+', 'p').replace('-', 'm')}.mp3"
+    if not out.exists():
+        synthesize(PREVIEW_TEXT.get(lang, PREVIEW_TEXT["en"]), voice, out, rate=rate)
+    return out
