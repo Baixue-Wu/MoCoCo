@@ -10,7 +10,10 @@ Written by Claude for Zhaoyang to read on waking. Status, not decisions.
 - Web app at http://127.0.0.1:8765 after `uv run mococo serve`: six-step wizard,
   zh/en UI toggle, edits every stage file, runs stages as background jobs.
 - Title cards and credits are flagged at caption time and never retrieved.
-- Charade (1963, public domain) ingest started as the feature-length demo.
+- Charade (1963, public domain, 113 min) runs end to end: 1188 shots, 1674
+  transcript lines, 8 narration units, 3.6-minute zh and en videos. 160 model
+  calls, about $7.7 API-equivalent (captions dominate: 149 Haiku calls).
+  The Chinese recap is plot-accurate; shots land on the right scenes.
 - Analysis style verified on projects/sintel-analysis: a unit flagged
   needs_context fetched a Wikimedia reference image via Claude's web search and
   it appears as a 3.5 s letterboxed still at the start of that unit (DG3).
@@ -25,7 +28,10 @@ Written by Claude for Zhaoyang to read on waking. Status, not decisions.
   the same number of pieces by proportion, so pairs stay roughly aligned.
 
 ## Not done / next
-- Charade end-to-end run and a look at quality on a real film.
+- Drafts undershoot target length (Charade asked 6 min, got 3.6). Raise the
+  target_chars emphasis in the draft prompt or iterate once on length.
+- Caption cost scales with shot count; for long films consider captioning only
+  every shot longer than 1.5 s, or a cheaper contact-sheet batch.
 - Upload-narration alignment is implemented but untested with a real recording.
 - macOS / Windows smoke test (ffmpeg libass availability, paths).
 - Tag v0.1 after PR #1 merges.
