@@ -105,3 +105,12 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 - **Machine scratch space: TMPDIR points at /nvme-disk/zhaoyang/tmp in
   ~/.zshenv.** Rationale: Claude Code and other tools write under $TMPDIR;
   the root disk is full.
+
+## 2026-09-28 (film sources)
+
+- **The public-domain / CC rule covers demos shown outside and anything MoCoCo
+  downloads; private trials may use any film the user supplies from their own
+  copy.** Rationale: Zhaoyang wants to judge quality on a film he knows well
+  (Comrades: Almost a Love Story, 1996), which the PD/CC demo films are not.
+  scripts/fetch_film.py stays PD/CC only, and outputs from copyrighted films
+  stay out of public demos.
