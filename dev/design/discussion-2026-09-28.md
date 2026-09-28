@@ -35,3 +35,17 @@ Written by Claude for Zhaoyang to read on waking. Status, not decisions.
 - Upload-narration alignment is implemented but untested with a real recording.
 - macOS / Windows smoke test (ffmpeg libass availability, paths).
 - Tag v0.1 after PR #1 merges.
+
+## Street Angel (1937) trial, same day
+- 601 shots, 844 transcript lines (whisper large-v3, recognised as zh),
+  11 narration units, 3.2 min zh and 3.9 min en, no frozen frames.
+  90 model calls, about $4.3 API-equivalent.
+- Shots land on the right beats (the trumpeter, Boss Gu, Xiao Yun's death).
+- The draft got two plot facts wrong: 老王 is the newspaper seller, not the
+  huqin player (that is Xiao Hong's adoptive father), and Xiao Yun is stabbed
+  by the adoptive father, not beaten by Gu's men. The draft only sees dialogue
+  and captions, so off-screen causality is guessed. This is the case for a
+  "fact check against the transcript" pass, or for making the Script step the
+  place where the creator corrects the story.
+- Bilingual subtitles take three lines when the English half wraps. Consider a
+  smaller English font or a per-language line length.

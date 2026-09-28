@@ -133,8 +133,12 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
     filt = f"[0:a]volume={DUCK}[bg];[bg][1:a]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
     vf = _subtitles_filter(srt) if srt else None
     args += ["-filter_complex", filt + (f";[0:v]{vf}[v]" if vf else ""), "-map", "[v]" if vf else "0:v", "-map", "[a]"]
-    args += ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(output)]
+    # write beside the final name and rename at the end, so a half-written file
+    # never looks like a finished render
+    partial = output.with_name(output.stem + ".partial.mp4")
+    args += ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(partial)]
     ffmpeg.run(args)
+    partial.replace(output)
     project.log_event("stage_done", stage="render", lang=lang, seconds=round(max(ends), 1))
     return output
 
