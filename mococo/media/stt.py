@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from mococo import config
@@ -14,7 +15,7 @@ def _get(size: str):
     if _model is None or _model[0] != size:
         from faster_whisper import WhisperModel
 
-        _model = (size, WhisperModel(size, device="cpu", compute_type="int8", download_root=str(config.models_dir())))
+        _model = (size, WhisperModel(size, device="cpu", compute_type="int8", cpu_threads=min(16, os.cpu_count() or 4), download_root=str(config.models_dir())))
     return _model[1]
 
 

@@ -2,6 +2,7 @@
 
 Usage:  uv run python scripts/fetch_film.py sintel [--dest data/films]
         uv run python scripts/fetch_film.py charade
+        uv run python scripts/fetch_film.py street-angel
         uv run python scripts/fetch_film.py --list
 """
 
@@ -21,6 +22,12 @@ FILMS = {
         "zip": True,
         "license": "CC-BY 3.0, Blender Foundation (2010), 15 min",
     },
+    "street-angel": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Street_Angel_%281937%29.webm",
+        "file": "StreetAngel.1937.webm",
+        "zip": False,
+        "license": "马路天使, PD-China and PD-US per Wikimedia Commons (1937), 91 min, Mandarin",
+    },
     "charade": {
         "url": "https://archive.org/download/charade-1963-cary-grant-audrey-hepburn-comedy-mystery-romance-thriller-full-movie/Charade_READY.mp4",
         "file": "Charade.1963.mp4",
@@ -39,7 +46,8 @@ def fetch(name: str, dest: Path) -> Path:
         return target
     tmp = dest / (info["file"] + (".zip" if info["zip"] else ".part"))
     print(f"downloading {info['url']}")
-    with httpx.stream("GET", info["url"], follow_redirects=True, timeout=60) as r:
+    headers = {"User-Agent": "MoCoCo/0.1 (research prototype; https://github.com/Baixue-Wu/MoCoCo)"}
+    with httpx.stream("GET", info["url"], headers=headers, follow_redirects=True, timeout=60) as r:
         r.raise_for_status()
         total = int(r.headers.get("content-length", 0))
         done = 0

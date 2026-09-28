@@ -114,3 +114,14 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
   (Comrades: Almost a Love Story, 1996), which the PD/CC demo films are not.
   scripts/fetch_film.py stays PD/CC only, and outputs from copyrighted films
   stay out of public demos.
+- **Chinese-language demo film: 马路天使 / Street Angel (1937), from Wikimedia
+  Commons (PD-China, PD-US).** Rationale: none of the Douban Top 250 is cleanly
+  public domain (the ten pre-1966 titles are all still protected in the US;
+  City Lights enters US public domain on 2027-01-01, Roman Holiday is PD only
+  in Japan). Chinese films made before 1946 had expired in China by 1996, so
+  the US never restored them; Street Angel is the best known of these and has
+  real Mandarin dialogue and songs.
+- **甜蜜蜜 has no legitimate free source.** The archive.org copies are
+  community uploads of Blu-ray rips (one is labelled with a piracy release
+  group) and the YouTube full-length uploads are from unofficial channels; it
+  streams legally only on paid services such as Netflix.

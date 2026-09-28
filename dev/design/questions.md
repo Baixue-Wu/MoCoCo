@@ -28,3 +28,5 @@ design-decisions.md and delete it here.
   Fish Speech, IndexTTS; needs a GPU or patience) or a paid API (MiniMax,
   ElevenLabs). The provider boundary (mococo/media/tts.py) is the only file
   that would change.
+- **After 2027-01-01**, add City Lights (1931, Douban Top 250) to
+  scripts/fetch_film.py; it enters US public domain that day.
