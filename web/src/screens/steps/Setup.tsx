@@ -8,6 +8,7 @@ import { StageBar } from '../../components/StageBar'
 import { LangChecks } from '../../components/LangChecks'
 import { Modal } from '../../components/Modal'
 import { Spinner } from '../../components/Spinner'
+import { RateSelect, VoiceSelect, VoicePreviewButton } from '../../components/VoiceControls'
 
 function fmtDuration(s: number): string {
   const m = Math.floor(s / 60)
@@ -20,7 +21,6 @@ function SettingsForm() {
   const { detail, refresh } = useProject()
   const { showError, show } = useToast()
   const [styles, setStyles] = useState<Record<Style, api.StyleInfo> | null>(null)
-  const [voiceOptions, setVoiceOptions] = useState<Record<string, string[]>>({})
   const [form, setForm] = useState<Settings | null>(detail?.settings ?? null)
   const [saving, setSaving] = useState(false)
 
@@ -31,19 +31,6 @@ function SettingsForm() {
   useEffect(() => {
     api.listStyles().then(setStyles).catch(showError)
   }, [showError])
-
-  useEffect(() => {
-    if (!form) return
-    for (const l of form.voice_langs) {
-      if (!voiceOptions[l]) {
-        api
-          .listVoices(l)
-          .then((v) => setVoiceOptions((cur) => ({ ...cur, [l]: v })))
-          .catch(showError)
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [form?.voice_langs.join(',')])
 
   if (!form) return null
 
@@ -111,30 +98,15 @@ function SettingsForm() {
           {form.voice_langs.map((l) => (
             <div key={l} className="hstack">
               <span className="badge">{l}</span>
-              <select
-                value={form.voice[l]}
-                onChange={(e) => setForm({ ...form, voice: { ...form.voice, [l]: e.target.value } })}
-              >
-                {(voiceOptions[l]?.includes(form.voice[l]) ? voiceOptions[l] : [form.voice[l], ...(voiceOptions[l] ?? [])]).map(
-                  (v) => (
-                    <option key={v} value={v}>
-                      {v}
-                    </option>
-                  ),
-                )}
-              </select>
+              <VoiceSelect lang={l} value={form.voice[l]} onChange={(name) => setForm({ ...form, voice: { ...form.voice, [l]: name } })} />
+              <VoicePreviewButton lang={l} voice={form.voice[l]} rate={form.voice.rate} />
             </div>
           ))}
         </div>
       </div>
       <div className="field">
         <label>{t('setup.voice_rate')}</label>
-        <input
-          type="text"
-          value={form.voice.rate}
-          onChange={(e) => setForm({ ...form, voice: { ...form.voice, rate: e.target.value } })}
-          style={{ maxWidth: 120 }}
-        />
+        <RateSelect value={form.voice.rate} onChange={(rate) => setForm({ ...form, voice: { ...form.voice, rate } })} />
       </div>
       <button className="btn btn-primary" onClick={save} disabled={saving}>
         {t('common.save')}

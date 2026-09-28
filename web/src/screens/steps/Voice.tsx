@@ -6,6 +6,7 @@ import { useProject } from '../../state/ProjectContext'
 import { StageBar } from '../../components/StageBar'
 import { Spinner } from '../../components/Spinner'
 import { stepDone } from '../../state/steps'
+import { RateSelect, VoiceSelect, VoicePreviewButton } from '../../components/VoiceControls'
 
 function TimingTable({ slug, lang }: { slug: string; lang: string }) {
   const { t } = useI18n()
@@ -43,6 +44,55 @@ function TimingTable({ slug, lang }: { slug: string; lang: string }) {
         ))}
       </tbody>
     </table>
+  )
+}
+
+function VoicePicker({ lang }: { lang: string }) {
+  const { t } = useI18n()
+  const { detail, refresh } = useProject()
+  const { showError, show } = useToast()
+  const slug = detail!.slug
+  const [name, setName] = useState(detail!.settings.voice[lang as 'zh' | 'en'])
+  const [rate, setRate] = useState(detail!.settings.voice.rate)
+  const [saving, setSaving] = useState(false)
+
+  useEffect(() => {
+    setName(detail!.settings.voice[lang as 'zh' | 'en'])
+    setRate(detail!.settings.voice.rate)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detail!.settings.voice[lang as 'zh' | 'en'], detail!.settings.voice.rate])
+
+  const dirty = name !== detail!.settings.voice[lang as 'zh' | 'en'] || rate !== detail!.settings.voice.rate
+
+  const save = async () => {
+    setSaving(true)
+    try {
+      await api.putSettings(slug, { ...detail!.settings, voice: { ...detail!.settings.voice, [lang]: name, rate } })
+      await refresh()
+      show(t('setup.settings_saved'))
+    } catch (e) {
+      showError(e)
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  return (
+    <div className="field">
+      <label>{t('voice.voice_name')}</label>
+      <div className="hstack">
+        <VoiceSelect lang={lang} value={name} onChange={setName} />
+        <VoicePreviewButton lang={lang} voice={name} rate={rate} />
+      </div>
+      <label style={{ marginTop: 8 }}>{t('setup.voice_rate')}</label>
+      <RateSelect value={rate} onChange={setRate} />
+      <span className="hint">{t('voice.redo_hint')}</span>
+      {dirty && (
+        <button className="btn btn-small" onClick={save} disabled={saving} style={{ alignSelf: 'flex-start' }}>
+          {t('common.save')}
+        </button>
+      )}
+    </div>
   )
 }
 
@@ -90,6 +140,8 @@ function VoiceLang({ lang }: { lang: string }) {
           {t('voice.voice_name')}: {voiceName}
         </span>
       </div>
+
+      <VoicePicker lang={lang} />
 
       {hasNarration ? (
         <>

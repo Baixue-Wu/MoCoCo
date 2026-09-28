@@ -266,11 +266,19 @@ export interface EventRecord {
   [key: string]: unknown
 }
 
+export interface VoiceOption {
+  name: string
+  gender: string
+  label: string
+}
+
 // ---- catalogue ----
 
 export const listFilms = () => get<FilmEntry[]>('/films')
 export const listStyles = () => get<Record<Style, StyleInfo>>('/styles')
-export const listVoices = (lang: string) => get<string[]>(`/voices?lang=${encodeURIComponent(lang)}`)
+export const listVoices = (lang: string) => get<VoiceOption[]>(`/voices?lang=${encodeURIComponent(lang)}`)
+export const voicePreviewUrl = (voice: string, lang: string, rate: string) =>
+  `/api/voices/preview?voice=${encodeURIComponent(voice)}&lang=${encodeURIComponent(lang)}&rate=${encodeURIComponent(rate)}`
 
 // ---- projects ----
 
