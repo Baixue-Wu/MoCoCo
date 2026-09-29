@@ -106,6 +106,10 @@ class Project:
         return self.script_dir / "brief.md"
 
     @property
+    def check_json(self) -> Path:
+        return self.script_dir / "check.json"
+
+    @property
     def segments_json(self) -> Path:
         return self.script_dir / "segments.json"
 

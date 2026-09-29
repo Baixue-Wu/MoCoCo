@@ -125,3 +125,36 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
   community uploads of Blu-ray rips (one is labelled with a piracy release
   group) and the YouTube full-length uploads are from unofficial channels; it
   streams legally only on paid services such as Netflix.
+
+## 2026-09-29 (fact-check step)
+
+- **New step `mococo script check`: every factual claim in the primary script
+  is judged supported / contradicted / unsupported against an evidence
+  timeline (every transcript line and every shot caption, in time order) plus
+  the creator's brief; results go to script/check.json with timestamps.**
+  Rationale: the Street Angel draft misattributed a character's job and
+  invented how a character dies.
+- **Only contradicted claims are corrected automatically; unsupported claims
+  are flagged for the creator.** Rationale: we tried removing unsupported
+  details too, and it stripped true, central plot (the sister's prostitution,
+  the romance) because a noisy, speaker-less transcript and one caption per
+  shot miss much of what is true. Unsupported is where the creator's
+  knowledge takes over (DG4).
+- **The model's own draft is checked and corrected before translation; a
+  human's script is only checked on request, and changed only with --fix.**
+  Rationale: the AI should not ship its own errors, and must not silently
+  rewrite the creator's words.
+- **"Supported" for who a character is requires a line tying the name to the
+  attribute; sharing a scene is not enough.** Rationale: the first run
+  accepted "老王 is the fiddler" from a line about "the fiddler" near a line
+  naming 老王.
+- **The creator's brief counts as evidence.** Rationale: it is the creator's
+  knowledge of the film, and without it true facts were flagged.
+- **Drafting reads the same full evidence timeline instead of the transcript
+  plus 150 sampled captions.** Rationale: prevention beats correction; on
+  Street Angel unsupported claims fell from 18 of 41 to 6 of 34 and both known
+  errors disappeared. The new draft is more cautious and less dramatic.
+- **Known limit:** evidence cannot show what one keyframe per shot and an
+  unattributed transcript miss (the stabbing in Street Angel is in neither).
+  Better evidence (several frames for dramatic shots, speaker attribution)
+  is the next lever, not a stronger checker.

@@ -73,6 +73,29 @@ def script_draft(project: Path, lang: str = typer.Option(None, help="zh | en; de
         rprint(f"[green]wrote[/] {path}")
 
 
+@script_app.command("check")
+def script_check(project: Path, fix: bool = typer.Option(False, help="replace paragraphs that contradict the film with their correction")):
+    """Fact-check the primary script against the whole film's dialogue and shots."""
+    import json
+
+    from mococo.stages import script as stage
+
+    p = Project(project)
+    path = stage.check(p, fix=fix)
+    r = json.loads(path.read_text(encoding="utf-8"))
+    c = r["counts"]
+    rprint(f"[green]wrote[/] {path}")
+    rprint(f"claims: {c['supported']} supported, [red]{c['contradicted']} contradicted[/], [yellow]{c['unsupported']} unsupported[/]")
+    for para in r["paragraphs"]:
+        for claim in para["claims"]:
+            if claim["verdict"] == "contradicted":
+                rprint(f"  [red]paragraph {para['index']}[/]: {claim['claim']}  ->  {claim['note']}")
+    if r["changed"] and not r["applied"]:
+        rprint(f"paragraphs {r['changed']} have corrections; apply them with `mococo script check {project} --fix`")
+    if r["applied"]:
+        rprint(f"[green]corrected paragraphs {r['changed']}[/]; re-run `mococo script segment {project} --force`")
+
+
 @script_app.command("segment")
 def script_segment(project: Path, force: bool = False):
     """Split script.<lang>.md into units with intent, mood, and search queries."""

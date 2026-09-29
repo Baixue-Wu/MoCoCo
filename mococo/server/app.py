@@ -19,7 +19,7 @@ from mococo.media import ffmpeg
 from mococo.project import Project, Settings, init_project
 from mococo.server.jobs import Jobs
 
-STAGES = ["ingest", "script.draft", "script.translate", "script.segment", "retrieve", "cut", "voice", "render", "run"]
+STAGES = ["ingest", "script.draft", "script.check", "script.translate", "script.segment", "retrieve", "cut", "voice", "render", "run"]
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
 
 
@@ -37,6 +37,7 @@ class NewProject(BaseModel):
 
 class StageRequest(BaseModel):
     force: bool = False
+    fix: bool = False
     lang: str | None = None
     top: int = 6
     whisper: str = "small"
@@ -67,6 +68,7 @@ def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
                 "index": p.index_npz.exists(),
             },
             "script": {l: p.script_md(l).exists() for l in s.script_langs},
+            "check": p.check_json.exists(),
             "segments": p.segments_json.exists(),
             "retrieve": p.candidates_json.exists(),
             "cut": p.timeline_json.exists(),
@@ -172,6 +174,7 @@ def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
             "shots": p.shots_json,
             "transcript": p.transcript_json,
             "captions": p.captions_json,
+            "check": p.check_json,
             "segments": p.segments_json,
             "candidates": p.candidates_json,
             "timeline": p.timeline_json,
@@ -225,6 +228,8 @@ def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
                 return ingest.run(p, force=body.force, whisper_size=body.whisper)
             if stage == "script.draft":
                 return [str(x) for x in script.draft(p, lang=body.lang, force=body.force)]
+            if stage == "script.check":
+                return str(script.check(p, fix=body.fix))
             if stage == "script.translate":
                 langs = [body.lang] if body.lang else p.load().script_langs[1:]
                 return [str(script.translate(p, l, force=True)) for l in langs]
