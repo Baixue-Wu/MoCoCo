@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import * as api from '../../api'
 import type { Lang } from '../../api'
 import { useI18n } from '../../i18n'
@@ -6,6 +6,8 @@ import { useToast } from '../../components/Toast'
 import { useProject } from '../../state/ProjectContext'
 import { StageBar } from '../../components/StageBar'
 import { Spinner } from '../../components/Spinner'
+import { Modal } from '../../components/Modal'
+import { FactCheckParagraphs } from '../../components/FactCheck'
 
 function paragraphs(text: string): string[] {
   return text
@@ -54,6 +56,25 @@ function StageBarInline({ stage, done, extra, confirm }: { stage: string; done: 
   )
 }
 
+function FactCheckButton({ onRun }: { onRun: () => void }) {
+  const { t } = useI18n()
+  const { jobsByStage, isBusy } = useProject()
+  const job = jobsByStage['script.check']
+  const running = job?.status === 'running'
+  return (
+    <span className="hstack gap-sm">
+      <button className="btn" disabled={isBusy} onClick={onRun}>
+        {running ? <Spinner /> : null} {t('check.button')}
+      </button>
+      {job?.status === 'failed' && (
+        <span className="small" style={{ color: 'var(--danger)' }}>
+          {job.error?.slice(0, 200)}
+        </span>
+      )}
+    </span>
+  )
+}
+
 function ScriptColumn({
   lang,
   primary,
@@ -62,6 +83,8 @@ function ScriptColumn({
   onSave,
   saving,
   editedSinceSegment,
+  actions,
+  children,
 }: {
   lang: Lang
   primary: boolean
@@ -70,6 +93,8 @@ function ScriptColumn({
   onSave: () => void
   saving: boolean
   editedSinceSegment: boolean
+  actions?: ReactNode
+  children?: ReactNode
 }) {
   const { t } = useI18n()
   const { detail } = useProject()
@@ -104,7 +129,9 @@ function ScriptColumn({
         ) : (
           <StageBarInline stage="script.translate" done={!!detail?.status.script[lang]} extra={{ lang }} />
         )}
+        {actions}
       </div>
+      {children}
     </div>
   )
 }
@@ -166,26 +193,58 @@ function UnitsList() {
 
 export function ScriptStep() {
   const { t } = useI18n()
-  const { detail, refresh } = useProject()
+  const { detail, refresh, runStage, isBusy } = useProject()
   const { showError } = useToast()
+  const [report, setReport] = useState<api.CheckReport | null>(null)
+  const [snapshot, setSnapshot] = useState<string | null>(null)
+  const [accepted, setAccepted] = useState<Set<number>>(new Set())
+  const [seek, setSeek] = useState<number | null>(null)
   const [texts, setTexts] = useState<Record<string, string>>({})
   const [saving, setSaving] = useState<Record<string, boolean>>({})
   const [editedSince, setEditedSince] = useState<Record<string, boolean>>({})
   const slug = detail?.slug
   const scriptStatusKey = detail ? JSON.stringify(detail.status.script) : ''
 
-  useEffect(() => {
+  const loadTexts = useCallback(async () => {
     if (!detail) return
-    Promise.all(
+    const pairs = await Promise.all(
       detail.settings.script_langs.map((l) =>
         api
           .getScript(slug!, l)
           .then((r) => [l, r.text] as const)
           .catch(() => [l, ''] as const),
       ),
-    ).then((pairs) => setTexts(Object.fromEntries(pairs)))
+    )
+    setTexts(Object.fromEntries(pairs))
+    return Object.fromEntries(pairs) as Record<string, string>
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug, scriptStatusKey])
+  }, [slug, detail?.settings.script_langs.join(',')])
+
+  // the report belongs to the script as saved on the server; remember that text so
+  // any later difference in the editor marks the report stale
+  const loadReport = useCallback(async () => {
+    if (!slug || !detail) return
+    try {
+      const [r, sc] = await Promise.all([api.getCheck(slug), api.getScript(slug, detail.settings.script_langs[0])])
+      setReport(r)
+      setSnapshot(sc.text)
+      setAccepted(new Set())
+    } catch {
+      setReport(null)
+      setSnapshot(null)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slug, detail?.settings.script_langs[0]])
+
+  useEffect(() => {
+    void loadTexts()
+  }, [loadTexts, scriptStatusKey])
+
+  const checkDone = detail?.status.check
+  useEffect(() => {
+    if (checkDone) void loadReport()
+    else setReport(null)
+  }, [checkDone, loadReport])
 
   if (!detail) return null
   const langs = detail.settings.script_langs
@@ -201,6 +260,32 @@ export function ScriptStep() {
     } finally {
       setSaving((s) => ({ ...s, [lang]: false }))
     }
+  }
+
+  const runCheck = async (fix: boolean) => {
+    if (fix && !window.confirm(t('check.confirm_fix'))) return
+    try {
+      await runStage('script.check', { fix })
+      if (fix) await loadTexts()
+      await loadReport()
+    } catch {
+      /* shown on the button */
+    }
+  }
+
+  const primaryText = texts[primary]
+  const stale = !!report && snapshot !== null && primaryText !== undefined && primaryText !== snapshot
+
+  const accept = (para: api.CheckParagraph) => {
+    if (!para.revised) return
+    const paras = paragraphs(texts[primary] ?? '')
+    if (para.index >= paras.length) return
+    paras[para.index] = para.revised
+    const next = paras.join('\n\n') + '\n'
+    setTexts((cur) => ({ ...cur, [primary]: next }))
+    setEditedSince((cur) => ({ ...cur, [primary]: true }))
+    setSnapshot(next)
+    setAccepted((cur) => new Set(cur).add(para.index))
   }
 
   const counts = langs.map((l) => paragraphs(texts[l] ?? '').length)
@@ -222,7 +307,20 @@ export function ScriptStep() {
             onSave={() => save(l)}
             saving={!!saving[l]}
             editedSinceSegment={!!editedSince[l]}
-          />
+            actions={l === primary ? <FactCheckButton onRun={() => runCheck(false)} /> : undefined}
+          >
+            {l === primary && report && (
+              <FactCheckParagraphs
+                report={report}
+                stale={stale}
+                accepted={accepted}
+                onSeek={setSeek}
+                onAccept={accept}
+                onAcceptAll={() => runCheck(true)}
+                busy={isBusy}
+              />
+            )}
+          </ScriptColumn>
         ))}
       </div>
       {mismatch && (
@@ -233,6 +331,11 @@ export function ScriptStep() {
       <StageBar stage="script.segment" done={detail.status.segments} onDone={refresh} />
       <h2 style={{ marginTop: 24 }}>{t('script.units_heading')}</h2>
       <UnitsList />
+      {seek !== null && (
+        <Modal onClose={() => setSeek(null)}>
+          <video key={seek} controls autoPlay src={`${api.mediaFilm(slug!)}#t=${seek}`} />
+        </Modal>
+      )}
     </div>
   )
 }

@@ -65,6 +65,7 @@ export interface Status {
   ingest_steps: { shots: boolean; transcript: boolean; captions: boolean; index: boolean }
   script: Record<string, boolean>
   segments: boolean
+  check: boolean
   retrieve: boolean
   cut: boolean
   voice: Record<string, boolean>
@@ -135,6 +136,7 @@ export interface StageRequest {
   lang?: string | null
   top?: number
   whisper?: string
+  fix?: boolean
 }
 
 // ---- shot / caption / script / retrieval / cut / voice file shapes ----
@@ -260,6 +262,38 @@ export interface Timing {
   units: TimingUnit[]
 }
 
+export type Verdict = 'supported' | 'contradicted' | 'unsupported'
+
+export interface CheckEvidence {
+  t: number
+  kind: 'says' | 'sees' | 'brief'
+  text: string
+}
+
+export interface CheckClaim {
+  claim: string
+  verdict: Verdict
+  evidence: CheckEvidence[]
+  note: string
+}
+
+export interface CheckParagraph {
+  index: number
+  text: string
+  revised?: string | null
+  claims: CheckClaim[]
+}
+
+export interface CheckReport {
+  lang: Lang
+  checked_sha: string
+  script_sha: string
+  applied: boolean
+  changed: number[]
+  counts: Record<Verdict, number>
+  paragraphs: CheckParagraph[]
+}
+
 export interface EventRecord {
   t: number
   kind: string
@@ -298,6 +332,7 @@ export const putScript = (slug: string, lang: Lang, text: string) => putFile(slu
 export const getShots = (slug: string) => getFile<Shot[]>(slug, 'shots')
 export const getTranscript = (slug: string) => getFile<Transcript>(slug, 'transcript')
 export const getCaptions = (slug: string) => getFile<Captions>(slug, 'captions')
+export const getCheck = (slug: string) => getFile<CheckReport>(slug, 'check')
 export const getSegments = (slug: string) => getFile<Segments>(slug, 'segments')
 export const getCandidates = (slug: string) => getFile<Candidates>(slug, 'candidates')
 export const putCandidates = (slug: string, body: Candidates) => putFile(slug, 'candidates', body)
@@ -320,6 +355,7 @@ export const postEvent = (slug: string, body: Record<string, unknown>) => post<{
 
 export const mediaFrame = (slug: string, shotId: string) => `/api/projects/${slug}/media/frame/${shotId}`
 export const mediaExternal = (slug: string, name: string) => `/api/projects/${slug}/media/external/${name}`
+export const mediaFilm = (slug: string) => `/api/projects/${slug}/media/film`
 export const mediaPreview = (slug: string, shotId: string) => `/api/projects/${slug}/media/preview/${shotId}`
 export const mediaNarration = (slug: string, lang: string) => `/api/projects/${slug}/media/narration/${lang}`
 export const mediaOutput = (slug: string, lang: string) => `/api/projects/${slug}/media/output/${lang}`
