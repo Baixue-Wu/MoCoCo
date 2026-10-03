@@ -10,6 +10,11 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
   chose browser-local movie storage while public AI processing is deferred.
   The GitHub Pages build has no shared user files or backend credentials;
   `npm run build` still serves the full local Python workflow.
+- **Publish the completed example as a read-only project in the same six-stage
+  navigation.** Rationale: visitors need to inspect actual script units,
+  candidate and selected shots, clip order, timing, and output to learn from
+  the process. Export only small, public-safe artifacts from the local project;
+  the commercial-film projects remain private and outside Git.
 
 - **The first static showcase was replaced by a public build of the product UI.**
   GitHub Pages can host the same React screens and browser-local film imports;

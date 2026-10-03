@@ -1,0 +1,1996 @@
+{
+  "title": "福尔摩斯二世 / Sherlock Jr.",
+  "style": "recap",
+  "target_minutes": 2.5,
+  "brief": "一部基顿经典默片的中文剧情解说：放映员渴望成为侦探，却被情敌诬陷偷走怀表；他梦中走进银幕化身福尔摩斯二世，追查珍珠失窃案并在连串危险追逐中救出女主角；醒来后发现现实中的误会已被澄清。讲清梦境与现实的关系，突出默片的视觉巧思。",
+  "film": {
+    "duration": 2673.84,
+    "width": 960,
+    "height": 720,
+    "fps": 23.98,
+    "has_audio": false
+  },
+  "shot_count": 223,
+  "caption_count": 65,
+  "script": "别人看电影，他直接钻进银幕！可这位梦里无所不能的神探，现实中却刚被当成小偷赶出门。基顿这场翻身仗，还得从一块失踪的怀表说起。\n\n放映员一边在影院扫地，一边捧着侦探入门书，盼着自己也能破大案。恋爱经费有限，他买盒便宜巧克力，还悄悄改高价签，去见心上人。偏偏情敌也来了，礼物更贵，手段更黑。\n\n情敌偷走女孩父亲的怀表，拿去典当，再把当票塞进放映员口袋。怀表一丢，放映员立刻照着书展开调查，结果搜来搜去，证据竟在自己身上！侦探没当成，倒成了头号嫌犯。\n\n被赶出去的放映员不甘心，紧跟情敌，想找出真相。谁知一路跟到火车旁，反把自己折腾得狼狈不堪。他垂头丧气回到放映室，睡着了，女孩却没有放弃，拿着当票继续查。\n\n睡梦中，放映员的身影离开身体，走进银幕。刚站稳，花园变街道，街道变悬崖，转眼又成海面！他的位置没动，布景却不停换，刚想坐下，屁股底下已经空了。连电影剪辑都能把人耍得团团转。\n\n终于，梦里的他化身福尔摩斯二世，调查珍珠失窃案。现实中的熟面孔，也变成了银幕里的角色。坏人布下毒酒、机关和会爆炸的台球，等他中招。他却悠然挥杆，危险球始终没撞上，急得坏人比他还紧张。\n\n女孩落入险境，神探立刻追去营救。逃跑时，他穿窗瞬间换装，还借助手掩护突然消失。接着坐上摩托车车把，司机掉了，他竟浑然不知！一路穿过车流、险越断桥，终于赶到女孩身边，驾车逃走，却又冲进湖里。\n\n正当梦里的英雄忙着脱险，放映员醒了。女孩已经查明典当怀表的是情敌，亲自来替他洗清冤屈。他看看银幕上的情侣，现学现用，牵手、拥抱、亲吻。可银幕一转，夫妻已经抱上孩子，他当场挠头：这下一步，电影是不是教得太快了？",
+  "segments": {
+    "primary_lang": "zh",
+    "units": [
+      {
+        "id": "u001",
+        "text": {
+          "zh": "别人看电影，他直接钻进银幕！可这位梦里无所不能的神探，现实中却刚被当成小偷赶出门。基顿这场翻身仗，还得从一块失踪的怀表说起。"
+        },
+        "intent": "hook",
+        "mood": "surprising comic",
+        "visual_query_en": "In Sherlock Jr., show Buster Keaton entering the cinema screen in a wide shot, followed by medium shots of his expulsion from his sweetheart's house and the missing pocket watch.",
+        "keywords": [
+          "buster keaton",
+          "screen",
+          "dream",
+          "detective",
+          "pocket watch",
+          "accusation"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u002",
+        "text": {
+          "zh": "放映员一边在影院扫地，一边捧着侦探入门书，盼着自己也能破大案。恋爱经费有限，他买盒便宜巧克力，还悄悄改高价签，去见心上人。偏偏情敌也来了，礼物更贵，手段更黑。"
+        },
+        "intent": "character",
+        "mood": "hopeful playful",
+        "visual_query_en": "In Sherlock Jr., show medium shots of Buster Keaton sweeping the cinema while reading a detective manual, close-ups of him changing a chocolate box price, and his romantic rival arriving at the girl's home.",
+        "keywords": [
+          "projectionist",
+          "broom",
+          "detective manual",
+          "chocolates",
+          "price tag",
+          "sweetheart",
+          "rival"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u003",
+        "text": {
+          "zh": "情敌偷走女孩父亲的怀表，拿去典当，再把当票塞进放映员口袋。怀表一丢，放映员立刻照着书展开调查，结果搜来搜去，证据竟在自己身上！侦探没当成，倒成了头号嫌犯。"
+        },
+        "intent": "plot",
+        "mood": "devious ironic",
+        "visual_query_en": "In Sherlock Jr., show close-ups of the rival stealing and pawning the father's pocket watch and planting the pawn ticket, followed by medium shots of Keaton investigating at the girl's home and discovering the ticket in his own pocket.",
+        "keywords": [
+          "rival",
+          "pocket watch",
+          "pawnshop",
+          "pawn ticket",
+          "pocket",
+          "investigation",
+          "suspect"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u004",
+        "text": {
+          "zh": "被赶出去的放映员不甘心，紧跟情敌，想找出真相。谁知一路跟到火车旁，反把自己折腾得狼狈不堪。他垂头丧气回到放映室，睡着了，女孩却没有放弃，拿着当票继续查。"
+        },
+        "intent": "plot",
+        "mood": "frustrated hopeful",
+        "visual_query_en": "In Sherlock Jr., show wide shots of Keaton shadowing his rival near a train, a medium shot of him falling asleep in the projection booth, and shots of the girl investigating with the pawn ticket.",
+        "keywords": [
+          "projectionist",
+          "rival",
+          "shadowing",
+          "train",
+          "projection booth",
+          "sleep",
+          "pawn ticket",
+          "girl"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u005",
+        "text": {
+          "zh": "睡梦中，放映员的身影离开身体，走进银幕。刚站稳，花园变街道，街道变悬崖，转眼又成海面！他的位置没动，布景却不停换，刚想坐下，屁股底下已经空了。连电影剪辑都能把人耍得团团转。"
+        },
+        "intent": "technique",
+        "mood": "surreal bewildering",
+        "visual_query_en": "In Sherlock Jr., show the wide shot of Keaton's dream self leaving his sleeping body and entering the screen, then full-body shots with abrupt cuts between a garden, street, cliff and sea as he struggles to stay upright.",
+        "keywords": [
+          "dream",
+          "screen",
+          "garden",
+          "street",
+          "cliff",
+          "sea",
+          "editing",
+          "slapstick"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u006",
+        "text": {
+          "zh": "终于，梦里的他化身福尔摩斯二世，调查珍珠失窃案。现实中的熟面孔，也变成了银幕里的角色。坏人布下毒酒、机关和会爆炸的台球，等他中招。他却悠然挥杆，危险球始终没撞上，急得坏人比他还紧张。"
+        },
+        "intent": "plot",
+        "mood": "suspenseful comic",
+        "visual_query_en": "In Sherlock Jr., show medium shots of Keaton as the dream detective investigating stolen pearls, close-ups of poisoned liquor and traps, and wide shots of his billiards game intercut with the villains anxiously watching the explosive ball.",
+        "keywords": [
+          "detective",
+          "pearls",
+          "villains",
+          "poison",
+          "traps",
+          "billiards",
+          "explosive ball"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u007",
+        "text": {
+          "zh": "女孩落入险境，神探立刻追去营救。逃跑时，他穿窗瞬间换装，还借助手掩护突然消失。接着坐上摩托车车把，司机掉了，他竟浑然不知！一路穿过车流、险越断桥，终于赶到女孩身边，驾车逃走，却又冲进湖里。"
+        },
+        "intent": "plot",
+        "mood": "thrilling frantic",
+        "visual_query_en": "In Sherlock Jr., show wide shots of Keaton changing disguise through a window and disappearing through his assistant, riding motorcycle handlebars without a driver through traffic and over a broken bridge, then rescuing the girl and driving into a lake.",
+        "keywords": [
+          "rescue",
+          "disguise",
+          "assistant",
+          "motorcycle",
+          "traffic",
+          "broken bridge",
+          "car",
+          "lake"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      },
+      {
+        "id": "u008",
+        "text": {
+          "zh": "正当梦里的英雄忙着脱险，放映员醒了。女孩已经查明典当怀表的是情敌，亲自来替他洗清冤屈。他看看银幕上的情侣，现学现用，牵手、拥抱、亲吻。可银幕一转，夫妻已经抱上孩子，他当场挠头：这下一步，电影是不是教得太快了？"
+        },
+        "intent": "closing",
+        "mood": "romantic amused",
+        "visual_query_en": "In Sherlock Jr., show medium shots of Keaton waking in the projection booth and reuniting with the girl, intercut their handholding, embrace and kiss with the onscreen couple, ending on his puzzled reaction to the screen showing parents with a baby.",
+        "keywords": [
+          "projectionist",
+          "girl",
+          "reunion",
+          "screen",
+          "handholding",
+          "kiss",
+          "baby",
+          "confusion"
+        ],
+        "needs_context": false,
+        "context_query": ""
+      }
+    ]
+  },
+  "candidates": {
+    "units": [
+      {
+        "unit_id": "u001",
+        "shots": [
+          {
+            "shot_id": "s0077",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0101",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5524
+          },
+          {
+            "shot_id": "s0136",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0077"
+        ]
+      },
+      {
+        "unit_id": "u002",
+        "shots": [
+          {
+            "shot_id": "s0017",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5314
+          },
+          {
+            "shot_id": "s0020",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5447
+          },
+          {
+            "shot_id": "s0023",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0043",
+            "score": 97,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0047",
+            "score": 96,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5651
+          },
+          {
+            "shot_id": "s0050",
+            "score": 95,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0017"
+        ]
+      },
+      {
+        "unit_id": "u003",
+        "shots": [
+          {
+            "shot_id": "s0052",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0056",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0062",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5205
+          },
+          {
+            "shot_id": "s0073",
+            "score": 97,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0077",
+            "score": 96,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0080",
+            "score": 95,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0052"
+        ]
+      },
+      {
+        "unit_id": "u004",
+        "shots": [
+          {
+            "shot_id": "s0085",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0088",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0089",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5566
+          },
+          {
+            "shot_id": "s0099",
+            "score": 97,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0100",
+            "score": 96,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0085"
+        ]
+      },
+      {
+        "unit_id": "u005",
+        "shots": [
+          {
+            "shot_id": "s0101",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0102",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0103",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5547
+          },
+          {
+            "shot_id": "s0104",
+            "score": 97,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0107",
+            "score": 96,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0101"
+        ]
+      },
+      {
+        "unit_id": "u006",
+        "shots": [
+          {
+            "shot_id": "s0113",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0115",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0117",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0118",
+            "score": 97,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5757
+          },
+          {
+            "shot_id": "s0130",
+            "score": 96,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5952
+          },
+          {
+            "shot_id": "s0139",
+            "score": 95,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5942
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0113"
+        ]
+      },
+      {
+        "unit_id": "u007",
+        "shots": [
+          {
+            "shot_id": "s0147",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          },
+          {
+            "shot_id": "s0166",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5077
+          },
+          {
+            "shot_id": "s0180",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5219
+          },
+          {
+            "shot_id": "s0210",
+            "score": 97,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5457
+          },
+          {
+            "shot_id": "s0216",
+            "score": 96,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5371
+          },
+          {
+            "shot_id": "s0217",
+            "score": 95,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5319
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0147"
+        ]
+      },
+      {
+        "unit_id": "u008",
+        "shots": [
+          {
+            "shot_id": "s0223",
+            "score": 100,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.5401
+          },
+          {
+            "shot_id": "s0104",
+            "score": 99,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.6133
+          },
+          {
+            "shot_id": "s0048",
+            "score": 98,
+            "why": "Human-reviewed to match the story's scene and chronology",
+            "why_zh": "人工复核：匹配这一段剧情与镜头顺序",
+            "similarity": 0.0
+          }
+        ],
+        "external": [],
+        "chosen": [
+          "s0223"
+        ]
+      }
+    ]
+  },
+  "timeline": {
+    "style": "recap",
+    "units": [
+      {
+        "id": "u001",
+        "estimated_seconds": 13.78,
+        "clips": [
+          {
+            "shot_id": "s0077",
+            "in": 771.695,
+            "out": 775.14,
+            "seconds": 3.445,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0101",
+            "in": 1051.849,
+            "out": 1055.294,
+            "seconds": 3.445,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0102",
+            "in": 1113.661,
+            "out": 1117.106,
+            "seconds": 3.445,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0136",
+            "in": 1685.941,
+            "out": 1689.386,
+            "seconds": 3.445,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u002",
+        "estimated_seconds": 17.56,
+        "clips": [
+          {
+            "shot_id": "s0017",
+            "in": 193.826,
+            "out": 196.753,
+            "seconds": 2.927,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0020",
+            "in": 228.36,
+            "out": 231.287,
+            "seconds": 2.927,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0023",
+            "in": 265.814,
+            "out": 268.741,
+            "seconds": 2.927,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0043",
+            "in": 403.493,
+            "out": 406.42,
+            "seconds": 2.927,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0047",
+            "in": 439.655,
+            "out": 442.582,
+            "seconds": 2.927,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0050",
+            "in": 502.009,
+            "out": 504.936,
+            "seconds": 2.927,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u003",
+        "estimated_seconds": 17.11,
+        "clips": [
+          {
+            "shot_id": "s0052",
+            "in": 539.046,
+            "out": 541.898,
+            "seconds": 2.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0056",
+            "in": 634.432,
+            "out": 637.284,
+            "seconds": 2.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0062",
+            "in": 674.389,
+            "out": 677.241,
+            "seconds": 2.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0073",
+            "in": 743.792,
+            "out": 746.644,
+            "seconds": 2.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0077",
+            "in": 771.695,
+            "out": 774.547,
+            "seconds": 2.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0080",
+            "in": 800.598,
+            "out": 803.45,
+            "seconds": 2.852,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u004",
+        "estimated_seconds": 16.89,
+        "clips": [
+          {
+            "shot_id": "s0085",
+            "in": 839.012,
+            "out": 842.39,
+            "seconds": 3.378,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0088",
+            "in": 874.297,
+            "out": 877.675,
+            "seconds": 3.378,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0089",
+            "in": 880.97,
+            "out": 884.348,
+            "seconds": 3.378,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0099",
+            "in": 1012.685,
+            "out": 1016.063,
+            "seconds": 3.378,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0100",
+            "in": 1037.877,
+            "out": 1041.255,
+            "seconds": 3.378,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u005",
+        "estimated_seconds": 19.11,
+        "clips": [
+          {
+            "shot_id": "s0101",
+            "in": 1051.849,
+            "out": 1055.671,
+            "seconds": 3.822,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0102",
+            "in": 1113.661,
+            "out": 1117.483,
+            "seconds": 3.822,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0103",
+            "in": 1150.49,
+            "out": 1154.312,
+            "seconds": 3.822,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0104",
+            "in": 1299.639,
+            "out": 1303.461,
+            "seconds": 3.822,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0107",
+            "in": 1341.013,
+            "out": 1344.835,
+            "seconds": 3.822,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u006",
+        "estimated_seconds": 20.22,
+        "clips": [
+          {
+            "shot_id": "s0113",
+            "in": 1418.841,
+            "out": 1422.211,
+            "seconds": 3.37,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0115",
+            "in": 1429.018,
+            "out": 1432.388,
+            "seconds": 3.37,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0117",
+            "in": 1479.151,
+            "out": 1482.521,
+            "seconds": 3.37,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0118",
+            "in": 1533.247,
+            "out": 1536.617,
+            "seconds": 3.37,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0130",
+            "in": 1656.912,
+            "out": 1658.873,
+            "seconds": 1.961,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0139",
+            "in": 1721.352,
+            "out": 1724.722,
+            "seconds": 3.37,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u007",
+        "estimated_seconds": 20.89,
+        "clips": [
+          {
+            "shot_id": "s0147",
+            "in": 1856.695,
+            "out": 1860.177,
+            "seconds": 3.482,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0166",
+            "in": 2060.691,
+            "out": 2064.173,
+            "seconds": 3.482,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0180",
+            "in": 2197.16,
+            "out": 2200.642,
+            "seconds": 3.482,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0210",
+            "in": 2402.157,
+            "out": 2405.639,
+            "seconds": 3.482,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0216",
+            "in": 2432.562,
+            "out": 2436.044,
+            "seconds": 3.482,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0217",
+            "in": 2472.435,
+            "out": 2475.917,
+            "seconds": 3.482,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      },
+      {
+        "id": "u008",
+        "estimated_seconds": 23.11,
+        "clips": [
+          {
+            "shot_id": "s0223",
+            "in": 2536.458,
+            "out": 2540.31,
+            "seconds": 3.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0223",
+            "in": 2556.458,
+            "out": 2560.31,
+            "seconds": 3.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0223",
+            "in": 2581.458,
+            "out": 2585.31,
+            "seconds": 3.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0223",
+            "in": 2606.458,
+            "out": 2610.31,
+            "seconds": 3.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0223",
+            "in": 2631.458,
+            "out": 2635.31,
+            "seconds": 3.852,
+            "why": "Human-reviewed scene order and pacing"
+          },
+          {
+            "shot_id": "s0104",
+            "in": 1299.639,
+            "out": 1303.491,
+            "seconds": 3.852,
+            "why": "Human-reviewed scene order and pacing"
+          }
+        ]
+      }
+    ]
+  },
+  "timing": {
+    "lang": "zh",
+    "voice": "Microsoft Huihui Desktop",
+    "source": "local_sapi",
+    "units": [
+      {
+        "id": "u001",
+        "start": 0.0,
+        "end": 14.88,
+        "words": []
+      },
+      {
+        "id": "u002",
+        "start": 15.23,
+        "end": 34.55,
+        "words": []
+      },
+      {
+        "id": "u003",
+        "start": 34.9,
+        "end": 53.45,
+        "words": []
+      },
+      {
+        "id": "u004",
+        "start": 53.8,
+        "end": 72.18,
+        "words": []
+      },
+      {
+        "id": "u005",
+        "start": 72.53,
+        "end": 93.79,
+        "words": []
+      },
+      {
+        "id": "u006",
+        "start": 94.14,
+        "end": 116.12,
+        "words": []
+      },
+      {
+        "id": "u007",
+        "start": 116.47,
+        "end": 139.85,
+        "words": []
+      },
+      {
+        "id": "u008",
+        "start": 140.2,
+        "end": 165.47,
+        "words": []
+      }
+    ]
+  },
+  "shots": [
+    {
+      "id": "s0017",
+      "start": 193.826,
+      "end": 221.854,
+      "duration": 28.028,
+      "frame": "frames/s0017.jpg"
+    },
+    {
+      "id": "s0020",
+      "start": 228.36,
+      "end": 242.207,
+      "duration": 13.847,
+      "frame": "frames/s0020.jpg"
+    },
+    {
+      "id": "s0023",
+      "start": 265.814,
+      "end": 271.612,
+      "duration": 5.798,
+      "frame": "frames/s0023.jpg"
+    },
+    {
+      "id": "s0043",
+      "start": 403.493,
+      "end": 417.007,
+      "duration": 13.514,
+      "frame": "frames/s0043.jpg"
+    },
+    {
+      "id": "s0047",
+      "start": 439.655,
+      "end": 455.003,
+      "duration": 15.348,
+      "frame": "frames/s0047.jpg"
+    },
+    {
+      "id": "s0048",
+      "start": 455.003,
+      "end": 493.792,
+      "duration": 38.789,
+      "frame": "frames/s0048.jpg"
+    },
+    {
+      "id": "s0050",
+      "start": 502.009,
+      "end": 509.85,
+      "duration": 7.841,
+      "frame": "frames/s0050.jpg"
+    },
+    {
+      "id": "s0052",
+      "start": 539.046,
+      "end": 542.799,
+      "duration": 3.753,
+      "frame": "frames/s0052.jpg"
+    },
+    {
+      "id": "s0056",
+      "start": 634.432,
+      "end": 648.78,
+      "duration": 14.348,
+      "frame": "frames/s0056.jpg"
+    },
+    {
+      "id": "s0062",
+      "start": 674.389,
+      "end": 679.519,
+      "duration": 5.13,
+      "frame": "frames/s0062.jpg"
+    },
+    {
+      "id": "s0073",
+      "start": 743.792,
+      "end": 748.171,
+      "duration": 4.379,
+      "frame": "frames/s0073.jpg"
+    },
+    {
+      "id": "s0077",
+      "start": 771.695,
+      "end": 785.625,
+      "duration": 13.93,
+      "frame": "frames/s0077.jpg"
+    },
+    {
+      "id": "s0080",
+      "start": 800.598,
+      "end": 814.821,
+      "duration": 14.223,
+      "frame": "frames/s0080.jpg"
+    },
+    {
+      "id": "s0085",
+      "start": 839.012,
+      "end": 858.365,
+      "duration": 19.353,
+      "frame": "frames/s0085.jpg"
+    },
+    {
+      "id": "s0088",
+      "start": 874.297,
+      "end": 880.97,
+      "duration": 6.673,
+      "frame": "frames/s0088.jpg"
+    },
+    {
+      "id": "s0089",
+      "start": 880.97,
+      "end": 972.812,
+      "duration": 91.842,
+      "frame": "frames/s0089.jpg"
+    },
+    {
+      "id": "s0099",
+      "start": 1012.685,
+      "end": 1037.877,
+      "duration": 25.192,
+      "frame": "frames/s0099.jpg"
+    },
+    {
+      "id": "s0100",
+      "start": 1037.877,
+      "end": 1051.849,
+      "duration": 13.972,
+      "frame": "frames/s0100.jpg"
+    },
+    {
+      "id": "s0101",
+      "start": 1051.849,
+      "end": 1113.661,
+      "duration": 61.812,
+      "frame": "frames/s0101.jpg"
+    },
+    {
+      "id": "s0102",
+      "start": 1113.661,
+      "end": 1150.49,
+      "duration": 36.829,
+      "frame": "frames/s0102.jpg"
+    },
+    {
+      "id": "s0103",
+      "start": 1150.49,
+      "end": 1299.639,
+      "duration": 149.149,
+      "frame": "frames/s0103.jpg"
+    },
+    {
+      "id": "s0104",
+      "start": 1299.639,
+      "end": 1327.708,
+      "duration": 28.069,
+      "frame": "frames/s0104.jpg"
+    },
+    {
+      "id": "s0107",
+      "start": 1341.013,
+      "end": 1355.57,
+      "duration": 14.557,
+      "frame": "frames/s0107.jpg"
+    },
+    {
+      "id": "s0113",
+      "start": 1418.841,
+      "end": 1423.554,
+      "duration": 4.713,
+      "frame": "frames/s0113.jpg"
+    },
+    {
+      "id": "s0115",
+      "start": 1429.018,
+      "end": 1474.605,
+      "duration": 45.587,
+      "frame": "frames/s0115.jpg"
+    },
+    {
+      "id": "s0117",
+      "start": 1479.151,
+      "end": 1533.247,
+      "duration": 54.096,
+      "frame": "frames/s0117.jpg"
+    },
+    {
+      "id": "s0118",
+      "start": 1533.247,
+      "end": 1596.102,
+      "duration": 62.855,
+      "frame": "frames/s0118.jpg"
+    },
+    {
+      "id": "s0130",
+      "start": 1656.912,
+      "end": 1658.873,
+      "duration": 1.961,
+      "frame": "frames/s0130.jpg"
+    },
+    {
+      "id": "s0136",
+      "start": 1685.941,
+      "end": 1693.699,
+      "duration": 7.758,
+      "frame": "frames/s0136.jpg"
+    },
+    {
+      "id": "s0139",
+      "start": 1721.352,
+      "end": 1726.357,
+      "duration": 5.005,
+      "frame": "frames/s0139.jpg"
+    },
+    {
+      "id": "s0147",
+      "start": 1856.695,
+      "end": 1878.842,
+      "duration": 22.147,
+      "frame": "frames/s0147.jpg"
+    },
+    {
+      "id": "s0166",
+      "start": 2060.691,
+      "end": 2075.205,
+      "duration": 14.514,
+      "frame": "frames/s0166.jpg"
+    },
+    {
+      "id": "s0180",
+      "start": 2197.16,
+      "end": 2203.375,
+      "duration": 6.215,
+      "frame": "frames/s0180.jpg"
+    },
+    {
+      "id": "s0210",
+      "start": 2402.157,
+      "end": 2405.744,
+      "duration": 3.587,
+      "frame": "frames/s0210.jpg"
+    },
+    {
+      "id": "s0216",
+      "start": 2432.562,
+      "end": 2472.435,
+      "duration": 39.873,
+      "frame": "frames/s0216.jpg"
+    },
+    {
+      "id": "s0217",
+      "start": 2472.435,
+      "end": 2505.885,
+      "duration": 33.45,
+      "frame": "frames/s0217.jpg"
+    },
+    {
+      "id": "s0223",
+      "start": 2536.458,
+      "end": 2673.838,
+      "duration": 137.38,
+      "frame": "frames/s0223.jpg"
+    }
+  ],
+  "captions": {
+    "s0139": {
+      "id": "s0139",
+      "description_en": "From a wide angle across the pool table, the young man leans forward to take a shot with his cue. Two balls are visible on the table in the foreground.",
+      "description_zh": "从球桌对面的远景看，年轻男子俯身用球杆击球。前景的桌面上有两颗球。",
+      "mood": "focused",
+      "characters": [
+        "young man"
+      ],
+      "setting": "interior billiard room, day",
+      "tags": [
+        "pool table",
+        "billiards",
+        "cue",
+        "playing",
+        "wide shot",
+        "parlor"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0180": {
+      "id": "s0180",
+      "description_en": "A young man in a dark suit rides seated on a small wheeled vehicle along a broad street, gripping its sides. The medium shot faces him in daylight, with cars and buildings receding behind him.",
+      "description_zh": "一名穿深色西装的年轻男子坐在小型轮式车辆上沿宽阔街道行驶，双手抓住两侧。日光下的中景正面拍摄他，后方可见汽车和沿街建筑。",
+      "mood": "comic",
+      "characters": [
+        "young man in dark suit"
+      ],
+      "setting": "broad street, daytime",
+      "tags": [
+        "young man",
+        "suit",
+        "wheeled vehicle",
+        "street",
+        "cars",
+        "medium shot",
+        "daylight"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0089": {
+      "id": "s0089",
+      "description_en": "A wide shot shows water gushing from a pipe beneath an elevated water tank beside railroad tracks, with open fields and utility poles in the background.",
+      "description_zh": "广角画面中，高架水塔下的管道向外喷水，前景是铁路轨道，背景可见旷地和电线杆。",
+      "mood": "chaotic",
+      "characters": [],
+      "setting": "railroad water tower, daytime",
+      "tags": [
+        "water tower",
+        "water spray",
+        "railroad tracks",
+        "pipe",
+        "wide shot",
+        "rural"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0100": {
+      "id": "s0100",
+      "description_en": "A wide shot of the workshop shows the young man sitting on a tall stool among electrical equipment and cables, with a faint double image beside him.",
+      "description_zh": "工作间的广角画面中，年轻男子坐在高凳上，周围摆着电气设备和电缆；他身旁隐约出现一个重叠的人影。",
+      "mood": "dreamlike",
+      "characters": [
+        "young man"
+      ],
+      "setting": "workshop, interior",
+      "tags": [
+        "young man",
+        "stool",
+        "electrical equipment",
+        "cables",
+        "wide shot",
+        "double image"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0050": {
+      "id": "s0050",
+      "description_en": "A young woman in a checked dress sits beside a young man in a suit on an upholstered seat, both facing forward in a medium two-shot. A mantel clock and patterned wallpaper are visible behind them.",
+      "description_zh": "中景双人镜头中，穿格纹裙的年轻女子与穿西装的年轻男子并排坐在软垫座椅上，两人面朝前方。身后可见壁炉台上的钟和花纹墙纸。",
+      "mood": "still, reserved",
+      "characters": [
+        "young woman",
+        "young man"
+      ],
+      "setting": "sitting room, daytime",
+      "tags": [
+        "seated",
+        "couple",
+        "clock",
+        "mantel",
+        "patterned wallpaper",
+        "two-shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0023": {
+      "id": "s0023",
+      "description_en": "Outside a theater doorway, a young man stands beside a young woman in a dark coat and fur collar who holds a small purse. The medium two-shot shows posters on the wall and soft daylight.",
+      "description_zh": "剧院门口外的中景双人镜头中，一名年轻男子站在一名穿深色毛领外套的年轻女子身旁；女子手拿小手袋。墙上贴着海报，光线柔和明亮。",
+      "mood": "somber",
+      "characters": [
+        "young man",
+        "young woman"
+      ],
+      "setting": "theater entrance, daytime",
+      "tags": [
+        "young man",
+        "young woman",
+        "purse",
+        "fur collar",
+        "theater",
+        "two shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0166": {
+      "id": "s0166",
+      "description_en": "Several men hurry across a wooden backlot between simple building façades, while a car is parked at the left. The wide exterior view is lit by daylight, with long shadows on the ground.",
+      "description_zh": "几名男子在木制布景建筑之间匆忙走过，左侧停着一辆汽车。日光下的宽幅外景中，地面投下长长的影子。",
+      "mood": "urgent",
+      "characters": [
+        "men in suits",
+        "men in caps"
+      ],
+      "setting": "backlot street, daytime",
+      "tags": [
+        "men",
+        "running",
+        "car",
+        "wooden buildings",
+        "wide shot",
+        "exterior"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0077": {
+      "id": "s0077",
+      "description_en": "A wide shot shows five people standing in a parlor; a young man stands near the center while a taller man at right inspects a hat. Framed pictures, patterned wallpaper, and a fireplace are visible under even indoor light.",
+      "description_zh": "大全景中，五个人站在客厅里；一名年轻男子站在中央附近，右侧一名较高的男子正在查看帽子。画面中可见挂画、花纹墙纸和壁炉，室内光线均匀。",
+      "mood": "awkward, watchful",
+      "characters": [
+        "young woman",
+        "older man",
+        "man in suspenders",
+        "young man",
+        "tall man in suit"
+      ],
+      "setting": "interior parlor, daytime",
+      "tags": [
+        "group",
+        "hat",
+        "inspection",
+        "parlor",
+        "fireplace",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0223": {
+      "id": "s0223",
+      "description_en": "A medium shot frames a young woman and a young man standing together in a doorway, with a tall metal safe or cabinet beside them. The woman looks down at a small object in her hands while the man watches; the interior is dimly lit in black and white.",
+      "description_zh": "中景呈现一名年轻女子和一名年轻男子并肩站在门口，旁边是一座高大的金属保险柜或柜子。女子低头看着手中的小物件，男子注视着她；室内光线昏暗，画面为黑白影像。",
+      "mood": "tender, quiet",
+      "characters": [
+        "young woman",
+        "young man"
+      ],
+      "setting": "dim interior doorway",
+      "tags": [
+        "doorway",
+        "safe",
+        "small object",
+        "couple",
+        "medium shot",
+        "black and white"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0136": {
+      "id": "s0136",
+      "description_en": "A wide view of a billiard room shows a suited young man standing beside the pool table with a cue. Several balls rest on the table; the room is dimly lit.",
+      "description_zh": "台球室的远景中，一名穿西装的年轻男子手持球杆站在球桌旁。几颗球停在桌面上，房间光线较暗。",
+      "mood": "calm",
+      "characters": [
+        "young man"
+      ],
+      "setting": "interior billiard room, day",
+      "tags": [
+        "pool table",
+        "billiards",
+        "cue",
+        "wide shot",
+        "library",
+        "parlor"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0115": {
+      "id": "s0115",
+      "description_en": "A tight group shot frames a young man, a young woman in a headband and long necklace, and two older men in formal evening clothes. The woman looks downward between the men in a softly lit interior.",
+      "description_zh": "近景中，一名年轻男子、一名戴发箍并佩戴长项链的年轻女子，以及两名年长男子穿着正式晚礼服聚在一起。女子在几人之间低头，室内光线柔和。",
+      "mood": "uneasy",
+      "characters": [
+        "young man",
+        "young woman",
+        "older man",
+        "older man"
+      ],
+      "setting": "formal interior, evening",
+      "tags": [
+        "group shot",
+        "young woman",
+        "headband",
+        "pearl necklace",
+        "evening wear",
+        "close-up"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0147": {
+      "id": "s0147",
+      "description_en": "A wide shot shows a young woman standing on an upstairs landing beside an open ceiling hatch, holding a round object and looking upward. A strong beam of light falls diagonally across the wall.",
+      "description_zh": "楼上平台的远景中，一名年轻女子站在敞开的天花板活板门旁，手里拿着圆形物件并向上看。一束强光斜照在墙上。",
+      "mood": "alert",
+      "characters": [
+        "young woman"
+      ],
+      "setting": "interior upstairs landing, day",
+      "tags": [
+        "woman",
+        "landing",
+        "hatch",
+        "round object",
+        "light beam",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0048": {
+      "id": "s0048",
+      "description_en": "A tight close-up shows a hand wearing a delicate ring with a small stone on one finger. The softly blurred background is plain, with even light across the hand.",
+      "description_zh": "特写中，一只手的手指戴着一枚镶有小宝石的精巧戒指。背景朦胧而简单，手部受光均匀。",
+      "mood": "quiet, delicate",
+      "characters": [],
+      "setting": "interior, daytime",
+      "tags": [
+        "ring",
+        "hand",
+        "jewelry",
+        "close-up",
+        "detail",
+        "stone"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0088": {
+      "id": "s0088",
+      "description_en": "A wide shot frames a large steam locomotive at a railway yard, with two men standing beside its wheels as steam drifts near the ground. Bright daylight falls across the engine and tracks.",
+      "description_zh": "大全景中，一辆大型蒸汽机车占据铁路调车场画面，两名男子站在车轮旁，蒸汽在地面附近飘散。明亮的日光照在机车和轨道上。",
+      "mood": "industrious, tense",
+      "characters": [
+        "young man",
+        "shorter man in suit"
+      ],
+      "setting": "railway yard, daytime",
+      "tags": [
+        "steam locomotive",
+        "railway",
+        "two men",
+        "steam",
+        "train wheels",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0118": {
+      "id": "s0118",
+      "description_en": "A wide shot of the billiard room shows a young man leaning against the edge of the table and looking toward an older man near the wall. A doorway, bookcase, chairs, and wall sconces are visible in the softly lit room.",
+      "description_zh": "台球室的远景中，一名年轻男子倚在球桌边，望向墙边的一名年长男子。柔和光线下可见门口、书架、椅子和壁灯。",
+      "mood": "playful",
+      "characters": [
+        "young man",
+        "older man"
+      ],
+      "setting": "billiard room, interior",
+      "tags": [
+        "wide shot",
+        "billiard table",
+        "leaning",
+        "doorway",
+        "bookcase",
+        "two men"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0217": {
+      "id": "s0217",
+      "description_en": "A wide shot shows a man struggling in the lake, with one arm raised above the water and another person’s head visible farther away. The open water and distant hills are seen in daylight.",
+      "description_zh": "远景中，一名男子在湖里挣扎，一只手臂举出水面，较远处还能看到另一个人的头。白天可见开阔的湖面和远处山坡。",
+      "mood": "perilous",
+      "characters": [
+        "man in water",
+        "person in water"
+      ],
+      "setting": "daylight, lake",
+      "tags": [
+        "lake",
+        "struggling",
+        "water",
+        "drowning",
+        "hills",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0062": {
+      "id": "s0062",
+      "description_en": "A wide shot shows several people gathered in an ornate parlor, with a seated young man holding a paper at right and others entering through the doorway. The room is evenly lit indoors.",
+      "description_zh": "大全景展现几个人聚在装饰华丽的客厅里，右侧一名坐着的年轻男子手拿纸张，其他人从门口走进来。室内光线均匀。",
+      "mood": "curious, expectant",
+      "characters": [
+        "young man",
+        "young woman",
+        "older man",
+        "man in suspenders",
+        "man in suit"
+      ],
+      "setting": "interior parlor, daytime",
+      "tags": [
+        "group",
+        "parlor",
+        "doorway",
+        "paper",
+        "seated man",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0073": {
+      "id": "s0073",
+      "description_en": "A medium shot shows three men standing together in the parlor; the man in the center holds a note and a patterned box while the others look on. Soft, even indoor lighting reveals their faces and clothing.",
+      "description_zh": "中景中，三名男子站在客厅里；中间的男子拿着一张纸条和一个花纹盒子，另外两人看着他。柔和均匀的室内光线照亮他们的面容和衣着。",
+      "mood": "serious, attentive",
+      "characters": [
+        "older man",
+        "man in suspenders",
+        "young man"
+      ],
+      "setting": "interior parlor, daytime",
+      "tags": [
+        "three men",
+        "note",
+        "box",
+        "parlor",
+        "standing",
+        "medium shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0020": {
+      "id": "s0020",
+      "description_en": "Inside a shop, a mustached man in a dark bowler hat and patterned suit leans against a glass counter while a young woman watches from behind it. Shelves of goods fill the background, and the medium shot is evenly lit.",
+      "description_zh": "店内中景中，一名戴深色圆顶礼帽、穿花纹西装并蓄胡子的男子倚在玻璃柜台上，一名年轻女子从柜台后看着他。背景货架摆满商品，光线均匀。",
+      "mood": "casual",
+      "characters": [
+        "mustached man",
+        "young woman"
+      ],
+      "setting": "shop interior, daytime",
+      "tags": [
+        "shop",
+        "counter",
+        "mustached man",
+        "young woman",
+        "shelves",
+        "medium shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0117": {
+      "id": "s0117",
+      "description_en": "A medium shot shows an older man in evening clothes at a small side table, handling glasses and a tray beside a decorative bowl and box. He glances toward the camera under even indoor lighting.",
+      "description_zh": "中景中，一名穿晚礼服的年长男子站在小边桌旁，摆弄杯子和托盘；桌上还有装饰碗和盒子。他望向镜头，室内光线均匀。",
+      "mood": "sly",
+      "characters": [
+        "older man"
+      ],
+      "setting": "billiard room, interior",
+      "tags": [
+        "older man",
+        "glasses",
+        "tray",
+        "side table",
+        "medium shot",
+        "handling objects"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0113": {
+      "id": "s0113",
+      "description_en": "In a wide view of the same room, the older man faces the camera in the foreground while the young man stands turned toward the wall behind him. The decorated wall and edge of the billiard table remain visible.",
+      "description_zh": "同一房间的远景中，年长男子在前景面向镜头，年轻男子则背向镜头站在他身后、面朝墙壁。墙面装饰和台球桌边缘清晰可见。",
+      "mood": "serious",
+      "characters": [
+        "young man",
+        "older man"
+      ],
+      "setting": "billiard room, interior",
+      "tags": [
+        "wide shot",
+        "two men",
+        "billiard room",
+        "wall decoration",
+        "standing"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0017": {
+      "id": "s0017",
+      "description_en": "In a wide view outside a theater entrance, a young man sweeps scattered paper and debris from the pavement with a broom. Posters and a dark doorway frame the scene in daylight.",
+      "description_zh": "剧院入口外的远景中，一名年轻男子用扫帚清扫散落在人行道上的纸片和杂物。海报与昏暗的门口构成画面背景，周围光线明亮。",
+      "mood": "weary",
+      "characters": [
+        "young man"
+      ],
+      "setting": "theater entrance, daytime",
+      "tags": [
+        "sweeping",
+        "broom",
+        "litter",
+        "theater",
+        "posters",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0101": {
+      "id": "s0101",
+      "description_en": "A silent film is shown on a theater screen: a formally dressed man stands beside a woman seen from behind in an ornate interior.",
+      "description_zh": "电影院银幕上放映着一部无声电影：一名穿正式礼服的男子站在一名背对镜头的女子旁边，场景装饰华丽。",
+      "mood": "formal",
+      "characters": [
+        "well-dressed man",
+        "young woman"
+      ],
+      "setting": "film within theater, interior",
+      "tags": [
+        "screen",
+        "silent film",
+        "well-dressed man",
+        "woman",
+        "ornate interior",
+        "medium shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0052": {
+      "id": "s0052",
+      "description_en": "In a medium-wide sitting-room view, a man in a checked suit presents a large sheet of paper to a young woman in a checked dress as they look at it. A young man in a suit sits on a chair beside them, watching.",
+      "description_zh": "中远景中，格纹西装男子把一张大纸递给穿格纹裙的年轻女子，两人一起看纸上的内容。旁边椅子上坐着一名穿西装的年轻男子，注视着他们。",
+      "mood": "attentive, curious",
+      "characters": [
+        "man in checked suit",
+        "young woman",
+        "young man"
+      ],
+      "setting": "sitting room, daytime",
+      "tags": [
+        "paper",
+        "presenting",
+        "looking",
+        "seated man",
+        "sitting room",
+        "three people",
+        "medium-wide"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0085": {
+      "id": "s0085",
+      "description_en": "A wide exterior shot shows two men walking along a paved roadside past modest houses and open, rough ground. Daylight illuminates the neighborhood.",
+      "description_zh": "室外大全景中，两名男子沿着铺设路面的路边行走，身后是简朴的房屋和空旷粗糙的地面。日光照亮周围街区。",
+      "mood": "brisk, calm",
+      "characters": [
+        "young man",
+        "shorter man in suit"
+      ],
+      "setting": "residential street, daytime",
+      "tags": [
+        "two men",
+        "walking",
+        "roadside",
+        "houses",
+        "exterior",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0107": {
+      "id": "s0107",
+      "description_en": "A medium full shot shows two men in formal evening clothes standing side by side in a curtained interior; one looks down while the other looks off to the side. Soft, even light fills the room.",
+      "description_zh": "中远景中，两名穿着正式晚礼服的男子并肩站在有帷幕的室内；一人低头，另一人望向一旁。室内光线柔和均匀。",
+      "mood": "composed",
+      "characters": [
+        "young man",
+        "older man"
+      ],
+      "setting": "formal interior, evening",
+      "tags": [
+        "two men",
+        "evening wear",
+        "curtains",
+        "standing",
+        "medium full shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0103": {
+      "id": "s0103",
+      "description_en": "The theater screen fills most of the frame with an outdoor film scene: a man bends among several large animals in a wooded area, while the audience and pianist are visible below.",
+      "description_zh": "银幕占据画面大部分，放映的是户外场景：一名男子在林地中弯身靠近几只大型动物；下方还能看到观众和钢琴伴奏者。",
+      "mood": "adventurous",
+      "characters": [
+        "man",
+        "audience",
+        "pianist"
+      ],
+      "setting": "projected outdoor scene in theater",
+      "tags": [
+        "movie screen",
+        "man",
+        "animals",
+        "woodland",
+        "audience",
+        "pianist",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0056": {
+      "id": "s0056",
+      "description_en": "A medium shot shows a young man in a suit seated on a sofa in a furnished parlor, looking down as he examines a small open box in his hands. Soft interior light fills the room.",
+      "description_zh": "中景中，一名穿西装的年轻男子坐在客厅沙发上，低头查看手中的小盒子。柔和的室内光线照亮房间。",
+      "mood": "focused, curious",
+      "characters": [
+        "young man"
+      ],
+      "setting": "interior parlor, daytime",
+      "tags": [
+        "young man",
+        "sofa",
+        "box",
+        "examining",
+        "parlor",
+        "medium shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0102": {
+      "id": "s0102",
+      "description_en": "A wide view from the back of a crowded movie theater shows the pianist at the front and a film scene projected on the large screen.",
+      "description_zh": "从拥挤的电影院后方望向前方的广角画面中，钢琴伴奏者坐在银幕前，银幕上正在放映电影场景。",
+      "mood": "engaged",
+      "characters": [
+        "pianist",
+        "audience"
+      ],
+      "setting": "movie theater, interior",
+      "tags": [
+        "movie theater",
+        "audience",
+        "pianist",
+        "projection screen",
+        "wide shot",
+        "silent film"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0099": {
+      "id": "s0099",
+      "description_en": "A medium shot shows a young man in a vest and tie asleep or slumped beside machinery in a workshop, his head resting against one hand.",
+      "description_zh": "中景画面中，一名穿背心、打领带的年轻男子在工作间里靠着机器打盹或昏沉地坐着，一只手托住头部。",
+      "mood": "weary",
+      "characters": [
+        "young man"
+      ],
+      "setting": "workshop, interior",
+      "tags": [
+        "young man",
+        "machinery",
+        "sleeping",
+        "workshop",
+        "medium shot",
+        "vest"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0104": {
+      "id": "s0104",
+      "description_en": "The projected film shows a couple embracing in a bedroom, framed by two doors and a bed; the theater screen surrounds the scene.",
+      "description_zh": "银幕上放映着卧室场景，一对男女相拥而立，房间两侧有门，右侧摆着一张床；银幕边框也出现在画面中。",
+      "mood": "romantic",
+      "characters": [
+        "man",
+        "woman"
+      ],
+      "setting": "bedroom in projected film, interior",
+      "tags": [
+        "couple",
+        "embrace",
+        "bedroom",
+        "bed",
+        "doors",
+        "film screen"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0216": {
+      "id": "s0216",
+      "description_en": "A wide shot shows a car partly submerged in a lake, with a man standing at the rear by a raised canvas and another man seated near the steering wheel. The water and surrounding hills are visible in daylight.",
+      "description_zh": "远景中，一辆汽车部分沉入湖中，一名男子站在车尾竖起的帆布旁，另一名男子坐在方向盘附近。白天可见湖水和周围的山坡。",
+      "mood": "uncertain",
+      "characters": [
+        "man at rear",
+        "driver"
+      ],
+      "setting": "daylight, lake",
+      "tags": [
+        "car",
+        "lake",
+        "partly submerged",
+        "canvas",
+        "men",
+        "wide shot"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0047": {
+      "id": "s0047",
+      "description_en": "A young man in a checked suit and bowler hat is shown in a medium close view, examining a light-colored garment held in both hands beside a wall-mounted coat rack. A mirror and an open doorway with hanging clothes are behind him.",
+      "description_zh": "中近景中，一名穿格纹西装、戴圆顶礼帽的年轻男子在墙边查看手中浅色衣物。身后可见挂衣架、镜子，以及挂着衣服的敞开门口。",
+      "mood": "focused, quiet",
+      "characters": [
+        "young man"
+      ],
+      "setting": "house hallway, daytime",
+      "tags": [
+        "garment",
+        "examining",
+        "coat rack",
+        "bowler hat",
+        "mirror",
+        "medium close-up"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0080": {
+      "id": "s0080",
+      "description_en": "A wide interior shot shows a young man holding a hat beside a young woman near the foot of a staircase. The wood-paneled hallway is lit by soft daylight from a curtained window.",
+      "description_zh": "室内大全景中，一名年轻男子拿着帽子，与一名年轻女子站在楼梯脚下。木板装饰的走廊受到有窗帘的窗户透入的柔和日光照亮。",
+      "mood": "somber, quiet",
+      "characters": [
+        "young man",
+        "young woman"
+      ],
+      "setting": "interior hallway, daytime",
+      "tags": [
+        "staircase",
+        "hat",
+        "young woman",
+        "hallway",
+        "wide shot",
+        "daylight"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0130": {
+      "id": "s0130",
+      "description_en": "A low, wide view across the billiard table shows a young man leaning forward to aim a cue toward the balls. Another man watches from the doorway behind him; the table dominates the foreground.",
+      "description_zh": "低机位远景越过台球桌拍摄，一名年轻男子俯身用球杆瞄准球。另一名男子在他身后的门口观看，球桌占据前景大部分画面。",
+      "mood": "focused",
+      "characters": [
+        "young man",
+        "older man"
+      ],
+      "setting": "billiard room, interior",
+      "tags": [
+        "billiard table",
+        "cue",
+        "aiming",
+        "wide shot",
+        "doorway",
+        "pool balls"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0043": {
+      "id": "s0043",
+      "description_en": "In a wide interior view of a wood-paneled foyer, a young woman in a checked dress stands beside a young man holding his hat near a staircase. They face one another; a coat stand, rug, and upholstered stool are also visible.",
+      "description_zh": "室内全景展现一处木墙门厅：穿格纹裙的年轻女子站在楼梯旁，身边的年轻男子手拿帽子。两人面对彼此，画面中还可见衣帽架、地毯和软垫凳。",
+      "mood": "calm, attentive",
+      "characters": [
+        "young woman",
+        "young man"
+      ],
+      "setting": "house foyer, daytime",
+      "tags": [
+        "staircase",
+        "checked dress",
+        "hat",
+        "standing",
+        "foyer",
+        "wide shot",
+        "interior"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    },
+    "s0210": {
+      "id": "s0210",
+      "description_en": "A side view shows a man crouching in a moving open-top car beside a seated driver wearing a cap. The car speeds across an open landscape in daylight.",
+      "description_zh": "侧面画面中，一名男子蹲伏在行驶中的敞篷车里，旁边是戴帽子的司机。汽车在白天驶过开阔地带。",
+      "mood": "urgent",
+      "characters": [
+        "man",
+        "driver"
+      ],
+      "setting": "daylight, open road",
+      "tags": [
+        "car",
+        "driving",
+        "crouching",
+        "driver",
+        "side view",
+        "speed"
+      ],
+      "text_card": false,
+      "dialogue": ""
+    }
+  },
+  "source_url": "https://github.com/Baixue-Wu/MoCoCo/releases/download/demo-sherlock-jr-v1/Sherlock_Jr.1924.webm",
+  "result_url": "https://baixue-wu.github.io/MoCoCo/assets/sherlock-jr-recap.mp4",
+  "full_result_url": "https://github.com/Baixue-Wu/MoCoCo/releases/download/demo-sherlock-jr-v1/sherlock-jr-recap-full.mp4"
+}

@@ -6,9 +6,13 @@ project file it edits (script, segments, candidates, timeline, settings) is
 also a plain file you can edit by hand on the CLI side.
 
 The public GitHub Pages build uses this same interface in a limited mode:
-visitors can browse the *Sherlock Jr.* case study and import a film into their
+visitors can browse the *Sherlock Jr.* read-only project and import a film into their
 own browser's IndexedDB storage. The film is never sent to GitHub or another
 server. That public build does not run the AI pipeline or export new videos.
+The example's actual project decisions are exported from the completed local
+project by `python scripts/export_public_example.py` into `web/public/examples/`.
+The export contains JSON, 37 keyframes, and narration audio, with no private
+absolute paths or source movie in the Git tree.
 
 ## Dev
 
