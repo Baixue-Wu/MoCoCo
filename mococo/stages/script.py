@@ -37,21 +37,39 @@ def paragraphs(text: str) -> list[str]:
     return [p.strip() for p in text.replace("\r\n", "\n").split("\n\n") if p.strip()]
 
 
+def _sample_lines(lines: list[str], max_chars: int) -> str:
+    """Fit a long transcript while retaining dialogue from beginning to end."""
+    whole = "\n".join(lines)
+    if len(whole) <= max_chars:
+        return whole
+    if len(lines) < 2:
+        return whole[:max_chars]
+    low, high, best = 2, len(lines), ""
+    while low <= high:
+        count = (low + high) // 2
+        indexes = sorted({round(i * (len(lines) - 1) / (count - 1)) for i in range(count)})
+        sample = "\n".join(lines[i] for i in indexes)
+        if len(sample) <= max_chars:
+            best = sample
+            low = count + 1
+        else:
+            high = count - 1
+    return best + "\n[... transcript sampled across the full film ...]"
+
+
 def _transcript_text(project: Project, max_chars: int = 60000) -> str:
     t = project.read_json(project.transcript_json)
     lines = [f'[{s["start"]:.0f}s] {s["text"]}' for s in t["segments"]]
-    text = "\n".join(lines)
-    if len(text) > max_chars:
-        text = text[:max_chars] + "\n[... transcript truncated ...]"
-    return text
+    return _sample_lines(lines, max_chars)
 
 
 def _shot_summaries(project: Project, max_lines: int = 150) -> str:
     shots = project.read_json(project.shots_json)
     caps = project.read_json(project.captions_json)
-    step = max(1, len(shots) // max_lines)
+    captioned = [shot for shot in shots if shot["id"] in caps]
+    step = max(1, len(captioned) // max_lines)
     lines = []
-    for sh in shots[::step]:
+    for sh in captioned[::step]:
         c = caps.get(sh["id"])
         if c:
             lines.append(f'[{sh["start"]:.0f}s] {c["description_en"]} ({c["mood"]})')

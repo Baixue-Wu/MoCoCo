@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
@@ -72,28 +73,41 @@ def run(project: Project, *, top: int = 6, recall: int | None = None, workers: i
     keep = np.array([not is_text_card(caps[str(i)]) for i in ids])
     ids, vecs = ids[keep], vecs[keep]
     recall = recall or max(top * 3, 12)
+    rerank_mode = os.getenv("MOCOCO_RERANK_MODE", "llm").strip().lower()
+    if rerank_mode not in {"llm", "embedding"}:
+        raise ValueError("MOCOCO_RERANK_MODE must be llm or embedding")
 
     def one(unit):
         query = f'{unit["visual_query_en"]} Mood: {unit["mood"]}. Keywords: {", ".join(unit["keywords"])}.'
         pool = _recall(query, ids, vecs, recall)
-        lines = []
-        for sid, sim in pool:
-            sh, c = shots[sid], caps[sid]
-            lines.append(
-                f'- id={sid} time={sh["start"]:.1f}-{sh["end"]:.1f}s ({sh["duration"]:.1f}s) '
-                f'desc="{c["description_en"]}" mood="{c["mood"]}" dialogue="{c.get("dialogue", "")[:160]}"'
+        if rerank_mode == "embedding":
+            ranked = [
+                {
+                    "id": sid, "score": round(100 * max(0, sim), 1),
+                    "why": "Visual similarity to the commentary unit",
+                    "why_zh": "画面与解说段落的语义相近",
+                }
+                for sid, sim in pool
+            ]
+        else:
+            lines = []
+            for sid, sim in pool:
+                sh, c = shots[sid], caps[sid]
+                lines.append(
+                    f'- id={sid} time={sh["start"]:.1f}-{sh["end"]:.1f}s ({sh["duration"]:.1f}s) '
+                    f'desc="{c["description_en"]}" mood="{c["mood"]}" dialogue="{c.get("dialogue", "")[:160]}"'
+                )
+            prompt = prompts.render(
+                "retrieve_rerank",
+                title=s.title,
+                text=unit["text"][seg["primary_lang"]],
+                mood=unit["mood"],
+                visual_query=unit["visual_query_en"],
+                candidates="\n".join(lines),
             )
-        prompt = prompts.render(
-            "retrieve_rerank",
-            title=s.title,
-            text=unit["text"][seg["primary_lang"]],
-            mood=unit["mood"],
-            visual_query=unit["visual_query_en"],
-            candidates="\n".join(lines),
-        )
-        result = llm.ask(prompt, tier="smart", schema=RERANK_SCHEMA, log=project.log_event)
+            result = llm.ask(prompt, tier="smart", schema=RERANK_SCHEMA, log=project.log_event)
+            ranked = [r for r in result["ranked"] if r["id"] in dict(pool)]
         sim_by_id = dict(pool)
-        ranked = [r for r in result["ranked"] if r["id"] in sim_by_id]
         ranked.sort(key=lambda r: -r["score"])
         return {
             "unit_id": unit["id"],

@@ -32,6 +32,7 @@ class Settings(BaseModel):
     style: Style = "recap"
     script_langs: list[Lang] = ["zh"]
     subtitle_langs: list[Lang] = ["zh"]
+    subtitle_position: Literal["bottom", "top"] = "bottom"
     voice_langs: list[Lang] = ["zh"]
     target_minutes: float = 5.0
     brief: str = ""

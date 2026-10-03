@@ -10,7 +10,7 @@ also a plain file you can edit by hand on the CLI side.
 Run the API server first (from the repo root):
 
 ```
-uv run uvicorn mococo.server.app:create_app --factory --reload --port 8765
+uv run mococo serve --projects projects
 ```
 
 Then, in `web/`:
@@ -22,6 +22,10 @@ npm run dev
 
 Vite proxies `/api/*` to `http://127.0.0.1:8765` (see `vite.config.ts`), so
 the dev server can be opened on its own port with the API calls forwarded.
+The new-project form uploads the visitor's selected movie with one multipart
+request to `/api/projects/upload`, showing progress while it transfers. The API
+stores the movie inside that project's `source/` folder and checks that it can
+be read before creating `project.json`.
 
 ## Build
 

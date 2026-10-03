@@ -53,6 +53,7 @@ export interface Settings {
   style: Style
   script_langs: Lang[]
   subtitle_langs: Lang[]
+  subtitle_position?: 'bottom' | 'top'
   voice_langs: Lang[]
   target_minutes: number
   brief: string
@@ -107,12 +108,6 @@ export interface ProjectDetail {
   jobs: Job[]
 }
 
-export interface FilmEntry {
-  path: string
-  name: string
-  size: number
-}
-
 export interface StyleInfo {
   label: { en: string; zh: string }
   guidance: string
@@ -120,7 +115,6 @@ export interface StyleInfo {
 
 export interface NewProjectBody {
   slug: string
-  film: string
   title?: string
   style: Style
   script_langs: Lang[]
@@ -268,14 +262,36 @@ export interface EventRecord {
 
 // ---- catalogue ----
 
-export const listFilms = () => get<FilmEntry[]>('/films')
+export const createProjectFromFile = (settings: NewProjectBody, file: File, onProgress: (percent: number) => void) =>
+  new Promise<{ slug: string; settings: Settings; status: Status }>((resolve, reject) => {
+    const request = new XMLHttpRequest()
+    request.open('POST', '/api/projects/upload')
+    request.upload.onprogress = (event) => {
+      if (event.lengthComputable) onProgress(Math.round((event.loaded / event.total) * 100))
+    }
+    request.onerror = () => reject(new Error('Movie upload failed'))
+    request.onload = () => {
+      let result: { slug: string; settings: Settings; status: Status } | { detail?: string }
+      try {
+        result = JSON.parse(request.responseText)
+      } catch {
+        reject(new ApiError(request.status, request.statusText))
+        return
+      }
+      if (request.status >= 200 && request.status < 300) resolve(result as { slug: string; settings: Settings; status: Status })
+      else reject(new ApiError(request.status, (result as { detail?: string }).detail ?? request.statusText))
+    }
+    const body = new FormData()
+    body.append('settings', JSON.stringify(settings))
+    body.append('file', file)
+    request.send(body)
+  })
 export const listStyles = () => get<Record<Style, StyleInfo>>('/styles')
 export const listVoices = (lang: string) => get<string[]>(`/voices?lang=${encodeURIComponent(lang)}`)
 
 // ---- projects ----
 
 export const listProjects = () => get<ProjectSummary[]>('/projects')
-export const createProject = (body: NewProjectBody) => post<{ slug: string; settings: Settings; status: Status }>('/projects', body)
 export const getProject = (slug: string) => get<ProjectDetail>(`/projects/${slug}`)
 export const putSettings = (slug: string, body: Settings) => put<Settings>(`/projects/${slug}/settings`, body)
 export const deleteProject = (slug: string) => del<{ deleted: string }>(`/projects/${slug}`)

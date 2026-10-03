@@ -56,11 +56,15 @@ def ingest(
     force: bool = typer.Option(False, help="Redo every step even if outputs exist"),
     whisper: str = typer.Option("small", help="faster-whisper model size: tiny|base|small|medium|large-v3"),
     workers: int = typer.Option(4, help="Parallel caption requests"),
+    max_captions: int = typer.Option(320, help="Representative shots to caption across the film"),
 ):
     """Detect shots, extract keyframes, transcribe, caption, and index the film."""
     from mococo.stages import ingest as stage
 
-    summary = stage.run(Project(project), force=force, whisper_size=whisper, workers=workers)
+    summary = stage.run(
+        Project(project), force=force, whisper_size=whisper,
+        workers=workers, max_captions=max_captions,
+    )
     rprint(summary)
 
 

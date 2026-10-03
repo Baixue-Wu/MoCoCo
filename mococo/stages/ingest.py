@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
+import os
+from bisect import bisect_left, bisect_right
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
 
 from mococo import prompts
-from mococo.media import ffmpeg, shots as shotdet, stt
+from mococo.media import ffmpeg, stt
+from mococo.media import shots as shotdet
 from mococo.project import Project
 from mococo.provider import embed, llm
 
@@ -98,6 +101,36 @@ def dialogue_for(shot: dict, transcript: dict) -> str:
     return " ".join(parts).strip()
 
 
+def representative_shots(
+    shots: list[dict], max_count: int = 320, already_captioned: set[str] | None = None,
+) -> list[dict]:
+    """Cover the whole running time without spending a model call on every cut."""
+    if max_count < 2:
+        raise ValueError("max_count must be at least 2")
+    if len(shots) <= max_count:
+        return shots
+    if already_captioned:
+        times = [(shot["start"] + shot["end"]) / 2 for shot in shots]
+        indexes = {i for i, shot in enumerate(shots) if shot["id"] in already_captioned}
+        indexes.update((0, len(shots) - 1))
+        while len(indexes) < max_count:
+            chosen_times = sorted(times[i] for i in indexes)
+
+            def distance(i: int, refs: list[float] = chosen_times) -> float:
+                at = bisect_left(refs, times[i])
+                neighbors = refs[max(0, at - 1) : at + 1]
+                return min(abs(times[i] - t) for t in neighbors)
+
+            candidate = max((i for i in range(len(shots)) if i not in indexes), key=distance)
+            indexes.add(candidate)
+        return [shots[i] for i in sorted(indexes)]
+    starts = [shot["start"] for shot in shots]
+    targets = np.linspace(starts[0], shots[-1]["end"], max_count)
+    indexes = {min(len(shots) - 1, max(0, bisect_right(starts, float(t)) - 1)) for t in targets}
+    indexes.update((0, len(shots) - 1))
+    return [shots[i] for i in sorted(indexes)]
+
+
 def caption(
     project: Project,
     shots: list[dict],
@@ -119,6 +152,13 @@ def caption(
             d = dialogue_for(sh, transcript)
             lines.append(f'{k}. id={sh["id"]} time={sh["start"]:.1f}-{sh["end"]:.1f}s dialogue="{d}"')
         prompt = prompts.render("caption_shots", title=title, n=len(group), shots="\n".join(lines))
+        if os.getenv("MOCOCO_LLM_PROVIDER", "codex").lower() == "ollama":
+            prompt += (
+                "\nBe extremely concise. For each shot, use one short clause in each "
+                "description (at most 15 English words and 25 Chinese characters), "
+                "one mood word, at most two characters, a short setting, and exactly "
+                "three tags. Do not add details not visible in the frame."
+            )
         images = [project.ingest / sh["frame"] for sh in group]
         result = llm.ask(prompt, tier="fast", images=images, schema=CAPTION_SCHEMA, log=project.log_event)
         out = {}
@@ -156,11 +196,20 @@ def index(project: Project, shots: list[dict], captions: dict, *, force: bool = 
     project.log_event("stage_done", stage="ingest.index", shots=len(ids))
 
 
-def run(project: Project, *, force: bool = False, whisper_size: str = "small", workers: int = 4) -> dict:
+def run(
+    project: Project, *, force: bool = False, whisper_size: str = "small",
+    workers: int = 4, max_captions: int = 320,
+) -> dict:
     """Everything, resumable. Returns a small summary."""
     shots = detect(project, force=force)
     frames(project, shots, force=force)
     transcript = transcribe(project, model_size=whisper_size, force=force)
-    captions = caption(project, shots, transcript, workers=workers, force=force)
-    index(project, shots, captions, force=force)
-    return {"shots": len(shots), "transcript_segments": len(transcript["segments"]), "language": transcript["language"]}
+    previous = project.read_json(project.captions_json) if project.captions_json.exists() else {}
+    selected = representative_shots(shots, max_captions, set(previous))
+    captions = caption(project, selected, transcript, workers=workers, force=force)
+    index(project, selected, captions, force=force)
+    return {
+        "shots": len(shots), "captioned_shots": len(selected),
+        "transcript_segments": len(transcript["segments"]),
+        "language": transcript["language"],
+    }

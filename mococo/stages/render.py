@@ -118,7 +118,7 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
 
     args = ["-i", str(video), "-i", str(project.narration_audio(lang))]
     filt = f"[0:a]volume={DUCK}[bg];[bg][1:a]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]"
-    vf = _subtitles_filter(srt) if srt else None
+    vf = _subtitles_filter(srt, position=s.subtitle_position) if srt else None
     args += ["-filter_complex", filt + (f";[0:v]{vf}[v]" if vf else ""), "-map", "[v]" if vf else "0:v", "-map", "[a]"]
     args += ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(output)]
     ffmpeg.run(args)
@@ -126,10 +126,11 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
     return output
 
 
-def _subtitles_filter(srt: Path) -> str:
+def _subtitles_filter(srt: Path, *, position: str = "bottom") -> str:
     # ffmpeg's filter parser needs ':' and '\' escaped inside the path
     p = srt.resolve().as_posix().replace("\\", "/").replace(":", "\\:")
-    style = f"FontSize={FONT_SIZE},Outline=1,Shadow=0,MarginV=28"
+    alignment = 6 if position == "top" else 2
+    style = f"FontSize={FONT_SIZE},Outline=1,Shadow=0,MarginV=28,Alignment={alignment}"
     return f"subtitles='{p}':force_style='{style}'"
 
 

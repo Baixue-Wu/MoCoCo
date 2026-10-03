@@ -7,12 +7,13 @@ import json
 import re
 import shutil
 from dataclasses import asdict
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
+from typing import Annotated
 
-from fastapi import FastAPI, HTTPException, Request, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from mococo import styles
 from mococo.media import ffmpeg
@@ -21,11 +22,11 @@ from mococo.server.jobs import Jobs
 
 STAGES = ["ingest", "script.draft", "script.translate", "script.segment", "retrieve", "cut", "voice", "render", "run"]
 SLUG = re.compile(r"^[a-z0-9][a-z0-9_-]{0,63}$")
+FILM_EXTENSIONS = {".mp4", ".mkv", ".mov", ".webm", ".avi"}
 
 
-class NewProject(BaseModel):
+class ProjectOptions(BaseModel):
     slug: str
-    film: str
     title: str | None = None
     style: str = "recap"
     script_langs: list[str] = ["zh"]
@@ -42,9 +43,9 @@ class StageRequest(BaseModel):
     whisper: str = "small"
 
 
-def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
+def create_app(projects_root: Path) -> FastAPI:
+    projects_root = projects_root.resolve()
     projects_root.mkdir(parents=True, exist_ok=True)
-    films_root = films_root or (projects_root.parent / "data" / "films")
     app = FastAPI(title="MoCoCo", version="0.1.0")
     jobs = Jobs()
 
@@ -82,14 +83,6 @@ def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
         return JSONResponse(status_code=500, content={"detail": str(exc)})
 
     # ---- catalogue ----
-    @app.get("/api/films")
-    def films():
-        out = []
-        for f in sorted(films_root.glob("*")):
-            if f.suffix.lower() in (".mp4", ".mkv", ".mov", ".webm", ".avi"):
-                out.append({"path": str(f.resolve()), "name": f.name, "size": f.stat().st_size})
-        return out
-
     @app.get("/api/styles")
     def list_styles():
         return {k: {"label": v["label"], "guidance": v["guidance"]} for k, v in styles.STYLES.items()}
@@ -111,25 +104,48 @@ def create_app(projects_root: Path, films_root: Path | None = None) -> FastAPI:
                 out.append({"slug": p.slug, "title": s.title, "style": s.style, "created": s.created, "status": status(p)})
         return out
 
-    @app.post("/api/projects")
-    def new_project(body: NewProject):
+    @app.post("/api/projects/upload")
+    def new_project_from_upload(
+        settings: Annotated[str, Form()], file: Annotated[UploadFile, File()],
+    ):
+        """Create a project from a visitor's browser-selected movie."""
+        try:
+            body = ProjectOptions.model_validate_json(settings)
+        except ValidationError as e:
+            raise HTTPException(422, e.errors()) from e
         if not SLUG.match(body.slug):
             raise HTTPException(400, "slug must be lowercase letters, digits, - or _")
+        name = PureWindowsPath(file.filename or "").name
+        if not name or Path(name).suffix.lower() not in FILM_EXTENSIONS:
+            raise HTTPException(400, "choose an MP4, MKV, MOV, WebM, or AVI movie")
+        project_root = projects_root / body.slug
         try:
+            project_root.mkdir()
+        except FileExistsError:
+            raise HTTPException(400, f"project {body.slug} already exists")
+        source_dir = project_root / "source"
+        film = source_dir / name
+        try:
+            source_dir.mkdir()
+            with film.open("xb") as output:
+                shutil.copyfileobj(file.file, output, length=1024 * 1024)
+            ffmpeg.probe(film)
             p = init_project(
-                projects_root / body.slug,
-                Path(body.film),
-                title=body.title,
-                style=body.style,
+                project_root, film, title=body.title, style=body.style,
                 script_langs=body.script_langs,
                 subtitle_langs=body.subtitle_langs or body.script_langs,
                 voice_langs=body.voice_langs or body.script_langs,
-                target_minutes=body.target_minutes,
-                brief=body.brief,
+                target_minutes=body.target_minutes, brief=body.brief,
             )
-        except (FileExistsError, FileNotFoundError) as e:
-            raise HTTPException(400, str(e))
-        p.log_event("project_created", via="ui")
+        except ffmpeg.FFmpegError as e:
+            shutil.rmtree(project_root)
+            raise HTTPException(400, f"movie could not be read: {e}") from e
+        except Exception:
+            shutil.rmtree(project_root)
+            raise
+        finally:
+            file.file.close()
+        p.log_event("project_created", via="ui_upload")
         return {"slug": p.slug, "settings": p.load(), "status": status(p)}
 
     @app.get("/api/projects/{slug}")

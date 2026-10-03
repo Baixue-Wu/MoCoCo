@@ -19,7 +19,10 @@ def ffmpeg_exe() -> str:
 
 def run(args: list[str], *, timeout: int = 3600) -> subprocess.CompletedProcess:
     cmd = [ffmpeg_exe(), "-hide_banner", "-loglevel", "error", "-y", *args]
-    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    proc = subprocess.run(
+        cmd, capture_output=True, text=True, encoding="utf-8", errors="replace",
+        timeout=timeout, check=False,
+    )
     if proc.returncode != 0:
         raise FFmpegError(f"ffmpeg failed ({proc.returncode})\ncmd: {' '.join(cmd)}\n{proc.stderr}")
     return proc
@@ -28,7 +31,9 @@ def run(args: list[str], *, timeout: int = 3600) -> subprocess.CompletedProcess:
 def probe(path: Path) -> dict:
     """Duration, fps, width, height, has_audio. Uses ffmpeg itself (no ffprobe shipped)."""
     cmd = [ffmpeg_exe(), "-hide_banner", "-i", str(path)]
-    proc = subprocess.run(cmd, capture_output=True, text=True)
+    proc = subprocess.run(
+        cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", check=False,
+    )
     info = proc.stderr
     import re
 

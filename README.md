@@ -29,16 +29,52 @@ uv run mococo render projects/sintel
 ```
 
 Web app: `uv run mococo serve` then open http://127.0.0.1:8765 (build the UI
-once with `cd web && npm install && npm run build`).
+once with `cd web && npm install && npm run build`). In **New project**, each
+visitor selects a movie from their own computer. The browser uploads it into
+that project's `source/` folder; the visitor does not need access to a server
+file path.
 
 ## Requirements
 
 - Python 3.12 and [uv](https://docs.astral.sh/uv/)
-- [Claude Code](https://docs.anthropic.com/claude-code) installed and logged in
-  (`claude` on PATH). All language and vision model calls go through it.
+- [Codex CLI](https://developers.openai.com/codex/cli/) installed and logged in
+  for the default language and vision model backend, or Ollama for local inference.
 - Network access for edge-tts voices and the first-time model downloads
   (whisper, bge-m3, about 3 GB; set `models_dir` in `~/.config/mococo/config.json`
   to put them on a big disk).
 - No GPU needed. ffmpeg is bundled through imageio-ffmpeg.
 
 See CLAUDE.md for the code map and dev/design/ for the design record.
+
+The default `127.0.0.1` address is only reachable on the host computer. Before
+making the app available to other people, deploy it on a reachable server and
+add user authentication and per-user project access controls; the current
+project list and files are shared by everyone who can reach the server.
+
+## Run without Claude Code
+
+MoCoCo uses Codex by default, including for keyframe images. Install the
+[Codex CLI](https://developers.openai.com/codex/cli/), then run `codex login`
+once with your ChatGPT account. The CLI sign-in is separate from the Codex
+desktop app. Eligible ChatGPT plans can use their plan allowance; no API key is
+needed. Film keyframes and prompts are sent to OpenAI. The optional search for
+external reference images is skipped with this backend.
+For longer films, MoCoCo detects all shots and captions up to 320 frames spread
+across the running time to keep subscription usage manageable. Change this with
+`mococo ingest <project> --max-captions N` before generating the index.
+
+To use a fully local model instead, install [Ollama](https://ollama.com/download),
+start its local server, and download a vision model once:
+
+```
+ollama serve
+ollama pull qwen3-vl:4b-instruct
+```
+
+Set `MOCOCO_LLM_PROVIDER=ollama` before starting MoCoCo and keep Ollama
+running. The model download is about 3.3 GB; inference stays on your computer
+and requires no API key. Set `MOCOCO_OLLAMA_MODEL` to another installed vision
+model if desired. The optional search for external reference images is skipped.
+
+To use the original Claude Code backend instead, set
+`MOCOCO_LLM_PROVIDER=claude` in the process environment.

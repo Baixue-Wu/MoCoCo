@@ -1,13 +1,24 @@
 """Tests for the parts that need no model, no network, no film."""
 
-from mococo.stages.cut import plan_unit
-from mococo.stages.render import _piece_times, fit_clips, split_lines
-from mococo.stages.script import paragraphs
+from itertools import pairwise
+
 from mococo import styles
+from mococo.stages.cut import plan_unit
+from mococo.stages.ingest import representative_shots
+from mococo.stages.render import _piece_times, fit_clips, split_lines
+from mococo.stages.script import _sample_lines, paragraphs
 
 
 def test_paragraphs_split_on_blank_lines():
     assert paragraphs("a\n\nb\r\n\r\n\n c \n") == ["a", "b", "c"]
+
+
+def test_long_transcript_keeps_beginning_and_end():
+    lines = [f"[{i * 60}s] " + "dialogue " * 10 for i in range(100)]
+    sample = _sample_lines(lines, 1000)
+    assert lines[0] in sample
+    assert lines[-1] in sample
+    assert "sampled across the full film" in sample
 
 
 def test_split_lines_zh_breaks_at_punctuation():
@@ -52,3 +63,21 @@ def test_plan_unit_avoids_reuse_and_respects_min_clip():
     clips = plan_unit({}, cands, shots, used, st, need=3.0)
     assert [c["shot_id"] for c in clips] == ["s2"]
     assert clips[0]["seconds"] >= st["min_clip"]
+
+
+def test_representative_shots_cover_the_full_film():
+    shots = [{"id": str(i), "start": float(i), "end": float(i + 1)} for i in range(100)]
+    selected = representative_shots(shots, max_count=10)
+    assert len(selected) == 10
+    assert selected[0]["id"] == "0"
+    assert selected[-1]["id"] == "99"
+    assert all(b["start"] - a["start"] <= 12 for a, b in pairwise(selected))
+
+
+def test_representative_shots_preserve_finished_captions():
+    shots = [{"id": str(i), "start": float(i), "end": float(i + 1)} for i in range(100)]
+    finished = {str(i) for i in range(20)}
+    selected = representative_shots(shots, max_count=25, already_captioned=finished)
+    assert len(selected) == 25
+    assert finished.issubset({shot["id"] for shot in selected})
+    assert selected[-1]["id"] == "99"

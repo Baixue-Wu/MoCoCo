@@ -19,13 +19,14 @@ function slugify(s: string): string {
 export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; onCreated: (slug: string) => void }) {
   const { t, lang: uiLang } = useI18n()
   const { showError } = useToast()
-  const [films, setFilms] = useState<api.FilmEntry[]>([])
   const [styles, setStyles] = useState<Record<Style, api.StyleInfo> | null>(null)
   const [loadingCatalog, setLoadingCatalog] = useState(true)
 
   const [slug, setSlug] = useState('')
+  const [fallbackSlug] = useState(() => `project-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 6)}`)
   const [slugTouched, setSlugTouched] = useState(false)
-  const [film, setFilm] = useState('')
+  const [localFilm, setLocalFilm] = useState<File | null>(null)
+  const [uploadPercent, setUploadPercent] = useState<number | null>(null)
   const [title, setTitle] = useState('')
   const [style, setStyle] = useState<Style>('recap')
   const [scriptLangs, setScriptLangs] = useState<Lang[]>(['zh'])
@@ -36,28 +37,23 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
   const [creating, setCreating] = useState(false)
 
   useEffect(() => {
-    Promise.all([api.listFilms(), api.listStyles()])
-      .then(([f, s]) => {
-        setFilms(f)
-        setStyles(s)
-        if (f.length > 0) setFilm(f[0].path)
-      })
+    api.listStyles()
+      .then(setStyles)
       .catch(showError)
       .finally(() => setLoadingCatalog(false))
   }, [showError])
 
   useEffect(() => {
-    if (!slugTouched) setSlug(slugify(title))
-  }, [title, slugTouched])
+    if (!slugTouched) setSlug(slugify(title) || fallbackSlug)
+  }, [title, slugTouched, fallbackSlug])
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!slug) return
+    if (!slug || !localFilm) return
     setCreating(true)
     try {
-      const res = await api.createProject({
+      const res = await api.createProjectFromFile({
         slug,
-        film,
         title: title || undefined,
         style,
         script_langs: scriptLangs.length ? scriptLangs : ['zh'],
@@ -65,16 +61,17 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
         voice_langs: voiceLangs,
         target_minutes: targetMinutes,
         brief,
-      })
+      }, localFilm, setUploadPercent)
       onCreated(res.slug)
     } catch (e) {
       showError(e)
       setCreating(false)
+      setUploadPercent(null)
     }
   }
 
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={() => { if (!creating) onClose() }}>
       <h2>{t('newp.title')}</h2>
       {loadingCatalog ? (
         <div className="center-msg">
@@ -102,15 +99,19 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
           </div>
 
           <div className="field">
-            <label>{t('newp.film')}</label>
-            <select value={film} onChange={(e) => setFilm(e.target.value)} required>
-              {films.length === 0 && <option value="">{t('newp.film_pick')}</option>}
-              {films.map((f) => (
-                <option key={f.path} value={f.path}>
-                  {f.name} ({(f.size / 1e6).toFixed(0)} MB)
-                </option>
-              ))}
-            </select>
+            <label>{t('newp.film_from_computer')}</label>
+            <input
+              type="file"
+              accept=".mp4,.mkv,.mov,.webm,.avi,video/*"
+              onChange={(e) => {
+                const chosen = e.target.files?.[0] ?? null
+                setLocalFilm(chosen)
+                if (chosen && !title) setTitle(chosen.name.replace(/\.[^.]+$/, ''))
+              }}
+            />
+            {localFilm && <span className="hint">{t('newp.film_selected', { name: localFilm.name, size: (localFilm.size / 1e6).toFixed(0) })}</span>}
+            <span className="hint">{t('newp.film_upload_hint')}</span>
+            {uploadPercent !== null && <span className="hint">{t('newp.uploading', { percent: uploadPercent })}</span>}
           </div>
 
           <div className="field">
@@ -161,10 +162,10 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
           </div>
 
           <div className="hstack" style={{ justifyContent: 'flex-end' }}>
-            <button type="button" className="btn" onClick={onClose}>
+            <button type="button" className="btn" onClick={onClose} disabled={creating}>
               {t('common.cancel')}
             </button>
-            <button type="submit" className="btn btn-primary" disabled={creating || !film}>
+            <button type="submit" className="btn btn-primary" disabled={creating || !localFilm}>
               {creating ? t('newp.creating') : t('newp.create')}
             </button>
           </div>
