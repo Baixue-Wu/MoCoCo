@@ -33,10 +33,10 @@ export function Home() {
       <div className="row-between" style={{ marginBottom: 22 }}>
         <div>
           <h1>{t('home.heading')}</h1>
-          <p className="muted">{t('home.subtitle')}</p>
+          <p className="muted">{t(publicMode ? 'home.public_subtitle' : 'home.subtitle')}</p>
         </div>
         <button className="btn btn-primary" onClick={() => setShowForm(true)}>
-          {t('home.new_project')}
+          {t(publicMode ? 'home.import_film' : 'home.new_project')}
         </button>
       </div>
 

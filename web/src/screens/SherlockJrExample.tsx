@@ -15,14 +15,7 @@ const script = [
   '正当梦里的英雄忙着脱险，放映员醒了。女孩已经查明典当怀表的是情敌，亲自来替他洗清冤屈。他看看银幕上的情侣，现学现用，牵手、拥抱、亲吻。可银幕一转，夫妻已经抱上孩子，他当场挠头：这下一步，电影是不是教得太快了？',
 ]
 
-const stages = [
-  ['01', '预处理', '将原片切分为镜头，抽取关键帧，为代表性画面写说明。'],
-  ['02', '文案', '按现实—梦境—现实的叙事结构写成 8 段中文解说，再提取每段的画面意图。'],
-  ['03', '镜头', '按语义检索候选镜头，人工复核梦境转场、台球和摩托追逐等关键画面。'],
-  ['04', '剪辑', '安排镜头顺序与时长，让画面跟随旁白节奏。'],
-  ['05', '配音', '生成中文旁白，并将每一段的时间对齐。'],
-  ['06', '导出', '合成 2 分 45 秒视频，烧录中文字幕。'],
-]
+const stages = ['ingest', 'script', 'shots', 'cut', 'voice', 'export']
 
 export function SherlockJrExample() {
   const { t } = useI18n()
@@ -50,11 +43,11 @@ export function SherlockJrExample() {
       <section className="example-section">
         <h2>{t('example.workflow')}</h2>
         <div className="example-stage-grid">
-          {stages.map(([number, title, description]) => (
-            <div key={number} className="card example-stage">
-              <span className="small muted">{number}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
+          {stages.map((stage, index) => (
+            <div key={stage} className="card example-stage">
+              <span className="small muted">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{t(`example.stage.${stage}`)}</h3>
+              <p>{t(`example.stage.${stage}_detail`)}</p>
             </div>
           ))}
         </div>
