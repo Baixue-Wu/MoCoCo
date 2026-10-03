@@ -15,6 +15,12 @@ from pathlib import Path
 import httpx
 
 FILMS = {
+    "sherlock-jr": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Sherlock_Jr.%281924%29.webm",
+        "file": "Sherlock_Jr.1924.webm",
+        "zip": False,
+        "license": "US public domain (1924), Wikimedia Commons, 44 min, silent",
+    },
     "sintel": {
         "url": "https://download.blender.org/durian/movies/Sintel.2010.720p.mkv.zip",
         "file": "Sintel.2010.720p.mkv",
