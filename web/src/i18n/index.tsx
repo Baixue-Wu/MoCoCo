@@ -15,7 +15,7 @@ function readStored(): UiLang {
   } catch {
     /* ignore */
   }
-  return 'en'
+  return import.meta.env.MODE === 'public' ? 'zh' : 'en'
 }
 
 interface I18nContextValue {

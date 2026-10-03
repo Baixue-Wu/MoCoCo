@@ -54,7 +54,7 @@ export function BrowserProjectScreen() {
       </div>
       <div className="card section">
         <h2>{t('browser.project_settings')}</h2>
-        <p>{t('newp.style')}: {project.style} · {t('newp.target_minutes')}: {project.target_minutes}</p>
+        <p>{t('newp.style')}: {t(`browser.style.${project.style}`)} · {t('newp.target_minutes')}: {project.target_minutes}</p>
         {project.brief && <p>{project.brief}</p>}
       </div>
       <div className="card section">
