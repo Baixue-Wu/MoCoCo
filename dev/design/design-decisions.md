@@ -2,6 +2,17 @@
 
 Finalized decisions only, one rationale each. Open threads live in discussion-*.md.
 
+## 2026-10-03 (public showcase)
+
+- **Publish a static showcase separately from the interactive editor.** Rationale:
+  GitHub Pages can play a finished video, but the upload and rendering workflow
+  still requires the Python server and per-user access controls before it can
+  serve visitors online.
+- **Use *Sherlock Jr.* (1924) for the public example and keep unlicensed films
+  out of GitHub.** Rationale: the film is in the US public domain, appears in
+  IMDb's Top 250, and has a Wikimedia Commons copy. The original copy has no
+  audio; a silent audio track is added locally for pipeline compatibility.
+
 ## 2026-09-27
 
 - **Target is research prototype AND usable demo tool, with a GUI eventually.**

@@ -1,5 +1,7 @@
 # MoCoCo · Movie Commentary Co-creation
 
+**Public showcase:** [Watch a finished commentary example](https://Baixue-Wu.github.io/MoCoCo/) made from Buster Keaton's *Sherlock Jr.* (1924), a public-domain film. The showcase source is in [`docs/`](docs/); the interactive editor still runs with the Python server described below. The original film is available from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sherlock_Jr.(1924).webm).
+
 Co-create a movie commentary video with an AI partner: bring a script (or ask
 for a draft), let the system find matching shots and assemble a rough cut, then
 revise the script, the shot choices, the timeline, and the narration until it

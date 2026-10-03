@@ -2,20 +2,25 @@
 
 from __future__ import annotations
 
+from threading import Lock
+
 import numpy as np
 
 from mococo import config
 
 MODEL_NAME = "BAAI/bge-m3"
 _model = None
+_model_lock = Lock()
 
 
 def _get():
     global _model
     if _model is None:
-        from sentence_transformers import SentenceTransformer
+        with _model_lock:
+            if _model is None:
+                from sentence_transformers import SentenceTransformer
 
-        _model = SentenceTransformer(MODEL_NAME, device="cpu", cache_folder=str(config.models_dir()))
+                _model = SentenceTransformer(MODEL_NAME, device="cpu", cache_folder=str(config.models_dir()))
     return _model
 
 
