@@ -2,8 +2,10 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
+  base: mode === 'public' ? '/MoCoCo/' : '/',
+  build: mode === 'public' ? { outDir: '../docs', emptyOutDir: false } : undefined,
   server: {
     proxy: {
       '/api': {
@@ -12,4 +14,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))

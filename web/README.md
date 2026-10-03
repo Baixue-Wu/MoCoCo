@@ -5,6 +5,11 @@ React + Vite + TypeScript front end. A thin client of the FastAPI app in
 project file it edits (script, segments, candidates, timeline, settings) is
 also a plain file you can edit by hand on the CLI side.
 
+The public GitHub Pages build uses this same interface in a limited mode:
+visitors can browse the *Sherlock Jr.* case study and import a film into their
+own browser's IndexedDB storage. The film is never sent to GitHub or another
+server. That public build does not run the AI pipeline or export new videos.
+
 ## Dev
 
 Run the API server first (from the repo root):
@@ -37,6 +42,11 @@ npm run build
 Type-checks with `tsc -b` and outputs static files to `web/dist`, which
 `mococo/server/app.py` serves at `/` (and `/api/...` for the API) when it
 exists.
+
+For the public version, run `npm run build:public`. It writes into `docs/`
+for GitHub Pages at `/MoCoCo/`. This build uses hash-based routes so visitors
+can reload an example or browser-local project directly. Existing showcase
+media in `docs/assets/` is retained.
 
 ## Structure
 

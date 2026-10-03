@@ -3,6 +3,10 @@ import { useI18n } from './i18n'
 import { LangToggle } from './components/LangToggle'
 import { Home } from './screens/Home'
 import { ProjectScreen } from './screens/Project'
+import { SherlockJrExample } from './screens/SherlockJrExample'
+import { BrowserProjectScreen } from './screens/BrowserProject'
+
+const publicMode = import.meta.env.MODE === 'public'
 
 export default function App() {
   const { t } = useI18n()
@@ -18,7 +22,8 @@ export default function App() {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/p/:slug/*" element={<ProjectScreen />} />
+          <Route path="/examples/sherlock-jr" element={<SherlockJrExample />} />
+          <Route path="/p/:slug/*" element={publicMode ? <BrowserProjectScreen /> : <ProjectScreen />} />
         </Routes>
       </main>
     </div>

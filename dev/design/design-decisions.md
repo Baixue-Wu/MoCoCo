@@ -4,10 +4,17 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 
 ## 2026-10-03 (public showcase)
 
-- **Publish a static showcase separately from the interactive editor.** Rationale:
-  GitHub Pages can play a finished video, but the upload and rendering workflow
-  still requires the Python server and per-user access controls before it can
-  serve visitors online.
+- **Use the original React app as the public website, with a browser-local
+  upload preview and a built-in *Sherlock Jr.* case study.** Rationale: the
+  user wants a continuously reachable version of the actual product UI and
+  chose browser-local movie storage while public AI processing is deferred.
+  The GitHub Pages build has no shared user files or backend credentials;
+  `npm run build` still serves the full local Python workflow.
+
+- **The first static showcase was replaced by a public build of the product UI.**
+  GitHub Pages can host the same React screens and browser-local film imports;
+  rendering still requires a Python server and per-user access controls before
+  it can serve visitors online.
 - **Use *Sherlock Jr.* (1924) for the public example and keep unlicensed films
   out of GitHub.** Rationale: the film is in the US public domain, appears in
   IMDb's Top 250, and has a Wikimedia Commons copy. The original copy has no
