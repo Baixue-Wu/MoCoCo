@@ -6,6 +6,9 @@ import { Modal } from '../components/Modal'
 import { Spinner } from '../components/Spinner'
 import { LangChecks } from '../components/LangChecks'
 import type { Lang, Style } from '../api'
+import { saveBrowserProject } from '../browserProjects'
+
+const publicMode = import.meta.env.MODE === 'public'
 
 function slugify(s: string): string {
   return s
@@ -37,6 +40,14 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
   const [creating, setCreating] = useState(false)
 
   useEffect(() => {
+    if (publicMode) {
+      setStyles({
+        recap: { label: { zh: '剧情速递', en: 'Plot recap' }, guidance: '' },
+        analysis: { label: { zh: '影片解析', en: 'Film analysis' }, guidance: '' },
+      })
+      setLoadingCatalog(false)
+      return
+    }
     api.listStyles()
       .then(setStyles)
       .catch(showError)
@@ -52,6 +63,17 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
     if (!slug || !localFilm) return
     setCreating(true)
     try {
+      if (publicMode) {
+        await saveBrowserProject({
+          slug, title: title || localFilm.name, style,
+          script_langs: scriptLangs.length ? scriptLangs : ['zh'],
+          subtitle_langs: subtitleLangs, voice_langs: voiceLangs,
+          target_minutes: targetMinutes, brief, created: Date.now() / 1000,
+          film_name: localFilm.name, film_size: localFilm.size, film: localFilm,
+        })
+        onCreated(slug)
+        return
+      }
       const res = await api.createProjectFromFile({
         slug,
         title: title || undefined,
@@ -110,7 +132,7 @@ export function NewProjectForm({ onClose, onCreated }: { onClose: () => void; on
               }}
             />
             {localFilm && <span className="hint">{t('newp.film_selected', { name: localFilm.name, size: (localFilm.size / 1e6).toFixed(0) })}</span>}
-            <span className="hint">{t('newp.film_upload_hint')}</span>
+            <span className="hint">{t(publicMode ? 'browser.upload_hint' : 'newp.film_upload_hint')}</span>
             {uploadPercent !== null && <span className="hint">{t('newp.uploading', { percent: uploadPercent })}</span>}
           </div>
 

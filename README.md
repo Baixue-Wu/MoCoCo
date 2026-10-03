@@ -1,6 +1,6 @@
 # MoCoCo · Movie Commentary Co-creation
 
-**Public showcase:** [Watch a finished commentary example](https://Baixue-Wu.github.io/MoCoCo/) made from Buster Keaton's *Sherlock Jr.* (1924), a public-domain film. The showcase source is in [`docs/`](docs/); the interactive editor still runs with the Python server described below. The original film is available from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sherlock_Jr.(1924).webm).
+**Public web app:** [Open MoCoCo](https://Baixue-Wu.github.io/MoCoCo/). The original project interface now includes a browseable *Sherlock Jr.* (1924) example with its finished video, script, and six production steps. Visitors can also import their own movie into a browser-local project. On this public version, the file stays in that browser's IndexedDB storage; AI processing and exporting are not yet connected to a public backend. The complete production workflow remains available in the Python-served app below. The example's original film is available from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sherlock_Jr.(1924).webm).
 
 Co-create a movie commentary video with an AI partner: bring a script (or ask
 for a draft), let the system find matching shots and assemble a rough cut, then
@@ -35,6 +35,11 @@ once with `cd web && npm install && npm run build`). In **New project**, each
 visitor selects a movie from their own computer. The browser uploads it into
 that project's `source/` folder; the visitor does not need access to a server
 file path.
+
+To rebuild the continuously hosted public version, run `npm run build:public`
+inside `web/` and publish the resulting `docs/` folder through GitHub Pages.
+This version uses the same React interface, with browser-local projects and a
+read-only example. The local Python server build remains `npm run build`.
 
 ## Requirements
 
