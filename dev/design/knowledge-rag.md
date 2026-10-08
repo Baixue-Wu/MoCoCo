@@ -114,7 +114,7 @@ persisted after navigation; the page explicitly tells users to export.
 Rebuild assets from a local authorized film:
 
 ```bash
-uv run python scripts/export_analysis_example.py --film data/films/Sintel.2010.720p.mkv --dest web/public/examples/sintel-analysis --evidence-project projects/sintel-rag
+uv run python scripts/export_analysis_example.py --film data/films/Sintel.2010.720p.mkv --dest web/public/examples/sintel-analysis --evidence-project projects/sintel-rag --film-manifest projects/sintel-commentary/render/film-manifest.json --video-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/sintel-analysis.zh.mp4
 npm --prefix web run build:public
 ```
 
@@ -137,7 +137,7 @@ are included. The root research PDF duplicates `dev/materials/` and is untouched
 - Local and public TypeScript/Vite builds passed.
 - Browser checks cover public filtering, evidence expansion, mobile width, export
   of selected claims/notes, retrieval/empty results in the actual local editor, and approved image timeline/credits.
-  Three browser tests passed. The image browser case requires the prepared local
+  Four browser tests passed, including playback and chapter seeking in the finished video. The image browser case requires the prepared local
   `sintel-rag` project with an approved portrait, a cut and a completed render.
 
 Run Python checks with `uv run pytest -q`. For browser checks, serve the local app

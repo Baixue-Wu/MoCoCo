@@ -49,3 +49,24 @@ The analysis page leads with a video player, download link, chapter seeking and 
 finished transcript. Source notes and the existing interactive study follow it.
 The website plays a pre-rendered video; this does not turn GitHub Pages into a
 live rendering or model service.
+
+## Published artifact and verification
+
+The finished video is 300.18 seconds, 1280×544 at 25 fps, with audio and burned-in
+Chinese subtitles. It is published under `release/sintel-analysis` on GitHub.
+The manifest's SHA-256 matches the uploaded video asset digest. Full-video decoding
+passed; selected frames, chapter overlays, concept-art insertion and credits were
+visually inspected. A browser check loaded the real release video and sought to
+the concept-art chapter. All four browser checks and 25 Python checks passed.
+
+Refresh the public study after a completed build:
+
+```sh
+uv run python scripts/export_analysis_example.py \
+  --film data/films/Sintel.2010.720p.mkv \
+  --dest web/public/examples/sintel-analysis \
+  --evidence-project projects/sintel-rag \
+  --film-manifest projects/sintel-commentary/render/film-manifest.json \
+  --video-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/sintel-analysis.zh.mp4
+npm --prefix web run build:public
+```
