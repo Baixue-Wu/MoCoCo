@@ -1,3 +1,4 @@
+import { ImageSearch } from "../../components/ImageSearch"
 import { useEffect, useMemo, useState } from 'react'
 import * as api from '../../api'
 import { pickWhy } from '../../api'
@@ -18,12 +19,14 @@ function UnitRow({
   uiLang,
   primaryLang,
   onToggle,
+  onImagesChanged,
 }: {
   unit: api.Unit
   cand: api.UnitCandidates
   shots: Record<string, api.Shot>
   uiLang: string
   primaryLang: string
+  onImagesChanged: () => Promise<void>
   onToggle: (shotId: string, nowChosen: boolean) => void
 }) {
   const { t } = useI18n()
@@ -67,6 +70,13 @@ function UnitRow({
           )
         })}
       </div>
+      {cand.knowledge_status && <div className="card section">
+        <h3>{uiLang === 'zh' ? '外部论据' : 'External evidence'}</h3>
+        {cand.knowledge_status === 'missing' && <p role="status">{uiLang === 'zh' ? '本段缺少相关资料。请到文案页补充来源；不能把缺失证据当作已核实。' : 'No relevant source for this unit. Add evidence on the Script page.'}</p>}
+        {cand.knowledge?.map(k => <details key={k.id}><summary>{k.title} · {k.author}</summary><p>{k.text}</p><a href={k.url} target="_blank" rel="noreferrer">{uiLang === 'zh' ? '查看来源' : 'Open source'}</a><p className="small muted">{k.id} · {k.rights}</p></details>)}
+      </div>}
+      {cand.image_search_error && <p role="alert" className="error-box">{cand.image_search_error}</p>}
+      <ImageSearch slug={detail!.slug} unit={unit.id} initialQuery={unit.context_query || `${detail!.settings.title} concept art`} approved={cand.external} onChanged={onImagesChanged} />
       {cand.external.length > 0 && (
         <div style={{ marginTop: 10 }}>
           <h3>{t('shots.external')}</h3>
@@ -172,6 +182,7 @@ export function ShotsStep() {
                 shots={shots}
                 uiLang={uiLang}
                 primaryLang={segments.primary_lang}
+                onImagesChanged={async () => { setCandidates(await api.getCandidates(slug!)); await refresh() }}
                 onToggle={(shotId, nowChosen) => toggle(u.id, shotId, nowChosen)}
               />
             )

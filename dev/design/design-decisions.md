@@ -111,3 +111,13 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 - **Web UI is delegated to a React + Vite + TS app under web/, thin client of the
   FastAPI routes in mococo/server/app.py; jobs run in server threads and are
   polled.** Rationale: no websockets needed for a single local user.
+
+## 2026-10-08 (knowledge-grounded analysis)
+
+- Add explicit source import, passage retrieval, cited synthesis, approval/revocation and draft provenance to implement the proposal's DG3/DG4. Choosing the analysis style alone is not knowledge augmentation.
+- Replace the silent, model-tool-dependent lookup with explicit text retrieval and a Commons image provider. The user confirmed external image search and insertion belong in this increment. Searches show candidates and errors; only human-approved, attributed images enter the timeline.
+- Accept explicit CC BY, CC0 or public-domain image metadata initially; recheck it at approval and keep visible credit cards plus sidecars on export. Concept art supplements production context and must not masquerade as original footage. Preserve approvals across shot retrieval; allow revocation.
+- Use deterministic BM25 English tokens and Chinese bigrams for the initial project-scoped corpus. Expose that this is lexical retrieval, not web search or multilingual semantic retrieval; never invoke a model when no passage matches.
+- Keep source identity, URL, author, rights and character locations with each citation. Reject unknown citation IDs, keep suggestions unapproved by default, and invalidate approvals when the source set changes. Citation membership is checked mechanically; factual entailment remains for human review.
+- Use Sintel with official CC BY 3.0 attribution for the new analysis study. Link Shashwat Pant's review with short paraphrased notes; film permission does not license the review. The prior Sherlock Jr. recap remains available.
+- Public pages show a prepared analysis study and an explicitly labeled recorded real RAG response. Live generation is in the local editor; no fake chat or finished-video claim appears on the static site.

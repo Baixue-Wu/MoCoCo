@@ -60,7 +60,7 @@ export function BrowserProjectScreen() {
       <div className="card section">
         <h2>{t('browser.next_steps')}</h2>
         <p>{t('browser.processing_notice')}</p>
-        <Link to="/examples/sherlock-jr">{t('example.browse')} →</Link>
+        <Link to={project.style === "analysis" ? "/examples/sintel-analysis" : "/examples/sherlock-jr"}>{t('example.browse')} →</Link>
       </div>
     </div>
   )

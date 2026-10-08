@@ -139,17 +139,17 @@ function AddFromCandidates({
           </div>
         ))}
       </div>
-      {candidates && candidates.external.length > 0 && (
+      {candidates && candidates.external.some(ex => ex.approved) && (
         <>
           <h2 style={{ marginTop: 16 }}>{t('shots.external')}</h2>
           <div className="unit-strip">
-            {candidates.external.map((ex, i) => (
+            {candidates.external.filter(ex => ex.approved).map((ex, i) => (
               <div key={i} className="cand-thumb">
                 <div
                   className="shot-thumb"
                   title={ex.caption}
                   onClick={() => {
-                    onAdd({ kind: 'image', file: ex.file, caption: ex.caption, seconds: 3 })
+                    onAdd({ kind: 'image', image_id: ex.id, attribution: ex, file: ex.file, caption: ex.caption, seconds: 3 })
                     onClose()
                   }}
                 >

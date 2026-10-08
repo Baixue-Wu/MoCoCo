@@ -111,12 +111,36 @@ class Project:
         return self.script_dir / "segments.json"
 
     @property
+    def sources_json(self) -> Path:
+        return self.root / "knowledge" / "sources.json"
+
+    @property
+    def knowledge_answers_json(self) -> Path:
+        return self.root / "knowledge" / "answers.json"
+
+    @property
+    def script_evidence_json(self) -> Path:
+        return self.script_dir / "evidence.json"
+
+    @property
     def retrieval_dir(self) -> Path:
         return self.root / "retrieval"
 
     @property
     def candidates_json(self) -> Path:
         return self.retrieval_dir / "candidates.json"
+
+    @property
+    def image_search_json(self) -> Path:
+        return self.retrieval_dir / "image-search.json"
+
+    @property
+    def image_credits_md(self) -> Path:
+        return self.render_dir / "image-credits.md"
+
+    @property
+    def image_preview_dir(self) -> Path:
+        return self.retrieval_dir / "previews"
 
     @property
     def external_dir(self) -> Path:

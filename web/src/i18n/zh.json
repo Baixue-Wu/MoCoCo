@@ -192,5 +192,10 @@
   "export.cost_summary": "目前花费",
   "export.cost_total": "{n} 次调用，${cost}",
   "job.error_heading": "阶段运行失败",
-  "toast.dismiss": "关闭"
+  "toast.dismiss": "关闭",
+  "analysis.title": "从照料到悲剧",
+  "analysis.badge": "深度解析 · 资料与论据",
+  "analysis.hint": "核查影评、对照原片画面，选择论点并导出修改。预先编写的解析样例，非实时生成或新成片。",
+  "images.export_note": "外部图片的署名会以片尾卡片和单独文件随本次渲染导出。重新选择图片后请重新渲染。",
+  "images.download_credits": "下载本次渲染的图片署名（先完成渲染）"
 }

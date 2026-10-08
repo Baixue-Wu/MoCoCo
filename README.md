@@ -64,8 +64,7 @@ MoCoCo uses Codex by default, including for keyframe images. Install the
 [Codex CLI](https://developers.openai.com/codex/cli/), then run `codex login`
 once with your ChatGPT account. The CLI sign-in is separate from the Codex
 desktop app. Eligible ChatGPT plans can use their plan allowance; no API key is
-needed. Film keyframes and prompts are sent to OpenAI. The optional search for
-external reference images is skipped with this backend.
+needed. Film keyframes and prompts are sent to OpenAI. External-reference text RAG works through the same backend; external-image search uses Wikimedia Commons with explicit approval before insertion.
 For longer films, MoCoCo detects all shots and captions up to 320 frames spread
 across the running time to keep subscription usage manageable. Change this with
 `mococo ingest <project> --max-captions N` before generating the index.
@@ -81,7 +80,22 @@ ollama pull qwen3-vl:4b-instruct
 Set `MOCOCO_LLM_PROVIDER=ollama` before starting MoCoCo and keep Ollama
 running. The model download is about 3.3 GB; inference stays on your computer
 and requires no API key. Set `MOCOCO_OLLAMA_MODEL` to another installed vision
-model if desired. The optional search for external reference images is skipped.
+model if desired. External-image search uses Wikimedia Commons, independent of model tools.
 
 To use the original Claude Code backend instead, set
 `MOCOCO_LLM_PROVIDER=claude` in the process environment.
+
+## RAG and the deep-analysis study
+
+The local Script page now includes **Sources and evidence**: import review or
+production notes, retrieve passages, generate cited suggestions, inspect sources,
+and approve/revoke the context supplied to the next script draft. Retrieval is
+project-scoped BM25, not automatic web search. Empty evidence is shown explicitly.
+
+The public app includes a **Sintel analysis study** alongside the Sherlock Jr.
+recap. It offers linked review notes, a recorded real RAG response, frame comparison
+and exportable interpretation notes. It is a prepared study, not live generation
+or a new finished commentary film. The official Sintel film permits adaptation
+under CC BY 3.0 with attribution; the linked review has separate copyright.
+
+See [the RAG workflow, sources and verification](dev/design/knowledge-rag.md).

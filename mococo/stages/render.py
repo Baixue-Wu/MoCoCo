@@ -12,6 +12,7 @@ from pathlib import Path
 
 from mococo.media import ffmpeg
 from mococo.project import Project
+from mococo.stages import images
 
 DUCK = 0.12  # original audio volume under narration
 FONT_SIZE = 22
@@ -66,6 +67,7 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
         return output
     film = Path(s.film)
     timeline = project.read_json(project.timeline_json)
+    external_images = images.validate_timeline(project, timeline)
     timing = {u["id"]: u for u in project.read_json(project.narration_timing(lang))["units"]}
     shots = {sh["id"]: sh for sh in project.read_json(project.shots_json)}
     seg = {u["id"]: u for u in project.read_json(project.segments_json)["units"]}
@@ -106,6 +108,11 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
     with ThreadPoolExecutor(workers) as ex:
         list(ex.map(one, jobs))
 
+    for i, card in enumerate(images.credit_artifacts(project, external_images)):
+        credit_video = work / f"credit-{i}.mp4"
+        ffmpeg.image_clip(card, 8.0, credit_video, width=out_w, height=out_h)
+        plan.append(credit_video)
+
     video = work / "video.mp4"
     ffmpeg.concat(plan, video)
 
@@ -122,7 +129,7 @@ def render_lang(project: Project, lang: str, *, force: bool = False, workers: in
     args += ["-filter_complex", filt + (f";[0:v]{vf}[v]" if vf else ""), "-map", "[v]" if vf else "0:v", "-map", "[a]"]
     args += ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(output)]
     ffmpeg.run(args)
-    project.log_event("stage_done", stage="render", lang=lang, seconds=round(max(ends), 1))
+    project.log_event("stage_done", stage="render", lang=lang, seconds=round(max(ends) + 8.0 * len(external_images), 1))
     return output
 
 

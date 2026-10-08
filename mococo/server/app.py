@@ -15,7 +15,7 @@ from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ValidationError
 
-from mococo import styles
+from mococo import knowledge, styles
 from mococo.media import ffmpeg
 from mococo.project import Project, Settings, init_project
 from mococo.server.jobs import Jobs
@@ -34,6 +34,24 @@ class ProjectOptions(BaseModel):
     voice_langs: list[str] | None = None
     target_minutes: float = 5.0
     brief: str = ""
+
+
+class KnowledgeQuery(BaseModel):
+    query: str
+    limit: int = 5
+
+
+class ImageQuery(BaseModel):
+    query: str
+    limit: int = 8
+
+
+class ImageApproval(BaseModel):
+    image_id: str
+
+
+class KnowledgeReview(BaseModel):
+    accepted: bool
 
 
 class StageRequest(BaseModel):
@@ -217,6 +235,96 @@ def create_app(projects_root: Path) -> FastAPI:
             p.write_json(path, body)
         p.log_event("file_edited", file=name, via="ui")
         return {"ok": True}
+
+    # ---- external source evidence ----
+    @app.get("/api/projects/{slug}/knowledge")
+    def get_knowledge(slug: str):
+        p = proj(slug)
+        revision = knowledge.fingerprint(p)
+        return {"sources": knowledge.sources(p), "answers": knowledge.answers(p),
+                "source_revision": revision}
+
+    @app.post("/api/projects/{slug}/knowledge/sources")
+    def add_knowledge_source(slug: str, source: knowledge.Source):
+        try:
+            return knowledge.add_source(proj(slug), source)
+        except ValueError as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    @app.delete("/api/projects/{slug}/knowledge/sources/{source_id}")
+    def remove_knowledge_source(slug: str, source_id: str):
+        try:
+            knowledge.remove_source(proj(slug), source_id)
+            return {"ok": True}
+        except ValueError as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    @app.post("/api/projects/{slug}/knowledge/search")
+    def search_knowledge(slug: str, body: KnowledgeQuery):
+        try:
+            return knowledge.search(proj(slug), body.query, body.limit)
+        except ValueError as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    @app.post("/api/projects/{slug}/knowledge/suggest")
+    def suggest_knowledge(slug: str, body: KnowledgeQuery):
+        p = proj(slug)
+        if not body.query.strip() or len(body.query) > 4000 or not 1 <= body.limit <= 10:
+            raise HTTPException(400, "Question must be 1-4000 characters; limit 1-10")
+        try:
+            return asdict(jobs.start(slug, "knowledge.suggest", lambda: knowledge.suggest(p, body.query, body.limit)))
+        except RuntimeError as exc:
+            raise HTTPException(409, str(exc)) from exc
+
+    @app.put("/api/projects/{slug}/knowledge/answers/{answer_id}")
+    def review_knowledge(slug: str, answer_id: str, body: KnowledgeReview):
+        try:
+            return knowledge.review(proj(slug), answer_id, body.accepted)
+        except ValueError as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    # ---- contextual images ----
+    @app.get("/api/projects/{slug}/images/{unit_id}")
+    def image_results(slug: str, unit_id: str):
+        p = proj(slug)
+        return p.read_json(p.image_search_json).get(unit_id, {"results": []}) if p.image_search_json.exists() else {"results": []}
+
+    @app.get("/api/projects/{slug}/images/{unit_id}/{image_id}/preview")
+    def image_preview(slug: str, unit_id: str, image_id: str):
+        from mococo.stages import images
+        try:
+            return FileResponse(images.preview(proj(slug), unit_id, image_id), media_type="image/jpeg")
+        except (ValueError, RuntimeError) as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    @app.post("/api/projects/{slug}/images/{unit_id}/search")
+    def search_images(slug: str, unit_id: str, body: ImageQuery):
+        from mococo.stages import images
+        try:
+            return images.search(proj(slug), unit_id, body.query, body.limit)
+        except (ValueError, RuntimeError) as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    @app.post("/api/projects/{slug}/images/{unit_id}/approve")
+    def approve_image(slug: str, unit_id: str, body: ImageApproval):
+        from mococo.stages import images
+        try:
+            return images.approve(proj(slug), unit_id, body.image_id)
+        except (ValueError, RuntimeError) as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    @app.delete("/api/projects/{slug}/images/{unit_id}/{image_id}")
+    def revoke_image(slug: str, unit_id: str, image_id: str):
+        from mococo.stages import images
+        images.revoke(proj(slug), unit_id, image_id)
+        return {"ok": True}
+
+    @app.get("/api/projects/{slug}/image-credits")
+    def image_credits(slug: str):
+        path = proj(slug).image_credits_md
+        if not path.exists():
+            raise HTTPException(404, "Render the timeline to produce its image credits")
+        return FileResponse(path, media_type="text/markdown", filename="image-credits.md")
 
     # ---- stages ----
     @app.post("/api/projects/{slug}/stages/{stage}")

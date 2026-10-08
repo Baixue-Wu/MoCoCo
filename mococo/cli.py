@@ -12,6 +12,61 @@ from mococo.project import Project, init_project
 app = typer.Typer(help="MoCoCo: Movie Commentary Co-creation.", no_args_is_help=True)
 script_app = typer.Typer(help="Draft and segment the commentary script.", no_args_is_help=True)
 app.add_typer(script_app, name="script")
+knowledge_app = typer.Typer(help="Import, retrieve and review external evidence.", no_args_is_help=True)
+app.add_typer(knowledge_app, name="knowledge")
+images_app = typer.Typer(help="Retrieve and approve reusable contextual images.", no_args_is_help=True)
+app.add_typer(images_app, name="images")
+
+
+@images_app.command("search")
+def images_search(project: Path, unit_id: str, query: str, limit: int = 8):
+    """Search Commons for attributed reusable images, without inserting them."""
+    from mococo.stages import images
+    rprint(images.search(Project(project), unit_id, query, limit))
+
+
+@images_app.command("approve")
+def images_approve(project: Path, unit_id: str, image_id: str):
+    """Recheck the license, download and insert an image into this unit."""
+    from mococo.stages import images
+    rprint(images.approve(Project(project), unit_id, image_id))
+
+
+@images_app.command("revoke")
+def images_revoke(project: Path, unit_id: str, image_id: str):
+    """Remove an image from this unit's candidates and timeline."""
+    from mococo.stages import images
+    images.revoke(Project(project), unit_id, image_id)
+
+
+
+@knowledge_app.command("add")
+def knowledge_add(project: Path, source: Path):
+    """Import a source JSON with title, url, author, kind, rights and text."""
+    from mococo import knowledge
+    rprint(knowledge.add_source(Project(project), knowledge.Source.model_validate_json(source.read_text(encoding="utf-8"))))
+
+
+@knowledge_app.command("search")
+def knowledge_search(project: Path, query: str, limit: int = 5):
+    """Retrieve source passages without calling a model."""
+    from mococo import knowledge
+    rprint(knowledge.search(Project(project), query, limit))
+
+
+@knowledge_app.command("suggest")
+def knowledge_suggest(project: Path, query: str, limit: int = 5):
+    """Generate a cited suggestion from retrieved passages; does not accept it."""
+    from mococo import knowledge
+    rprint(knowledge.suggest(Project(project), query, limit))
+
+
+@knowledge_app.command("review")
+def knowledge_review(project: Path, answer_id: str, accept: bool = False):
+    """Accept with --accept, or revoke a previous acceptance."""
+    from mococo import knowledge
+    rprint(knowledge.review(Project(project), answer_id, accept))
+
 
 
 def _langs(value: str) -> list[str]:

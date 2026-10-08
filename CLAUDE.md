@@ -18,6 +18,8 @@ Read `dev/design/architecture.md` before touching code and
 mococo/            the package (Python 3.12, uv, `uv sync` then `uv run mococo --help`)
   cli.py           only file that exits; every command maps to a stage
   project.py       project.json schema and the on-disk layout of a project
+  knowledge.py     source import, BM25 retrieval, cited suggestions and approval
+  examples/sintel/  short source notes and license provenance for the analysis study
   styles.py        everything about the two commentary styles (recap | analysis)
   prompts/*.md     one template per model task, $var substitution
   provider/llm.py  the ONLY place that knows we use Claude (`claude -p` headless)
@@ -59,3 +61,15 @@ dev/design/        architecture, design decisions, dated discussions, open quest
 
 `v<x.y>` for milestones, `release/<name>` for versions shown outside,
 `submit/<venue>` when a paper goes out.
+
+## Knowledge-grounded analysis
+
+Read dev/design/knowledge-rag.md for the working text-RAG and image-insertion flow, sources and test commands.
+Use the existing provider module for synthesis; provider selection has evolved beyond
+the initial Claude-only design (see README). Do not assume WebSearch/WebFetch exists.
+Public examples are static studies; live source import and synthesis require the local
+API. Never describe keyword filtering on the public page as live RAG generation.
+
+External images use provider/images.py and stages/images.py. Search is automatic
+for contextual units, but insertion requires explicit creator approval. Keep author,
+source, license and change notices through timeline editing and render credits.

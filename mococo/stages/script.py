@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from mococo import prompts, styles
+from mococo import knowledge, prompts, styles
 from mococo.project import LANG_NAMES, Project
 from mococo.provider import llm
 
@@ -86,8 +86,10 @@ def draft(project: Project, *, lang: str | None = None, force: bool = False) -> 
     target = project.script_md(primary)
     if force or not target.exists():
         chars = int(s.target_minutes * st["chars_per_minute"][primary])
+        evidence = knowledge.accepted_context(project)
         prompt = prompts.render(
             "script_draft",
+            knowledge=evidence,
             lang_name=LANG_NAMES[primary],
             style_label=st["label"]["en"],
             style_guidance=st["guidance"],
@@ -101,6 +103,7 @@ def draft(project: Project, *, lang: str | None = None, force: bool = False) -> 
         text = llm.ask(prompt, tier="smart", log=project.log_event)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text("\n\n".join(paragraphs(text)) + "\n", encoding="utf-8")
+        project.write_json(project.script_evidence_json, {"source_revision": knowledge.fingerprint(project), "context": evidence})
         if s.brief:
             project.brief_md.write_text(s.brief + "\n", encoding="utf-8")
         project.log_event("stage_done", stage="script.draft", lang=primary, paragraphs=len(paragraphs(text)))

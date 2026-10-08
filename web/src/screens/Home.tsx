@@ -57,6 +57,12 @@ export function Home() {
             <ProgressDots steps={{ setup: true, script: true, shots: true, cut: true, voice: true, export: true }} />
             <span className="small muted">{t('example.project_hint')}</span>
           </Link>
+          <Link to="/examples/sintel-analysis" className="card project-card example-project-card">
+            <img src={`${import.meta.env.BASE_URL}examples/sintel-analysis/frame-196.jpg`} alt="Sintel 与小龙" />
+            <h2>Sintel · {t('analysis.title')}</h2>
+            <span className="badge badge-accent">{t('analysis.badge')}</span>
+            <span className="small muted">{t('analysis.hint')}</span>
+          </Link>
           {publicMode && browserProjects?.map((p) => (
             <Link key={p.slug} to={`/p/${p.slug}`} className="card project-card">
               <div className="row-between">

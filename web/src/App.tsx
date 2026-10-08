@@ -1,3 +1,4 @@
+import { AnalysisExample } from "./screens/AnalysisExample"
 import { Link, Route, Routes } from 'react-router-dom'
 import { useI18n } from './i18n'
 import { LangToggle } from './components/LangToggle'
@@ -22,6 +23,7 @@ export default function App() {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/examples/sintel-analysis" element={<AnalysisExample />} />
           <Route path="/examples/sherlock-jr/*" element={<SherlockJrExample />} />
           <Route path="/p/:slug/*" element={publicMode ? <BrowserProjectScreen /> : <ProjectScreen />} />
         </Routes>

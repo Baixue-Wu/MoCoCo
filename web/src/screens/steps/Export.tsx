@@ -58,12 +58,15 @@ function OutputLang({ lang }: { lang: string }) {
 }
 
 export function ExportStep() {
+  const { t } = useI18n()
   const { detail, refresh } = useProject()
   if (!detail) return null
   const langs = detail.settings.voice_langs
 
   return (
     <div>
+      <p className="small muted">{t("images.export_note")}</p>
+      <a href={`/api/projects/${detail.slug}/image-credits`}>{t("images.download_credits")}</a>
       <StageBar stage="render" done={stepDone('export', detail.status)} onDone={refresh} />
       {langs.map((l) => (
         <OutputLang key={l} lang={l} />

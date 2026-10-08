@@ -92,3 +92,19 @@ Export. Each screen shows the stage's file, lets the user edit it (text, accept 
 swap / reorder / trim), and offers "run this stage" / "run to end". The API is
 `POST /projects/{slug}/stages/{name}` plus file reads/writes; the UI is a thin
 client so a desktop shell can wrap it later.
+
+## Knowledge retrieval addition (2026-10-08)
+
+`mococo/knowledge.py` owns source records, deterministic chunks with character
+locations, lexical retrieval, and cited synthesis. Project paths remain in
+`project.py`: `knowledge/sources.json` and `knowledge/answers.json`. Both CLI and
+HTTP endpoints use this module. Sources are supplied explicitly as text with
+URL, author, kind and rights metadata; arbitrary URL fetching is not hidden in
+model calls. Empty retrieval returns an explicit gap without invoking a model.
+Model suggestions cite retrieved chunk IDs; creator acceptance is a separate
+operation. Only accepted, current-source suggestions enter script drafting.
+Public static pages demonstrate saved evidence and browser filtering, while
+live synthesis requires the local API. `provider/images.py` owns Commons metadata and restricted downloads;
+`stages/images.py` owns per-unit searches, approval, timeline insertion/revocation
+and attribution artifacts. Render validates approved records and adds credit cards.
+This does not implement the full proposal coverage-gap model.
