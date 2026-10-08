@@ -131,3 +131,8 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 
 - Both commentary styles share the same read-only workflow shell and navigation. The analysis example adds a RAG step and displays actual finished-project sources, narration units, selected footage, image inserts, render clip timing and subtitles. This replaces the separate long-form study landing page so visitors can compare the two workflows step by step.
 - Export the finished project artifacts explicitly; distinguish saved model suggestions from the editorial decisions used in the video. Do not display editorial selection scores as measured model confidence or raw planned durations as rendered clip durations.
+
+## 2026-10-08 (home introduction)
+
+- Lead the home page with what MoCoCo helps film commentators make, the difference between recap and analysis, and links into the workflow and completed examples; keep personal project import as a clear separate entry. The user requested a richer product introduction rather than only a project catalogue.
+- Remove the “AI 生成暂未开放” sentence from home/import copy. Describe the available import action accurately without using that announcement as introductory product copy.
