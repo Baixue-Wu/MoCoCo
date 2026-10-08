@@ -121,3 +121,8 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 - Keep source identity, URL, author, rights and character locations with each citation. Reject unknown citation IDs, keep suggestions unapproved by default, and invalidate approvals when the source set changes. Citation membership is checked mechanically; factual entailment remains for human review.
 - Use Sintel with official CC BY 3.0 attribution for the new analysis study. Link Shashwat Pant's review with short paraphrased notes; film permission does not license the review. The prior Sherlock Jr. recap remains available.
 - Public pages show a prepared analysis study and an explicitly labeled recorded real RAG response. Live generation is in the local editor; no fake chat or finished-video claim appears on the static site.
+
+## 2026-10-08 (finished analysis film)
+
+- The user clarified that deep analysis must culminate in a complete narrated film-analysis video. A source page, insert plan or short technical test is not the deliverable. Publish the finished Sintel commentary prominently; retain evidence and process as supporting material.
+- Frame this film around the reversal from care to harm and the delayed recognition of time. Match interpretive claims to inspected footage, identify the reviewer’s contribution, and credit film, concept art, commentary and synthetic narration in the finished export.

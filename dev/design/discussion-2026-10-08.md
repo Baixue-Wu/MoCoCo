@@ -9,3 +9,5 @@ The user explicitly confirmed: “这轮也要加入外部图片检索与插入�
 Research candidate: Jeffrey Vance's Sherlock Jr. essay hosted by the US Library of Congress gives strong formal-analysis material, but the Commons film's public-domain notice is jurisdiction-specific. Sintel was selected for the public study because its official CC BY 3.0 license explicitly permits adaptation. Shashwat Pant's review gives a traceable critical starting point; the study distinguishes it from independently observed frames.
 
 The old local sintel-analysis draft contains unsupported plot details and was not republished. The new study uses separately checked stills at 03:16, 10:10 and 11:09 in the existing official 720p MKV. It is not a finished new commentary video or a full temporal/affective coverage implementation.
+
+The user then clarified that the requested deep-analysis example is a complete film-analysis video. The prior study page and short image test did not satisfy that deliverable. A finished Chinese Sintel commentary now becomes the primary output; the evidence page supports the video. See dev/examples/sintel-analysis/plan.json for the narration and editorial ranges.

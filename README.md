@@ -92,10 +92,11 @@ production notes, retrieve passages, generate cited suggestions, inspect sources
 and approve/revoke the context supplied to the next script draft. Retrieval is
 project-scoped BM25, not automatic web search. Empty evidence is shown explicitly.
 
-The public app includes a **Sintel analysis study** alongside the Sherlock Jr.
-recap. It offers linked review notes, a recorded real RAG response, frame comparison
-and exportable interpretation notes. It is a prepared study, not live generation
-or a new finished commentary film. The official Sintel film permits adaptation
-under CC BY 3.0 with attribution; the linked review has separate copyright.
+The public app includes a **finished Sintel analysis video** alongside the
+Sherlock Jr. recap. Watch the Chinese commentary, jump between chapters, then
+inspect linked review notes, recorded RAG evidence, film frames and image credits.
+The video is pre-rendered; the public site does not call a model or render new
+films. Sintel permits adaptation under CC BY 3.0 with attribution; the linked
+review has separate copyright. See [the editorial plan and build instructions](dev/examples/sintel-analysis/README.md).
 
 See [the RAG workflow, sources and verification](dev/design/knowledge-rag.md).
