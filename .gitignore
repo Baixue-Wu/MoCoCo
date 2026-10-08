@@ -16,3 +16,7 @@ web/node_modules/
 web/dist/
 # local
 .env
+
+# browser test artifacts
+web/test-results/
+web/playwright-report/

@@ -12,9 +12,8 @@ from __future__ import annotations
 
 from mococo import styles
 from mococo.project import Project
+from mococo.stages import images
 
-
-IMAGE_SECONDS = 3.5
 
 
 def estimated_seconds(text: str, lang: str, style: dict) -> float:
@@ -83,11 +82,12 @@ def run(project: Project, *, force: bool = False):
         if chosen:  # a human pick goes first
             ordered = [x for x in ordered if x["shot_id"] in chosen] + [x for x in ordered if x["shot_id"] not in chosen]
         clips = plan_unit(unit, ordered, shots, used, st, need)
-        if not clips:
-            raise RuntimeError(f"no usable clips for unit {unit['id']}; rerun retrieve with a larger --top")
         # DG3: a unit that needed outside knowledge opens on its reference image
-        for ref in c.get("external", [])[:1]:
-            clips.insert(0, {"kind": "image", "file": ref["file"], "caption": ref.get("caption", ""), "seconds": IMAGE_SECONDS, "why": "external reference"})
+        for ref in reversed(c.get("external", [])):
+            if ref.get("approved"):
+                clips.insert(0, images.clip(ref))
+        if not clips:
+            raise RuntimeError(f"no usable clips for unit {unit['id']}; rerun retrieve with a larger --top or approve a contextual image")
         units.append({"id": unit["id"], "estimated_seconds": round(need, 2), "clips": clips})
     project.write_json(project.timeline_json, {"style": s.style, "units": units})
     project.log_event("stage_done", stage="cut", units=len(units), clips=sum(len(u["clips"]) for u in units))

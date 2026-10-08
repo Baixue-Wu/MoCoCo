@@ -183,6 +183,13 @@ export interface CandidateShot {
 }
 
 export interface ExternalRef {
+  id?: string
+  title?: string
+  artist?: string
+  license?: string
+  license_url?: string
+  approved?: boolean
+  changes?: string
   image_url: string
   source_url: string
   caption: string
@@ -193,6 +200,9 @@ export interface UnitCandidates {
   unit_id: string
   shots: CandidateShot[]
   external: ExternalRef[]
+  knowledge?: KnowledgeChunk[]
+  image_search_error?: string
+  knowledge_status?: "retrieved" | "missing"
   chosen: string[]
 }
 
@@ -213,6 +223,8 @@ export interface ShotClip {
 
 export interface ImageClip {
   kind: 'image'
+  image_id?: string
+  attribution?: ExternalRef
   file: string
   caption: string
   seconds: number
@@ -338,3 +350,56 @@ export const uploadNarration = (slug: string, lang: string, file: File) => {
   return post<{ ok: true; path: string }>(`/projects/${slug}/upload/narration/${lang}`, fd)
 }
 export const deleteUploadedNarration = (slug: string, lang: string) => del<{ ok: true }>(`/projects/${slug}/upload/narration/${lang}`)
+
+export interface KnowledgeSource {
+  id: string
+  title: string
+  author: string
+  url: string
+  kind: 'review' | 'production' | 'creator_note'
+  rights: string
+  text: string
+}
+export interface KnowledgeChunk extends KnowledgeSource {
+  source_id: string
+  start: number
+  end: number
+  score: number
+}
+export interface KnowledgeAnswer {
+  id: string
+  query: string
+  claims: { text: string; kind: string; citations: string[]; visual_query: string }[]
+  gaps: string[]
+  retrieved: KnowledgeChunk[]
+  accepted: boolean
+  source_revision: string
+}
+export interface KnowledgeState {
+  sources: KnowledgeSource[]
+  answers: KnowledgeAnswer[]
+  source_revision: string
+}
+export const getKnowledge = (slug: string) => get<KnowledgeState>(`/projects/${slug}/knowledge`)
+export const addKnowledgeSource = (slug: string, source: Omit<KnowledgeSource, 'id'>) => post<KnowledgeSource>(`/projects/${slug}/knowledge/sources`, source)
+export const removeKnowledgeSource = (slug: string, id: string) => del(`/projects/${slug}/knowledge/sources/${id}`)
+export const searchKnowledge = (slug: string, query: string) => post<KnowledgeChunk[]>(`/projects/${slug}/knowledge/search`, { query })
+export const suggestKnowledge = (slug: string, query: string) => post<Job>(`/projects/${slug}/knowledge/suggest`, { query })
+export const reviewKnowledge = (slug: string, id: string, accepted: boolean) => put<KnowledgeAnswer>(`/projects/${slug}/knowledge/answers/${id}`, { accepted })
+
+export interface ImageCandidate {
+  id: string
+  title: string
+  image_url: string
+  source_url: string
+  artist: string
+  license: string
+  license_url: string
+  caption: string
+  restrictions: string
+}
+export interface ImageResults { query?: string; results: ImageCandidate[]; status?: string }
+export const getImageResults = (slug: string, unit: string) => get<ImageResults>(`/projects/${slug}/images/${unit}`)
+export const searchImages = (slug: string, unit: string, query: string) => post<ImageResults>(`/projects/${slug}/images/${unit}/search`, { query })
+export const approveImage = (slug: string, unit: string, id: string) => post<ExternalRef>(`/projects/${slug}/images/${unit}/approve`, { image_id: id })
+export const revokeImage = (slug: string, unit: string, id: string) => del(`/projects/${slug}/images/${unit}/${id}`)

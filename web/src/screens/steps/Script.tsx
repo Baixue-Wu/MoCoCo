@@ -1,3 +1,4 @@
+import { KnowledgePanel } from "../../components/KnowledgePanel"
 import { useEffect, useState } from 'react'
 import * as api from '../../api'
 import type { Lang } from '../../api'
@@ -208,6 +209,7 @@ export function ScriptStep() {
 
   return (
     <div>
+      <KnowledgePanel slug={slug!} />
       <div className={langs.length === 2 ? 'two-col' : 'stack'}>
         {langs.map((l) => (
           <ScriptColumn
