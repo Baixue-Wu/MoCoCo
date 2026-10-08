@@ -195,7 +195,7 @@
   "toast.dismiss": "关闭",
   "analysis.title": "从照料到悲剧",
   "analysis.badge": "深度解析 · 完整视频",
-  "analysis.hint": "观看《Sintel》中文解析成片，按章节跳转，再核查影评、镜头和外部图片的出处。",
+  "analysis.hint": "按制作流程查看 RAG 依据、成片文案、镜头与资料图、剪辑、配音字幕和完整视频。",
   "images.export_note": "外部图片的署名会以片尾卡片和单独文件随本次渲染导出。重新选择图片后请重新渲染。",
   "images.download_credits": "下载本次渲染的图片署名（先完成渲染）"
 }

@@ -45,8 +45,10 @@ credits identify AI assistance and synthetic narration.
 
 ## Public presentation
 
-The analysis page leads with a video player, download link, chapter seeking and the
-finished transcript. Source notes and the existing interactive study follow it.
+The analysis example shares the recap example’s workflow shell. Its seven steps
+are preprocessing, RAG sources, final script, shots/images, rendered timeline,
+voice/subtitles and output. Each view contains the actual finished-project artifacts.
+The output step offers playback, downloading and chapter seeking.
 The website plays a pre-rendered video; this does not turn GitHub Pages into a
 live rendering or model service.
 
@@ -57,7 +59,9 @@ Chinese subtitles. It is published under `release/sintel-analysis` on GitHub.
 The manifest's SHA-256 matches the uploaded video asset digest. Full-video decoding
 passed; selected frames, chapter overlays, concept-art insertion and credits were
 visually inspected. A browser check loaded the real release video and sought to
-the concept-art chapter. All four browser checks and 25 Python checks passed.
+the concept-art chapter. All four browser checks and 26 Python checks passed. Workflow checks cover both
+examples, frame enlargement, evidence per unit, narration/subtitles, rendered timing,
+mobile layouts and refreshing a step URL.
 
 Refresh the public study after a completed build:
 
@@ -67,6 +71,8 @@ uv run python scripts/export_analysis_example.py \
   --dest web/public/examples/sintel-analysis \
   --evidence-project projects/sintel-rag \
   --film-manifest projects/sintel-commentary/render/film-manifest.json \
+  --finished-project projects/sintel-commentary \
+  --narration-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/narration.zh.mp3 \
   --video-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/sintel-analysis.zh.mp4
 npm --prefix web run build:public
 ```

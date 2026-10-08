@@ -1,16 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, NavLink, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import type { Candidates, Captions, Segments, Shot, Timeline, TimingUnit } from '../api'
 import { isImageClip, pickWhy } from '../api'
 import { Modal } from '../components/Modal'
 import { Spinner } from '../components/Spinner'
 import { useI18n } from '../i18n'
-import { STEP_ORDER, type StepKey } from '../state/steps'
+import { ExampleWorkflow } from '../components/ExampleWorkflow'
 
 const base = `${import.meta.env.BASE_URL}examples/sherlock-jr`
-const stepPath: Record<StepKey, string> = {
-  setup: '', script: 'script', shots: 'shots', cut: 'cut', voice: 'voice', export: 'export',
-}
 
 interface ExampleData {
   title: string
@@ -213,17 +210,7 @@ export function SherlockJrExample() {
 
   return (
     <div>
-      <Link to="/" className="small">← {t('common.back')}</Link>
-      <div className="row-between example-project-heading">
-        <div><h1>{data.title}</h1><span className="badge badge-accent">{t('example.read_only')}</span></div>
-        <Link to="/" className="btn">{t('example.try')}</Link>
-      </div>
-      <p className="muted example-project-note">{t('example.project_intro')}</p>
-      <div className="wizard">
-        <nav className="wizard-nav" aria-label={t('example.workflow')}>
-          {STEP_ORDER.map((step) => <NavLink key={step} to={stepPath[step] || '.'} end={step === 'setup'} className={({ isActive }) => isActive ? 'active' : ''}><span>{t(`step.${step}`)}</span><span className="dot done" /></NavLink>)}
-        </nav>
-        <div>
+      <ExampleWorkflow title={data.title} intro={t('example.project_intro')}>
           <Routes>
             <Route index element={setup} />
             <Route path="script" element={script} />
@@ -232,8 +219,7 @@ export function SherlockJrExample() {
             <Route path="voice" element={voice} />
             <Route path="export" element={output} />
           </Routes>
-        </div>
-      </div>
+      </ExampleWorkflow>
       {frameId && (
         <Modal onClose={() => setFrameId(null)}>
           <h2>{frameId} · {clock(byId.get(frameId)?.start ?? 0)}</h2>

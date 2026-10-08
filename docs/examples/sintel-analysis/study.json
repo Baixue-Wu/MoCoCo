@@ -85,45 +85,6 @@
       "caption": "辛特尔的灰发：时间流逝的可见线索"
     }
   ],
-  "lenses": [
-    {
-      "title": "从照料到伤害，为什么比单纯的战斗更悲伤？",
-      "source_ids": [
-        "review",
-        "observations"
-      ],
-      "frames": [
-        196,
-        610
-      ],
-      "draft": "先看辛特尔伸向小龙的手。身体的靠近，让保护成为一种可见的关系。影评人 Shashwat Pant 注意到，影片把早先的照料与后来的毁灭放在一起。我们可以沿着这条线索，把两个阶段并置：后面的对抗不只是一场动作戏，也使观众回头重看先前的亲密。",
-      "gap": "这是借助影评展开的解读，不是导演意图的证明。单个面部近景不足以证明角色身份，必须结合前后情节。"
-    },
-    {
-      "title": "人物与观众何时意识到时间已经过去？",
-      "source_ids": [
-        "observations"
-      ],
-      "frames": [
-        196,
-        669
-      ],
-      "draft": "这组画面比较的是辛特尔，而不只是在比较龙。早先的年轻面容和后来的灰发，让时间留下的变化变得可见。我们可以先呈现变化，再提出问题：她寻找的对象是否仍停留在记忆中的样子？这里把执念作为一种可能的理解，不替观众宣布唯一答案。",
-      "gap": "这是依据片内画面提出的创作者解读。当前资料不能确定旅程持续了多少年，也没有导演访谈支持这一解释。"
-    },
-    {
-      "title": "RAG 如何帮助核实，而不是给观点贴上权威标签？",
-      "source_ids": [
-        "license",
-        "review"
-      ],
-      "frames": [
-        610
-      ],
-      "draft": "评价和事实需要分开：Pant 对表情表现力的赞赏，是评论者的判断；Blender Foundation 公布的开放许可，是可以回到官方页面核查的使用条件。我们保留解读的空间，同时把来源交给观众。",
-      "gap": "影评的版权与电影的许可不同。截图保留电影署名；影评只提供链接和简短摘记。"
-    }
-  ],
   "source_url": "https://download.blender.org/durian/movies/Sintel.2010.720p.mkv.zip",
   "license_url": "https://creativecommons.org/licenses/by/3.0/",
   "attribution": "© copyright Blender Foundation | www.sintel.org",
@@ -294,5 +255,1599 @@
     "sha256": "58e9c6d262ed4289bdc45db1b44d61cf5fa45113f84b6575364e16b84a479a1b",
     "production": "AI-assisted editorial script and selected footage; MoCoCo narration, subtitles, image insertion and rendering.",
     "url": "https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/sintel-analysis.zh.mp4"
+  },
+  "workflow": {
+    "film": {
+      "duration": 888.03,
+      "width": 1280,
+      "height": 544,
+      "fps": 24.0,
+      "has_audio": true
+    },
+    "segments": {
+      "primary_lang": "zh",
+      "units": [
+        {
+          "id": "u001",
+          "text": {
+            "zh": "她走过漫长的路，只想找回曾经救过的小龙。可当寻找终于结束，她却亲手毁掉了自己想保护的生命。辛特尔的悲剧，为什么不只是一个认错对象的反转？接下来含有完整剧透。我们从手的动作、画面的颜色和时间的安排，看看这部短片如何让一次救援走向伤害。"
+          },
+          "intent": "为什么寻找变成了伤害",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "为什么寻找变成了伤害",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u002",
+          "text": {
+            "zh": "先回到相遇。影片没有急着告诉我们，小龙对她有多重要，而是让我们看她怎样伸出手。手靠近，停顿，再把受伤的小龙抱起来。镜头轮流交给女孩的脸和小龙的身体，把两个陌生的生命放进同一种脆弱里。观众在意这段关系，是因为照料被拆成了看得见的动作。"
+          },
+          "intent": "一｜让照料变得可见",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "一｜让照料变得可见",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u003",
+          "text": {
+            "zh": "这段相处被放在偏暖的光里，人物和小龙离得很近。到了后半段的洞穴，画面变暗、变冷，龙的身体大到压住了人的身形。这样的对照会影响我们判断：前面的小龙显得需要保护，后面的巨龙显得危险。但危险的外形，真的等于陌生的敌人吗？影片让这个问题一直留到最后。"
+          },
+          "intent": "二｜同一个世界，两种感受",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "二｜同一个世界，两种感受",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u004",
+          "text": {
+            "zh": "小龙被带走时，镜头从天空中的飞行，切回她伸出去的手和惊慌的脸。刚刚能够触碰的伙伴，突然变得够不到。这个动作把接下来的旅程变得很容易理解：我们希望她追上去，把失去的找回来。于是，观众也开始沿着她的愿望看世界，把找到小龙当作一个理所当然的终点。"
+          },
+          "intent": "三｜寻找给了我们一个方向",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "三｜寻找给了我们一个方向",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u005",
+          "text": {
+            "zh": "接下来，影片把不同地貌连接成一次漫长的跋涉。地点不断变化，寻找的目标却没有改变。我们容易把这些画面理解成她克服了多少困难，却不一定意识到，她和小龙都在变化。这里不需要替故事计算究竟过了多少年。重要的是，旅程压缩了时间，而她寻找的形象，仍然停留在最初的记忆里。"
+          },
+          "intent": "四｜被旅程藏起来的时间",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "四｜被旅程藏起来的时间",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u006",
+          "text": {
+            "zh": "影评人潘特注意到一个残酷的倒转：辛特尔最终毁掉的，正是自己曾经照料的生命。顺着这个观察回看，结尾的痛苦就不只来自一个意外答案。先前伸向小龙的手，是为了接近和保护；到了洞穴，她带着救援的愿望，却做出了伤害的动作。目的和结果发生错位，才让曾经的温柔，在结尾重新刺痛观众。"
+          },
+          "intent": "五｜反转改写了前面的动作",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "五｜反转改写了前面的动作",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u007",
+          "text": {
+            "zh": "影片还把认出小龙，和看见自身的变化连在一起。看她低下头，再把手抬向自己的脸；到了后面的近景，灰白的头发让时间留下的痕迹变得明确。我们这才回头理解：寻找并没有把生命暂停。她不只是失去了伙伴，也错过了认识变化的机会。把这读成对执念的提醒，是一种解释，而不是影片替我们写好的唯一答案。"
+          },
+          "intent": "六｜认出它，也认出自己",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "六｜认出它，也认出自己",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u008",
+          "text": {
+            "zh": "这里插入一张大卫·雷沃的人物概念图。它是制作资料，不是电影中的镜头。把年轻的面容和结尾放在一起，可以更清楚地比较人物的外形变化。但一张概念图不能证明导演想表达什么。我们对时间和执念的理解，仍然要回到动作、镜头顺序，以及这些画面在故事中的位置。"
+          },
+          "intent": "七｜设计资料能说明什么",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "七｜设计资料能说明什么",
+          "needs_context": true,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u009",
+          "text": {
+            "zh": "潘特也特别肯定了影片的面部表情。回看这些近景，会发现它们给观众留下了一点等待的时间：角色没有马上说出完整的解释，观众却已经开始把她的表情和刚刚发生的事联系起来。悲伤因此不只是台词告诉我们的内容，也发生在我们补上这些联系的过程里。这同样离不开前后的剪辑和声音，不能只归功于某一张脸。"
+          },
+          "intent": "八｜让表情停留，而不是急着解释",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "八｜让表情停留，而不是急着解释",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        },
+        {
+          "id": "u010",
+          "text": {
+            "zh": "结尾没有让失去消失。辛特尔离开洞穴，继续向前，而更小的龙跟在她身后。照料的可能性似乎还在，但它已经带着无法撤销的代价。所以，这部短片留给我的问题是：当我们坚持寻找一个曾经珍爱的东西，有没有看见它已经改变？又有没有看见，在这段寻找里，我们自己也变了？"
+          },
+          "intent": "带着变化继续向前",
+          "mood": "reflective",
+          "keywords": [],
+          "visual_query_en": "带着变化继续向前",
+          "needs_context": false,
+          "context_query": "Sintel concept art"
+        }
+      ]
+    },
+    "shots": [
+      {
+        "id": "u001-00",
+        "start": 194.7,
+        "end": 203.0,
+        "duration": 8.300000000000011,
+        "frame": "frames/u001-00.jpg"
+      },
+      {
+        "id": "u001-01",
+        "start": 609,
+        "end": 613.7,
+        "duration": 4.7000000000000455,
+        "frame": "frames/u001-01.jpg"
+      },
+      {
+        "id": "u001-02",
+        "start": 641,
+        "end": 647.4,
+        "duration": 6.399999999999977,
+        "frame": "frames/u001-02.jpg"
+      },
+      {
+        "id": "u001-03",
+        "start": 667.8,
+        "end": 673.6,
+        "duration": 5.800000000000068,
+        "frame": "frames/u001-03.jpg"
+      },
+      {
+        "id": "u002-00",
+        "start": 182,
+        "end": 191.8,
+        "duration": 9.800000000000011,
+        "frame": "frames/u002-00.jpg"
+      },
+      {
+        "id": "u002-01",
+        "start": 194.7,
+        "end": 203,
+        "duration": 8.300000000000011,
+        "frame": "frames/u002-01.jpg"
+      },
+      {
+        "id": "u002-02",
+        "start": 206.1,
+        "end": 211.7,
+        "duration": 5.599999999999994,
+        "frame": "frames/u002-02.jpg"
+      },
+      {
+        "id": "u002-03",
+        "start": 211.8,
+        "end": 219.4,
+        "duration": 7.599999999999994,
+        "frame": "frames/u002-03.jpg"
+      },
+      {
+        "id": "u003-00",
+        "start": 205.9,
+        "end": 219.4,
+        "duration": 13.5,
+        "frame": "frames/u003-00.jpg"
+      },
+      {
+        "id": "u003-01",
+        "start": 289.4,
+        "end": 302.7,
+        "duration": 13.300000000000011,
+        "frame": "frames/u003-01.jpg"
+      },
+      {
+        "id": "u003-02",
+        "start": 491,
+        "end": 502.4,
+        "duration": 11.399999999999977,
+        "frame": "frames/u003-02.jpg"
+      },
+      {
+        "id": "u003-03",
+        "start": 585.8,
+        "end": 598,
+        "duration": 12.200000000000045,
+        "frame": "frames/u003-03.jpg"
+      },
+      {
+        "id": "u004-00",
+        "start": 328.2,
+        "end": 335.2,
+        "duration": 7.0,
+        "frame": "frames/u004-00.jpg"
+      },
+      {
+        "id": "u004-01",
+        "start": 337.5,
+        "end": 342.2,
+        "duration": 4.699999999999989,
+        "frame": "frames/u004-01.jpg"
+      },
+      {
+        "id": "u004-02",
+        "start": 194.7,
+        "end": 203,
+        "duration": 8.300000000000011,
+        "frame": "frames/u004-02.jpg"
+      },
+      {
+        "id": "u004-03",
+        "start": 342.3,
+        "end": 349.6,
+        "duration": 7.300000000000011,
+        "frame": "frames/u004-03.jpg"
+      },
+      {
+        "id": "u005-00",
+        "start": 354,
+        "end": 365,
+        "duration": 11,
+        "frame": "frames/u005-00.jpg"
+      },
+      {
+        "id": "u005-01",
+        "start": 382.9,
+        "end": 394,
+        "duration": 11.100000000000023,
+        "frame": "frames/u005-01.jpg"
+      },
+      {
+        "id": "u005-02",
+        "start": 415.1,
+        "end": 431.5,
+        "duration": 16.399999999999977,
+        "frame": "frames/u005-02.jpg"
+      },
+      {
+        "id": "u005-03",
+        "start": 466.7,
+        "end": 478.4,
+        "duration": 11.699999999999989,
+        "frame": "frames/u005-03.jpg"
+      },
+      {
+        "id": "u006-00",
+        "start": 195,
+        "end": 203,
+        "duration": 8,
+        "frame": "frames/u006-00.jpg"
+      },
+      {
+        "id": "u006-01",
+        "start": 211.8,
+        "end": 219.4,
+        "duration": 7.599999999999994,
+        "frame": "frames/u006-01.jpg"
+      },
+      {
+        "id": "u006-02",
+        "start": 595.4,
+        "end": 610.3,
+        "duration": 14.899999999999977,
+        "frame": "frames/u006-02.jpg"
+      },
+      {
+        "id": "u006-03",
+        "start": 613.9,
+        "end": 624.5,
+        "duration": 10.600000000000023,
+        "frame": "frames/u006-03.jpg"
+      },
+      {
+        "id": "u006-04",
+        "start": 641.1,
+        "end": 647.4,
+        "duration": 6.2999999999999545,
+        "frame": "frames/u006-04.jpg"
+      },
+      {
+        "id": "u007-00",
+        "start": 621.8,
+        "end": 641,
+        "duration": 19.200000000000045,
+        "frame": "frames/u007-00.jpg"
+      },
+      {
+        "id": "u007-01",
+        "start": 641.1,
+        "end": 647.4,
+        "duration": 6.2999999999999545,
+        "frame": "frames/u007-01.jpg"
+      },
+      {
+        "id": "u007-02",
+        "start": 654.9,
+        "end": 661.1,
+        "duration": 6.2000000000000455,
+        "frame": "frames/u007-02.jpg"
+      },
+      {
+        "id": "u007-03",
+        "start": 667.8,
+        "end": 673.6,
+        "duration": 5.800000000000068,
+        "frame": "frames/u007-03.jpg"
+      },
+      {
+        "id": "u008-00",
+        "start": 265.7,
+        "end": 271.5,
+        "duration": 5.800000000000011,
+        "frame": "frames/u008-00.jpg"
+      },
+      {
+        "id": "u008-01",
+        "start": 641.1,
+        "end": 647.4,
+        "duration": 6.2999999999999545,
+        "frame": "frames/u008-01.jpg"
+      },
+      {
+        "id": "u008-02",
+        "start": 667.8,
+        "end": 673.6,
+        "duration": 5.800000000000068,
+        "frame": "frames/u008-02.jpg"
+      },
+      {
+        "id": "u009-00",
+        "start": 610.5,
+        "end": 613.7,
+        "duration": 3.2000000000000455,
+        "frame": "frames/u009-00.jpg"
+      },
+      {
+        "id": "u009-01",
+        "start": 641.1,
+        "end": 647.4,
+        "duration": 6.2999999999999545,
+        "frame": "frames/u009-01.jpg"
+      },
+      {
+        "id": "u009-02",
+        "start": 654.9,
+        "end": 661.1,
+        "duration": 6.2000000000000455,
+        "frame": "frames/u009-02.jpg"
+      },
+      {
+        "id": "u009-03",
+        "start": 667.8,
+        "end": 673.6,
+        "duration": 5.800000000000068,
+        "frame": "frames/u009-03.jpg"
+      },
+      {
+        "id": "u009-04",
+        "start": 700.4,
+        "end": 710,
+        "duration": 9.600000000000023,
+        "frame": "frames/u009-04.jpg"
+      },
+      {
+        "id": "u010-00",
+        "start": 687.9,
+        "end": 700.2,
+        "duration": 12.300000000000068,
+        "frame": "frames/u010-00.jpg"
+      },
+      {
+        "id": "u010-01",
+        "start": 700.4,
+        "end": 710,
+        "duration": 9.600000000000023,
+        "frame": "frames/u010-01.jpg"
+      },
+      {
+        "id": "u010-02",
+        "start": 711,
+        "end": 725,
+        "duration": 14,
+        "frame": "frames/u010-02.jpg"
+      },
+      {
+        "id": "u010-03",
+        "start": 726,
+        "end": 742,
+        "duration": 16,
+        "frame": "frames/u010-03.jpg"
+      }
+    ],
+    "timeline": [
+      {
+        "id": "u001",
+        "clips": [
+          {
+            "shot_id": "u001-00",
+            "in": 194.7,
+            "out": 203.0,
+            "seconds": 8.3,
+            "why": "为什么寻找变成了伤害",
+            "render_start": 0.0,
+            "render_end": 8.36,
+            "render_seconds": 8.36
+          },
+          {
+            "shot_id": "u001-01",
+            "in": 609,
+            "out": 613.7,
+            "seconds": 4.7,
+            "why": "为什么寻找变成了伤害",
+            "render_start": 8.36,
+            "render_end": 13.08,
+            "render_seconds": 4.72
+          },
+          {
+            "shot_id": "u001-02",
+            "in": 641,
+            "out": 647.4,
+            "seconds": 6.4,
+            "why": "为什么寻找变成了伤害",
+            "render_start": 13.08,
+            "render_end": 19.48,
+            "render_seconds": 6.4
+          },
+          {
+            "shot_id": "u001-03",
+            "in": 667.8,
+            "out": 673.6,
+            "seconds": 5.8,
+            "why": "为什么寻找变成了伤害",
+            "freeze": 0.33,
+            "render_start": 19.48,
+            "render_end": 25.68,
+            "render_seconds": 6.2
+          }
+        ]
+      },
+      {
+        "id": "u002",
+        "clips": [
+          {
+            "shot_id": "u002-00",
+            "in": 182,
+            "out": 189.903,
+            "seconds": 7.903,
+            "why": "一｜让照料变得可见",
+            "render_start": 25.68,
+            "render_end": 33.6,
+            "render_seconds": 7.92
+          },
+          {
+            "shot_id": "u002-01",
+            "in": 194.7,
+            "out": 201.393,
+            "seconds": 6.693,
+            "why": "一｜让照料变得可见",
+            "render_start": 33.6,
+            "render_end": 40.32,
+            "render_seconds": 6.72
+          },
+          {
+            "shot_id": "u002-02",
+            "in": 206.1,
+            "out": 210.616,
+            "seconds": 4.516,
+            "why": "一｜让照料变得可见",
+            "render_start": 40.32,
+            "render_end": 44.88,
+            "render_seconds": 4.56
+          },
+          {
+            "shot_id": "u002-03",
+            "in": 211.8,
+            "out": 217.929,
+            "seconds": 6.129,
+            "why": "一｜让照料变得可见",
+            "render_start": 44.88,
+            "render_end": 51.08,
+            "render_seconds": 6.2
+          }
+        ]
+      },
+      {
+        "id": "u003",
+        "clips": [
+          {
+            "shot_id": "u003-00",
+            "in": 205.9,
+            "out": 213.06,
+            "seconds": 7.16,
+            "why": "二｜同一个世界，两种感受",
+            "render_start": 51.08,
+            "render_end": 58.28,
+            "render_seconds": 7.2
+          },
+          {
+            "shot_id": "u003-01",
+            "in": 289.4,
+            "out": 296.454,
+            "seconds": 7.054,
+            "why": "二｜同一个世界，两种感受",
+            "render_start": 58.28,
+            "render_end": 65.4,
+            "render_seconds": 7.12
+          },
+          {
+            "shot_id": "u003-02",
+            "in": 491,
+            "out": 497.046,
+            "seconds": 6.046,
+            "why": "二｜同一个世界，两种感受",
+            "render_start": 65.4,
+            "render_end": 71.48,
+            "render_seconds": 6.08
+          },
+          {
+            "shot_id": "u003-03",
+            "in": 585.8,
+            "out": 592.27,
+            "seconds": 6.47,
+            "why": "二｜同一个世界，两种感受",
+            "render_start": 71.48,
+            "render_end": 78.0,
+            "render_seconds": 6.52
+          }
+        ]
+      },
+      {
+        "id": "u004",
+        "clips": [
+          {
+            "shot_id": "u004-00",
+            "in": 328.2,
+            "out": 334.879,
+            "seconds": 6.679,
+            "why": "三｜寻找给了我们一个方向",
+            "render_start": 78.0,
+            "render_end": 84.72,
+            "render_seconds": 6.72
+          },
+          {
+            "shot_id": "u004-01",
+            "in": 337.5,
+            "out": 341.985,
+            "seconds": 4.485,
+            "why": "三｜寻找给了我们一个方向",
+            "render_start": 84.72,
+            "render_end": 89.24,
+            "render_seconds": 4.52
+          },
+          {
+            "shot_id": "u004-02",
+            "in": 194.7,
+            "out": 202.62,
+            "seconds": 7.92,
+            "why": "三｜寻找给了我们一个方向",
+            "render_start": 89.24,
+            "render_end": 97.2,
+            "render_seconds": 7.96
+          },
+          {
+            "shot_id": "u004-03",
+            "in": 342.3,
+            "out": 349.266,
+            "seconds": 6.966,
+            "why": "三｜寻找给了我们一个方向",
+            "render_start": 97.2,
+            "render_end": 104.24,
+            "render_seconds": 7.04
+          }
+        ]
+      },
+      {
+        "id": "u005",
+        "clips": [
+          {
+            "shot_id": "u005-00",
+            "in": 354,
+            "out": 360.203,
+            "seconds": 6.203,
+            "why": "四｜被旅程藏起来的时间",
+            "render_start": 104.24,
+            "render_end": 110.44,
+            "render_seconds": 6.2
+          },
+          {
+            "shot_id": "u005-01",
+            "in": 382.9,
+            "out": 389.16,
+            "seconds": 6.26,
+            "why": "四｜被旅程藏起来的时间",
+            "render_start": 110.44,
+            "render_end": 116.76,
+            "render_seconds": 6.32
+          },
+          {
+            "shot_id": "u005-02",
+            "in": 415.1,
+            "out": 424.349,
+            "seconds": 9.249,
+            "why": "四｜被旅程藏起来的时间",
+            "render_start": 116.76,
+            "render_end": 126.04,
+            "render_seconds": 9.28
+          },
+          {
+            "shot_id": "u005-03",
+            "in": 466.7,
+            "out": 473.298,
+            "seconds": 6.598,
+            "why": "四｜被旅程藏起来的时间",
+            "render_start": 126.04,
+            "render_end": 132.68,
+            "render_seconds": 6.64
+          }
+        ]
+      },
+      {
+        "id": "u006",
+        "clips": [
+          {
+            "shot_id": "u006-00",
+            "in": 195,
+            "out": 199.859,
+            "seconds": 4.859,
+            "why": "五｜反转改写了前面的动作",
+            "render_start": 132.68,
+            "render_end": 137.56,
+            "render_seconds": 4.88
+          },
+          {
+            "shot_id": "u006-01",
+            "in": 211.8,
+            "out": 216.416,
+            "seconds": 4.616,
+            "why": "五｜反转改写了前面的动作",
+            "render_start": 137.56,
+            "render_end": 142.2,
+            "render_seconds": 4.64
+          },
+          {
+            "shot_id": "u006-02",
+            "in": 595.4,
+            "out": 604.45,
+            "seconds": 9.05,
+            "why": "五｜反转改写了前面的动作",
+            "render_start": 142.2,
+            "render_end": 151.32,
+            "render_seconds": 9.12
+          },
+          {
+            "shot_id": "u006-03",
+            "in": 613.9,
+            "out": 620.338,
+            "seconds": 6.438,
+            "why": "五｜反转改写了前面的动作",
+            "render_start": 151.32,
+            "render_end": 157.8,
+            "render_seconds": 6.48
+          },
+          {
+            "shot_id": "u006-04",
+            "in": 641.1,
+            "out": 644.927,
+            "seconds": 3.827,
+            "why": "五｜反转改写了前面的动作",
+            "render_start": 157.8,
+            "render_end": 161.64,
+            "render_seconds": 3.84
+          }
+        ]
+      },
+      {
+        "id": "u007",
+        "clips": [
+          {
+            "shot_id": "u007-00",
+            "in": 621.8,
+            "out": 636.663,
+            "seconds": 14.863,
+            "why": "六｜认出它，也认出自己",
+            "render_start": 161.64,
+            "render_end": 176.56,
+            "render_seconds": 14.92
+          },
+          {
+            "shot_id": "u007-01",
+            "in": 641.1,
+            "out": 645.977,
+            "seconds": 4.877,
+            "why": "六｜认出它，也认出自己",
+            "render_start": 176.56,
+            "render_end": 181.52,
+            "render_seconds": 4.96
+          },
+          {
+            "shot_id": "u007-02",
+            "in": 654.9,
+            "out": 659.7,
+            "seconds": 4.8,
+            "why": "六｜认出它，也认出自己",
+            "render_start": 181.52,
+            "render_end": 186.36,
+            "render_seconds": 4.84
+          },
+          {
+            "shot_id": "u007-03",
+            "in": 667.8,
+            "out": 672.29,
+            "seconds": 4.49,
+            "why": "六｜认出它，也认出自己",
+            "render_start": 186.36,
+            "render_end": 190.88,
+            "render_seconds": 4.52
+          }
+        ]
+      },
+      {
+        "id": "u008",
+        "clips": [
+          {
+            "kind": "image",
+            "file": "commons-22488114-60dffe63e79f.jpg",
+            "caption": "Concept-art done for Sintel , 3rd open-movie of the Blender Foundation. Artwork : David Revoy. Artwork made with Gimp-painter 2.6 and Mypaint 0.7.",
+            "seconds": 9.441,
+            "image_id": "22488114",
+            "attribution": {
+              "id": "22488114",
+              "title": "File:Character Sintel-portrait-young.png",
+              "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Character_Sintel-portrait-young.png/960px-Character_Sintel-portrait-young.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+              "source_url": "https://commons.wikimedia.org/wiki/File:Character_Sintel-portrait-young.png",
+              "artist": "David Revoy / Blender Foundation",
+              "license": "CC BY 3.0",
+              "license_url": "https://creativecommons.org/licenses/by/3.0",
+              "caption": "Concept-art done for Sintel , 3rd open-movie of the Blender Foundation. Artwork : David Revoy. Artwork made with Gimp-painter 2.6 and Mypaint 0.7.",
+              "credit": "Own work",
+              "restrictions": "",
+              "file": "external/commons-22488114-60dffe63e79f.jpg",
+              "approved": true,
+              "changes": "Resized and converted to JPEG; inserted as contextual illustration, not original film footage."
+            },
+            "why": "Creator-approved contextual image",
+            "render_start": 190.88,
+            "render_end": 200.32,
+            "render_seconds": 9.44
+          },
+          {
+            "shot_id": "u008-00",
+            "in": 265.7,
+            "out": 271.176,
+            "seconds": 5.476,
+            "why": "七｜设计资料能说明什么",
+            "render_start": 200.32,
+            "render_end": 205.84,
+            "render_seconds": 5.52
+          },
+          {
+            "shot_id": "u008-01",
+            "in": 641.1,
+            "out": 647.048,
+            "seconds": 5.948,
+            "why": "七｜设计资料能说明什么",
+            "render_start": 205.84,
+            "render_end": 211.84,
+            "render_seconds": 6.0
+          },
+          {
+            "shot_id": "u008-02",
+            "in": 667.8,
+            "out": 673.276,
+            "seconds": 5.476,
+            "why": "七｜设计资料能说明什么",
+            "render_start": 211.84,
+            "render_end": 217.36,
+            "render_seconds": 5.52
+          }
+        ]
+      },
+      {
+        "id": "u009",
+        "clips": [
+          {
+            "shot_id": "u009-00",
+            "in": 610.5,
+            "out": 613.381,
+            "seconds": 2.881,
+            "why": "八｜让表情停留，而不是急着解释",
+            "render_start": 217.36,
+            "render_end": 220.28,
+            "render_seconds": 2.92
+          },
+          {
+            "shot_id": "u009-01",
+            "in": 641.1,
+            "out": 646.772,
+            "seconds": 5.672,
+            "why": "八｜让表情停留，而不是急着解释",
+            "render_start": 220.28,
+            "render_end": 226.0,
+            "render_seconds": 5.72
+          },
+          {
+            "shot_id": "u009-02",
+            "in": 654.9,
+            "out": 660.482,
+            "seconds": 5.582,
+            "why": "八｜让表情停留，而不是急着解释",
+            "render_start": 226.0,
+            "render_end": 231.6,
+            "render_seconds": 5.6
+          },
+          {
+            "shot_id": "u009-03",
+            "in": 667.8,
+            "out": 673.022,
+            "seconds": 5.222,
+            "why": "八｜让表情停留，而不是急着解释",
+            "render_start": 231.6,
+            "render_end": 236.88,
+            "render_seconds": 5.28
+          },
+          {
+            "shot_id": "u009-04",
+            "in": 700.4,
+            "out": 709.043,
+            "seconds": 8.643,
+            "why": "八｜让表情停留，而不是急着解释",
+            "render_start": 236.88,
+            "render_end": 245.56,
+            "render_seconds": 8.68
+          }
+        ]
+      },
+      {
+        "id": "u010",
+        "clips": [
+          {
+            "shot_id": "u010-00",
+            "in": 687.9,
+            "out": 694.168,
+            "seconds": 6.268,
+            "why": "带着变化继续向前",
+            "render_start": 245.56,
+            "render_end": 251.88,
+            "render_seconds": 6.32
+          },
+          {
+            "shot_id": "u010-01",
+            "in": 700.4,
+            "out": 705.292,
+            "seconds": 4.892,
+            "why": "带着变化继续向前",
+            "render_start": 251.88,
+            "render_end": 256.8,
+            "render_seconds": 4.92
+          },
+          {
+            "shot_id": "u010-02",
+            "in": 711,
+            "out": 718.135,
+            "seconds": 7.135,
+            "why": "带着变化继续向前",
+            "render_start": 256.8,
+            "render_end": 263.96,
+            "render_seconds": 7.16
+          },
+          {
+            "shot_id": "u010-03",
+            "in": 726,
+            "out": 734.154,
+            "seconds": 8.154,
+            "why": "带着变化继续向前",
+            "render_start": 263.96,
+            "render_end": 272.12,
+            "render_seconds": 8.16
+          }
+        ]
+      }
+    ],
+    "content_end": 272.12,
+    "sources": [
+      {
+        "title": "Sintel 官方 Sharing · 许可摘记",
+        "url": "https://durian.blender.org/sharing",
+        "author": "Blender Foundation",
+        "kind": "production",
+        "rights": "官方许可说明的简短摘记；电影及项目自产内容为 CC BY 3.0，商标和另行标注的第三方内容除外。",
+        "text": "官方许可摘记：Sintel 的电影及项目自产素材以 CC BY 3.0 发布，可以按许可要求剪辑和再利用。改编片段须保留署名、链接许可并说明修改；整片放映或重新发布须包含完整片尾。电影的许可不自动覆盖其他网站的影评或另行授权的原声专辑。\n\nOfficial license: CC BY 3.0 permits adaptation with attribution. Redistribution of the complete movie requires the full credit roll. Do not assume independent reviews or separately licensed soundtrack albums share the movie license.",
+        "id": "s-a839cace883a8511",
+        "added_at": "2026-10-08T14:54:41.065009+00:00"
+      },
+      {
+        "title": "Sintel 原片画面核对 · 开发摘记",
+        "url": "https://durian.blender.org/",
+        "author": "MoCoCo development notes; film by Blender Foundation",
+        "kind": "creator_note",
+        "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+        "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+        "id": "s-5996c762a2a5968c",
+        "added_at": "2026-10-08T14:54:41.065696+00:00"
+      },
+      {
+        "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+        "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+        "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+        "kind": "review",
+        "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+        "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+        "id": "s-e66e3288e83cb496",
+        "added_at": "2026-10-08T14:54:41.066244+00:00"
+      }
+    ],
+    "evidence": [
+      {
+        "unit": "u001",
+        "source_ids": [
+          "s-e66e3288e83cb496",
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 6.139644
+          },
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 5.293698
+          },
+          {
+            "id": "s-a839cace883a8511:0:352",
+            "title": "Sintel 官方 Sharing · 许可摘记",
+            "url": "https://durian.blender.org/sharing",
+            "author": "Blender Foundation",
+            "kind": "production",
+            "rights": "官方许可说明的简短摘记；电影及项目自产内容为 CC BY 3.0，商标和另行标注的第三方内容除外。",
+            "source_id": "s-a839cace883a8511",
+            "start": 0,
+            "end": 352,
+            "text": "官方许可摘记：Sintel 的电影及项目自产素材以 CC BY 3.0 发布，可以按许可要求剪辑和再利用。改编片段须保留署名、链接许可并说明修改；整片放映或重新发布须包含完整片尾。电影的许可不自动覆盖其他网站的影评或另行授权的原声专辑。\n\nOfficial license: CC BY 3.0 permits adaptation with attribution. Redistribution of the complete movie requires the full credit roll. Do not assume independent reviews or separately licensed soundtrack albums share the movie license.",
+            "score": 1.000723
+          }
+        ],
+        "film_ranges": [
+          [
+            194.7,
+            203.0
+          ],
+          [
+            609,
+            613.7
+          ],
+          [
+            641,
+            647.4
+          ],
+          [
+            667.8,
+            673.6
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u002",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 2.276821
+          },
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 1.52419
+          }
+        ],
+        "film_ranges": [
+          [
+            182,
+            191.8
+          ],
+          [
+            194.7,
+            203
+          ],
+          [
+            206.1,
+            211.7
+          ],
+          [
+            211.8,
+            219.4
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u003",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 3.195194
+          },
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 1.52419
+          }
+        ],
+        "film_ranges": [
+          [
+            205.9,
+            219.4
+          ],
+          [
+            289.4,
+            302.7
+          ],
+          [
+            491,
+            502.4
+          ],
+          [
+            585.8,
+            598
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u004",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 0.493768
+          },
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 0.440075
+          }
+        ],
+        "film_ranges": [
+          [
+            328.2,
+            335.2
+          ],
+          [
+            337.5,
+            342.2
+          ],
+          [
+            194.7,
+            203
+          ],
+          [
+            342.3,
+            349.6
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u005",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 9.623806
+          },
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 2.554611
+          }
+        ],
+        "film_ranges": [
+          [
+            354,
+            365
+          ],
+          [
+            382.9,
+            394
+          ],
+          [
+            415.1,
+            431.5
+          ],
+          [
+            466.7,
+            478.4
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u006",
+        "source_ids": [
+          "s-e66e3288e83cb496",
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 6.3371
+          },
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 2.15824
+          },
+          {
+            "id": "s-a839cace883a8511:0:352",
+            "title": "Sintel 官方 Sharing · 许可摘记",
+            "url": "https://durian.blender.org/sharing",
+            "author": "Blender Foundation",
+            "kind": "production",
+            "rights": "官方许可说明的简短摘记；电影及项目自产内容为 CC BY 3.0，商标和另行标注的第三方内容除外。",
+            "source_id": "s-a839cace883a8511",
+            "start": 0,
+            "end": 352,
+            "text": "官方许可摘记：Sintel 的电影及项目自产素材以 CC BY 3.0 发布，可以按许可要求剪辑和再利用。改编片段须保留署名、链接许可并说明修改；整片放映或重新发布须包含完整片尾。电影的许可不自动覆盖其他网站的影评或另行授权的原声专辑。\n\nOfficial license: CC BY 3.0 permits adaptation with attribution. Redistribution of the complete movie requires the full credit roll. Do not assume independent reviews or separately licensed soundtrack albums share the movie license.",
+            "score": 1.136962
+          }
+        ],
+        "film_ranges": [
+          [
+            195,
+            203
+          ],
+          [
+            211.8,
+            219.4
+          ],
+          [
+            595.4,
+            610.3
+          ],
+          [
+            613.9,
+            624.5
+          ],
+          [
+            641.1,
+            647.4
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u007",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 6.868687
+          },
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 1.52419
+          }
+        ],
+        "film_ranges": [
+          [
+            621.8,
+            641
+          ],
+          [
+            641.1,
+            647.4
+          ],
+          [
+            654.9,
+            661.1
+          ],
+          [
+            667.8,
+            673.6
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u008",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 12.038714
+          },
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 2.511725
+          },
+          {
+            "id": "s-a839cace883a8511:0:352",
+            "title": "Sintel 官方 Sharing · 许可摘记",
+            "url": "https://durian.blender.org/sharing",
+            "author": "Blender Foundation",
+            "kind": "production",
+            "rights": "官方许可说明的简短摘记；电影及项目自产内容为 CC BY 3.0，商标和另行标注的第三方内容除外。",
+            "source_id": "s-a839cace883a8511",
+            "start": 0,
+            "end": 352,
+            "text": "官方许可摘记：Sintel 的电影及项目自产素材以 CC BY 3.0 发布，可以按许可要求剪辑和再利用。改编片段须保留署名、链接许可并说明修改；整片放映或重新发布须包含完整片尾。电影的许可不自动覆盖其他网站的影评或另行授权的原声专辑。\n\nOfficial license: CC BY 3.0 permits adaptation with attribution. Redistribution of the complete movie requires the full credit roll. Do not assume independent reviews or separately licensed soundtrack albums share the movie license.",
+            "score": 1.846864
+          }
+        ],
+        "film_ranges": [
+          [
+            265.7,
+            271.5
+          ],
+          [
+            641.1,
+            647.4
+          ],
+          [
+            667.8,
+            673.6
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u009",
+        "source_ids": [
+          "s-e66e3288e83cb496",
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 7.70672
+          },
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 7.416028
+          },
+          {
+            "id": "s-a839cace883a8511:0:352",
+            "title": "Sintel 官方 Sharing · 许可摘记",
+            "url": "https://durian.blender.org/sharing",
+            "author": "Blender Foundation",
+            "kind": "production",
+            "rights": "官方许可说明的简短摘记；电影及项目自产内容为 CC BY 3.0，商标和另行标注的第三方内容除外。",
+            "source_id": "s-a839cace883a8511",
+            "start": 0,
+            "end": 352,
+            "text": "官方许可摘记：Sintel 的电影及项目自产素材以 CC BY 3.0 发布，可以按许可要求剪辑和再利用。改编片段须保留署名、链接许可并说明修改；整片放映或重新发布须包含完整片尾。电影的许可不自动覆盖其他网站的影评或另行授权的原声专辑。\n\nOfficial license: CC BY 3.0 permits adaptation with attribution. Redistribution of the complete movie requires the full credit roll. Do not assume independent reviews or separately licensed soundtrack albums share the movie license.",
+            "score": 3.002168
+          }
+        ],
+        "film_ranges": [
+          [
+            610.5,
+            613.7
+          ],
+          [
+            641.1,
+            647.4
+          ],
+          [
+            654.9,
+            661.1
+          ],
+          [
+            667.8,
+            673.6
+          ],
+          [
+            700.4,
+            710
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      },
+      {
+        "unit": "u010",
+        "source_ids": [
+          "s-5996c762a2a5968c"
+        ],
+        "retrieved": [
+          {
+            "id": "s-e66e3288e83cb496:0:364",
+            "title": "Sintel, the Movie: Open Source Goes to Hollywood · 阅读摘记",
+            "url": "https://www.opensourceforu.com/2010/12/sintel-the-movie-open-source-goes-to-hollywood/",
+            "author": "Shashwat Pant (2010-12-01); MoCoCo paraphrase",
+            "kind": "review",
+            "rights": "原影评版权属于作者/出版方；这里只提供简短改写摘记，不是影评全文，也未将影评视为 CC 授权。",
+            "source_id": "s-e66e3288e83cb496",
+            "start": 0,
+            "end": 364,
+            "text": "影评摘记：Pant 将照料小龙与最后的毁灭并置，强调这部短片的悲剧性。他尤其肯定角色面部表情的表现力，也讨论了配乐如何随不同情绪变化。以上是评论者的观察与评价，不证明导演的创作意图。\n\nEnglish search notes: Pant stresses the tragic reversal between caring for a dragon and destroying what was protected. He praises facial expression and describes the score as responsive to changing moods. These are a reviewer’s judgments, not proof of directorial intent.",
+            "score": 4.121687
+          },
+          {
+            "id": "s-5996c762a2a5968c:0:428",
+            "title": "Sintel 原片画面核对 · 开发摘记",
+            "url": "https://durian.blender.org/",
+            "author": "MoCoCo development notes; film by Blender Foundation",
+            "kind": "creator_note",
+            "rights": "开发阶段独立观察；截图来源 © copyright Blender Foundation | www.sintel.org，CC BY 3.0。时间对应官方 720p MKV 版本。",
+            "source_id": "s-5996c762a2a5968c",
+            "start": 0,
+            "end": 428,
+            "text": "片内观察，不是外部影评：03:16 可以看到辛特尔伸手接近小龙；10:10 的近景呈现成年龙的面部；11:09 呈现辛特尔面部及已变灰的头发。可以把这些画面作为“关系如何改变”和“人物何时意识到时间流逝”的讨论线索。单张截图不能证明经过多少年，也不能证明导演意图；应回看前后片段。\n\nFilm observations: 03:16 shows Sintel reaching toward the young dragon; 10:10 shows the adult dragon’s face; 11:09 shows Sintel with grey hair. These are visual evidence candidates for relationship and elapsed time, not proof of a particular number of years or the director’s intention.",
+            "score": 3.495175
+          }
+        ],
+        "film_ranges": [
+          [
+            687.9,
+            700.2
+          ],
+          [
+            700.4,
+            710
+          ],
+          [
+            711,
+            725
+          ],
+          [
+            726,
+            742
+          ]
+        ],
+        "review": "AI-assisted editorial draft checked against selected film frames; not a claim of human approval or director intent."
+      }
+    ],
+    "timing": {
+      "voice": "zh-CN-YunxiNeural",
+      "source": "tts",
+      "units": [
+        {
+          "id": "u001",
+          "start": 0.0,
+          "end": 25.18
+        },
+        {
+          "id": "u002",
+          "start": 25.53,
+          "end": 50.42
+        },
+        {
+          "id": "u003",
+          "start": 50.77,
+          "end": 77.15
+        },
+        {
+          "id": "u004",
+          "start": 77.5,
+          "end": 103.2
+        },
+        {
+          "id": "u005",
+          "start": 103.55,
+          "end": 131.51
+        },
+        {
+          "id": "u006",
+          "start": 131.86,
+          "end": 160.3
+        },
+        {
+          "id": "u007",
+          "start": 160.65,
+          "end": 189.33
+        },
+        {
+          "id": "u008",
+          "start": 189.68,
+          "end": 215.67
+        },
+        {
+          "id": "u009",
+          "start": 216.02,
+          "end": 243.67
+        },
+        {
+          "id": "u010",
+          "start": 244.02,
+          "end": 270.47
+        }
+      ]
+    },
+    "narration_url": "https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/narration.zh.mp3",
+    "subtitles": "1\n00:00:00,000 --> 00:00:01,339\n她走过漫长的路，\n\n2\n00:00:01,339 --> 00:00:03,747\n只想找回曾经救过的小龙。\n\n3\n00:00:03,747 --> 00:00:05,868\n可当寻找终于结束，\n\n4\n00:00:05,868 --> 00:00:09,132\n她却亲手毁掉了自己想保护的生命。\n\n5\n00:00:09,132 --> 00:00:10,974\n辛特尔的悲剧，\n\n6\n00:00:10,974 --> 00:00:13,618\n为什么不只是一个认错对象的反转？\n\n7\n00:00:13,618 --> 00:00:18,171\n接下来含有完整剧透。我们从手的动作、\n\n8\n00:00:18,171 --> 00:00:20,526\n画面的颜色和时间的安排，\n\n9\n00:00:20,526 --> 00:00:24,237\n看看这部短片如何让一次救援走向伤害。\n\n10\n00:00:25,530 --> 00:00:28,727\n先回到相遇。影片没有急着告诉我们，\n\n11\n00:00:28,727 --> 00:00:30,504\n小龙对她有多重要，\n\n12\n00:00:30,504 --> 00:00:34,977\n而是让我们看她怎样伸出手。手靠近，\n\n13\n00:00:34,977 --> 00:00:37,675\n停顿，再把受伤的小龙抱起来。\n\n14\n00:00:37,675 --> 00:00:41,214\n镜头轮流交给女孩的脸和小龙的身体，\n\n15\n00:00:41,214 --> 00:00:44,385\n把两个陌生的生命放进同一种脆弱里。\n\n16\n00:00:44,385 --> 00:00:46,556\n观众在意这段关系，\n\n17\n00:00:46,556 --> 00:00:49,491\n是因为照料被拆成了看得见的动作。\n\n18\n00:00:50,770 --> 00:00:53,241\n这段相处被放在偏暖的光里，\n\n19\n00:00:53,241 --> 00:00:55,202\n人物和小龙离得很近。\n\n20\n00:00:55,202 --> 00:00:59,349\n到了后半段的洞穴，画面变暗、变冷，\n\n21\n00:00:59,349 --> 00:01:02,270\n龙的身体大到压住了人的身形。\n\n22\n00:01:02,270 --> 00:01:05,033\n这样的对照会影响我们判断：\n\n23\n00:01:05,033 --> 00:01:07,428\n前面的小龙显得需要保护，\n\n24\n00:01:07,428 --> 00:01:11,007\n后面的巨龙显得危险。但危险的外形，\n\n25\n00:01:11,007 --> 00:01:13,046\n真的等于陌生的敌人吗？\n\n26\n00:01:13,046 --> 00:01:16,204\n影片让这个问题一直留到最后。\n\n27\n00:01:17,500 --> 00:01:21,037\n小龙被带走时，镜头从天空中的飞行，\n\n28\n00:01:21,037 --> 00:01:23,826\n切回她伸出去的手和惊慌的脸。\n\n29\n00:01:23,826 --> 00:01:27,434\n刚刚能够触碰的伙伴，突然变得够不到。\n\n30\n00:01:27,434 --> 00:01:31,329\n这个动作把接下来的旅程变得很容易理解：\n\n31\n00:01:31,329 --> 00:01:34,645\n我们希望她追上去，把失去的找回来。\n\n32\n00:01:34,645 --> 00:01:39,053\n于是，观众也开始沿着她的愿望看世界，\n\n33\n00:01:39,053 --> 00:01:42,276\n把找到小龙当作一个理所当然的终点。\n\n34\n00:01:43,550 --> 00:01:44,350\n接下来，\n\n35\n00:01:44,350 --> 00:01:48,008\n影片把不同地貌连接成一次漫长的跋涉。\n\n36\n00:01:48,008 --> 00:01:51,971\n地点不断变化，寻找的目标却没有改变。\n\n37\n00:01:51,971 --> 00:01:56,774\n我们容易把这些画面理解成她克服了多少困难，\n\n38\n00:01:56,774 --> 00:02:00,076\n却不一定意识到，她和小龙都在变化。\n\n39\n00:02:00,076 --> 00:02:03,760\n这里不需要替故事计算究竟过了多少年。\n\n40\n00:02:03,760 --> 00:02:06,813\n重要的是，旅程压缩了时间，\n\n41\n00:02:06,813 --> 00:02:08,524\n而她寻找的形象，\n\n42\n00:02:08,524 --> 00:02:10,603\n仍然停留在最初的记忆里。\n\n43\n00:02:11,860 --> 00:02:14,739\n影评人潘特注意到一个残酷的倒转：\n\n44\n00:02:14,739 --> 00:02:16,792\n辛特尔最终毁掉的，\n\n45\n00:02:16,792 --> 00:02:19,042\n正是自己曾经照料的生命。\n\n46\n00:02:19,042 --> 00:02:21,163\n顺着这个观察回看，\n\n47\n00:02:21,163 --> 00:02:24,913\n结尾的痛苦就不只来自一个意外答案。\n\n48\n00:02:24,913 --> 00:02:28,807\n先前伸向小龙的手，是为了接近和保护；\n\n49\n00:02:28,807 --> 00:02:31,742\n到了洞穴，她带着救援的愿望，\n\n50\n00:02:31,742 --> 00:02:33,413\n却做出了伤害的动作。\n\n51\n00:02:33,413 --> 00:02:37,360\n目的和结果发生错位，才让曾经的温柔，\n\n52\n00:02:37,360 --> 00:02:39,360\n在结尾重新刺痛观众。\n\n53\n00:02:40,650 --> 00:02:42,345\n影片还把认出小龙，\n\n54\n00:02:42,345 --> 00:02:44,516\n和看见自身的变化连在一起。\n\n55\n00:02:44,516 --> 00:02:48,045\n看她低下头，再把手抬向自己的脸；\n\n56\n00:02:48,045 --> 00:02:49,637\n到了后面的近景，\n\n57\n00:02:49,637 --> 00:02:53,189\n灰白的头发让时间留下的痕迹变得明确。\n\n58\n00:02:53,189 --> 00:02:55,189\n我们这才回头理解：\n\n59\n00:02:55,189 --> 00:02:57,387\n寻找并没有把生命暂停。\n\n60\n00:02:57,387 --> 00:02:59,505\n她不只是失去了伙伴，\n\n61\n00:02:59,505 --> 00:03:01,571\n也错过了认识变化的机会。\n\n62\n00:03:01,571 --> 00:03:05,282\n把这读成对执念的提醒，是一种解释，\n\n63\n00:03:05,282 --> 00:03:08,400\n而不是影片替我们写好的唯一答案。\n\n64\n00:03:09,680 --> 00:03:13,441\n这里插入一张大卫·雷沃的人物概念图。\n\n65\n00:03:13,441 --> 00:03:16,772\n它是制作资料，不是电影中的镜头。\n\n66\n00:03:16,772 --> 00:03:19,825\n把年轻的面容和结尾放在一起，\n\n67\n00:03:19,825 --> 00:03:22,641\n可以更清楚地比较人物的外形变化。\n\n68\n00:03:22,641 --> 00:03:26,706\n但一张概念图不能证明导演想表达什么。\n\n69\n00:03:26,706 --> 00:03:29,193\n我们对时间和执念的理解，\n\n70\n00:03:29,193 --> 00:03:32,127\n仍然要回到动作、镜头顺序，\n\n71\n00:03:32,127 --> 00:03:34,746\n以及这些画面在故事中的位置。\n\n72\n00:03:36,020 --> 00:03:39,280\n潘特也特别肯定了影片的面部表情。\n\n73\n00:03:39,280 --> 00:03:40,967\n回看这些近景，\n\n74\n00:03:40,967 --> 00:03:44,244\n会发现它们给观众留下了一点等待的时间：\n\n75\n00:03:44,244 --> 00:03:46,823\n角色没有马上说出完整的解释，\n\n76\n00:03:46,823 --> 00:03:50,625\n观众却已经开始把她的表情和刚刚发生的\n\n77\n00:03:50,625 --> 00:03:51,507\n事联系起来。\n\n78\n00:03:51,507 --> 00:03:54,967\n悲伤因此不只是台词告诉我们的内容，\n\n79\n00:03:54,967 --> 00:03:57,875\n也发生在我们补上这些联系的过程里。\n\n80\n00:03:57,875 --> 00:04:00,849\n这同样离不开前后的剪辑和声音，\n\n81\n00:04:00,849 --> 00:04:02,757\n不能只归功于某一张脸。\n\n82\n00:04:04,020 --> 00:04:07,691\n结尾没有让失去消失。辛特尔离开洞穴，\n\n83\n00:04:07,691 --> 00:04:11,086\n继续向前，而更小的龙跟在她身后。\n\n84\n00:04:11,086 --> 00:04:13,520\n照料的可能性似乎还在，\n\n85\n00:04:13,520 --> 00:04:17,138\n但它已经带着无法撤销的代价。所以，\n\n86\n00:04:17,138 --> 00:04:19,349\n这部短片留给我的问题是：\n\n87\n00:04:19,349 --> 00:04:22,744\n当我们坚持寻找一个曾经珍爱的东西，\n\n88\n00:04:22,744 --> 00:04:26,678\n有没有看见它已经改变？又有没有看见，\n\n89\n00:04:26,678 --> 00:04:29,546\n在这段寻找里，我们自己也变了？\n"
   }
 }

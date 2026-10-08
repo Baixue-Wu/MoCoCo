@@ -67,7 +67,7 @@ dev/design/        architecture, design decisions, dated discussions, open quest
 Read dev/design/knowledge-rag.md for the working text-RAG and image-insertion flow, sources and test commands.
 Use the existing provider module for synthesis; provider selection has evolved beyond
 the initial Claude-only design (see README). Do not assume WebSearch/WebFetch exists.
-Public examples are static studies; live source import and synthesis require the local
+Public examples are read-only project workflows sharing ExampleWorkflow.tsx; live source import and synthesis require the local
 API. Never describe keyword filtering on the public page as live RAG generation.
 
 External images use provider/images.py and stages/images.py. Search is automatic
