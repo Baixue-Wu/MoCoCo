@@ -108,3 +108,12 @@ live synthesis requires the local API. `provider/images.py` owns Commons metadat
 `stages/images.py` owns per-unit searches, approval, timeline insertion/revocation
 and attribution artifacts. Render validates approved records and adds credit cards.
 This does not implement the full proposal coverage-gap model.
+
+## Read-only example workflows
+
+Both public examples use `web/src/components/ExampleWorkflow.tsx` for the header
+and step navigation. Each step has a linkable route. Analysis adds a RAG step.
+`export_analysis_example.py --finished-project` exports the actual script, per-unit
+evidence, selected frames, narration timing, subtitles and rendered clip lengths.
+It excludes local paths and editorial ranking scores. Saved model suggestions and
+final editorial choices remain distinct. The public UI does not rerun processing.

@@ -23,7 +23,7 @@ export default function App() {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/examples/sintel-analysis" element={<AnalysisExample />} />
+          <Route path="/examples/sintel-analysis/*" element={<AnalysisExample />} />
           <Route path="/examples/sherlock-jr/*" element={<SherlockJrExample />} />
           <Route path="/p/:slug/*" element={publicMode ? <BrowserProjectScreen /> : <ProjectScreen />} />
         </Routes>

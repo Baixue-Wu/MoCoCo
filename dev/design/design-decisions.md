@@ -126,3 +126,8 @@ Finalized decisions only, one rationale each. Open threads live in discussion-*.
 
 - The user clarified that deep analysis must culminate in a complete narrated film-analysis video. A source page, insert plan or short technical test is not the deliverable. Publish the finished Sintel commentary prominently; retain evidence and process as supporting material.
 - Frame this film around the reversal from care to harm and the delayed recognition of time. Match interpretive claims to inspected footage, identify the reviewer’s contribution, and credit film, concept art, commentary and synthetic narration in the finished export.
+
+## 2026-10-08 (consistent example workflow)
+
+- Both commentary styles share the same read-only workflow shell and navigation. The analysis example adds a RAG step and displays actual finished-project sources, narration units, selected footage, image inserts, render clip timing and subtitles. This replaces the separate long-form study landing page so visitors can compare the two workflows step by step.
+- Export the finished project artifacts explicitly; distinguish saved model suggestions from the editorial decisions used in the video. Do not display editorial selection scores as measured model confidence or raw planned durations as rendered clip durations.

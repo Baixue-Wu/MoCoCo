@@ -11,7 +11,50 @@ from mococo.media import ffmpeg
 from mococo.project import Project
 
 
-def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | None = None, film_manifest: Path | None = None, video_url: str | None = None) -> None:
+def export_workflow(project: Project, dest: Path, narration_url: str) -> dict:
+    """Export actual completed-project decisions without local paths or model scores."""
+    from mococo.stages.render import fit_clips
+
+    if not narration_url.startswith('https://'):
+        raise ValueError('Provide an HTTPS --narration-url for the completed narration')
+    settings = project.load()
+    shots = project.read_json(project.shots_json)
+    by_id = {shot['id']: shot for shot in shots}
+    timing = project.read_json(project.narration_timing('zh'))
+    by_time = {unit['id']: unit for unit in timing['units']}
+    timeline = project.read_json(project.timeline_json)
+    frames = dest / 'frames'
+    frames.mkdir(exist_ok=True)
+    for shot in shots:
+        shutil.copyfile(project.frames_dir / f"{shot['id']}.jpg", frames / f"{shot['id']}.jpg")
+    rendered, cursor = [], 0.0
+    for index, unit in enumerate(timeline['units']):
+        t = by_time[unit['id']]
+        following = timeline['units'][index+1]['id'] if index+1 < len(timeline['units']) else None
+        span = (by_time[following]['start'] if following else t['end']) - t['start']
+        fitted = fit_clips(unit['clips'], span, by_id)
+        clips = []
+        for k, clip in enumerate(fitted):
+            duration = ffmpeg.probe(project.render_dir / 'clips.zh' / f"{unit['id']}_{k:02}.mp4")['duration']
+            item = {**clip, 'render_start': round(cursor, 3), 'render_end': round(cursor+duration, 3), 'render_seconds': duration}
+            if clip.get('kind') == 'image':
+                name = Path(clip['file']).name
+                shutil.copyfile(project.retrieval_dir / clip['file'], dest / name)
+                item['file'] = name
+            clips.append(item)
+            cursor += duration
+        rendered.append({'id': unit['id'], 'clips': clips})
+    subtitles = project.subtitles_srt('zh').read_text()
+    (dest / 'subtitles.zh.srt').write_text(subtitles)
+    return {'film': ffmpeg.probe(Path(settings.film)), 'segments': project.read_json(project.segments_json),
+            'shots': shots, 'timeline': rendered, 'content_end': round(cursor, 3),
+            'sources': knowledge.sources(project), 'evidence': project.read_json(project.script_evidence_json)['units'],
+            'timing': {'voice': timing['voice'], 'source': timing['source'],
+                       'units': [{k: u[k] for k in ('id', 'start', 'end')} for u in timing['units']]},
+            'narration_url': narration_url, 'subtitles': subtitles}
+
+
+def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | None = None, film_manifest: Path | None = None, video_url: str | None = None, finished_project: Path | None = None, narration_url: str | None = None) -> None:
     dest.mkdir(parents=True, exist_ok=True)
     records = []
     for path in sorted(source_dir.glob('*.json')):
@@ -23,22 +66,8 @@ def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | No
         name = f'frame-{seconds}.jpg'
         ffmpeg.extract_frame(film, seconds, dest / name)
         frames.append({'time': seconds, 'file': name, 'caption': caption})
-    lenses = [
-        {'title': '从照料到伤害，为什么比单纯的战斗更悲伤？',
-         'source_ids': ['review', 'observations'], 'frames': [196, 610],
-         'draft': '先看辛特尔伸向小龙的手。身体的靠近，让保护成为一种可见的关系。影评人 Shashwat Pant 注意到，影片把早先的照料与后来的毁灭放在一起。我们可以沿着这条线索，把两个阶段并置：后面的对抗不只是一场动作戏，也使观众回头重看先前的亲密。',
-         'gap': '这是借助影评展开的解读，不是导演意图的证明。单个面部近景不足以证明角色身份，必须结合前后情节。'},
-        {'title': '人物与观众何时意识到时间已经过去？',
-         'source_ids': ['observations'], 'frames': [196, 669],
-         'draft': '这组画面比较的是辛特尔，而不只是在比较龙。早先的年轻面容和后来的灰发，让时间留下的变化变得可见。我们可以先呈现变化，再提出问题：她寻找的对象是否仍停留在记忆中的样子？这里把执念作为一种可能的理解，不替观众宣布唯一答案。',
-         'gap': '这是依据片内画面提出的创作者解读。当前资料不能确定旅程持续了多少年，也没有导演访谈支持这一解释。'},
-        {'title': 'RAG 如何帮助核实，而不是给观点贴上权威标签？',
-         'source_ids': ['license', 'review'], 'frames': [610],
-         'draft': '评价和事实需要分开：Pant 对表情表现力的赞赏，是评论者的判断；Blender Foundation 公布的开放许可，是可以回到官方页面核查的使用条件。我们保留解读的空间，同时把来源交给观众。',
-         'gap': '影评的版权与电影的许可不同。截图保留电影署名；影评只提供链接和简短摘记。'},
-    ]
     data = {'title': 'Sintel · 从照料到悲剧', 'kind': 'prepared_analysis_study',
-            'sources': records, 'chunks': knowledge.chunks(records), 'frames': frames, 'lenses': lenses,
+            'sources': records, 'chunks': knowledge.chunks(records), 'frames': frames,
             'source_url': 'https://download.blender.org/durian/movies/Sintel.2010.720p.mkv.zip',
             'license_url': 'https://creativecommons.org/licenses/by/3.0/',
             'attribution': '© copyright Blender Foundation | www.sintel.org',
@@ -64,6 +93,13 @@ def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | No
         data['movie']['url'] = video_url
         data['kind'] = 'finished_analysis_film'
         data['changes'] = '电影片段经重剪，添加中文解说、字幕、章节与署名；概念图作为制作资料插入。'
+    if finished_project:
+        if not film_manifest or not narration_url:
+            raise ValueError('Finished workflow requires --film-manifest and --narration-url')
+        project = Project(finished_project)
+        if project.script_md('zh').read_text() != data['movie']['script']:
+            raise ValueError('Project script differs from the published film manifest')
+        data['workflow'] = export_workflow(project, dest, narration_url)
     (dest / 'study.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n')
     for path in source_dir.glob('*.json'):
         (dest / path.name).write_bytes(path.read_bytes())
@@ -77,8 +113,10 @@ def main():
     parser.add_argument('--evidence-project', type=Path, help='Optional project containing a real, saved RAG run')
     parser.add_argument('--film-manifest', type=Path, help='Manifest of a completed commentary video')
     parser.add_argument('--video-url', help='Published HTTPS video URL')
+    parser.add_argument('--finished-project', type=Path, help='Completed project used to render this video')
+    parser.add_argument('--narration-url', help='Published narration audio URL')
     args = parser.parse_args()
-    export(args.film, args.dest, args.source_dir, args.evidence_project, args.film_manifest, args.video_url)
+    export(args.film, args.dest, args.source_dir, args.evidence_project, args.film_manifest, args.video_url, args.finished_project, args.narration_url)
 
 
 if __name__ == '__main__':

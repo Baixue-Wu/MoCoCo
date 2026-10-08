@@ -104,17 +104,21 @@ context, not an original movie shot or evidence of authorial intent.
 
 ## Public example
 
-`#/examples/sintel-analysis` offers source filtering, a recorded real model run,
-side-by-side film stills, prepared interpretation drafts, user selection/edit notes
-an external-image insert plan, and a Markdown export including sources and attribution. It also hosts the finished Chinese analysis video with chapter seeking. It is not a live
-model service; video production and the editorial plan are described in
-[the film example](../examples/sintel-analysis/README.md). Static user edits are not
-persisted after navigation; the page explicitly tells users to export.
+`#/examples/sintel-analysis` uses the same step-by-step example layout as the
+recap project. Open preprocessing, RAG evidence, final script, selected footage and
+concept art, rendered timeline, narration/subtitles, or output. The RAG screen
+shows a recorded real response; the script screen distinguishes the final sources
+chosen for each unit from the retrieved passages. All script/footage/timing views
+are exported from the actual finished video project. They are read-only.
+
+The output step plays the finished Chinese analysis video with chapter seeking.
+This is not a live model service; video production is described in
+[the film example](../examples/sintel-analysis/README.md).
 
 Rebuild assets from a local authorized film:
 
 ```bash
-uv run python scripts/export_analysis_example.py --film data/films/Sintel.2010.720p.mkv --dest web/public/examples/sintel-analysis --evidence-project projects/sintel-rag --film-manifest projects/sintel-commentary/render/film-manifest.json --video-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/sintel-analysis.zh.mp4
+uv run python scripts/export_analysis_example.py --film data/films/Sintel.2010.720p.mkv --dest web/public/examples/sintel-analysis --evidence-project projects/sintel-rag --film-manifest projects/sintel-commentary/render/film-manifest.json --finished-project projects/sintel-commentary --narration-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/narration.zh.mp3 --video-url https://github.com/Baixue-Wu/MoCoCo/releases/download/release/sintel-analysis/sintel-analysis.zh.mp4
 npm --prefix web run build:public
 ```
 
@@ -124,7 +128,7 @@ are included. The root research PDF duplicates `dev/materials/` and is untouched
 
 ## Verification (2026-10-08)
 
-- 25 Python tests passed, including 6 added checks covering scoped retrieval and
+- 26 Python tests passed, including 6 added checks covering scoped retrieval and
   character locations, Chinese queries, empty-evidence behavior, approval/stale
   sources, fabricated citations, draft context/provenance and API validation.
 - One real model-backed run on the three public source notes produced four cited
@@ -135,8 +139,9 @@ are included. The root research PDF duplicates `dev/materials/` and is untouched
   download also produced a 17.88-second Chinese TTS/subtitle image-insertion clip
   at `projects/sintel-rag/render/output.zh.mp4` (local verification artifact).
 - Local and public TypeScript/Vite builds passed.
-- Browser checks cover public filtering, evidence expansion, mobile width, export
-  of selected claims/notes, retrieval/empty results in the actual local editor, and approved image timeline/credits.
+- Browser checks cover workflow navigation in both examples, public filtering,
+  per-unit evidence, frame inspection, rendered timeline, audio/subtitles, mobile
+  width, route refresh, and local retrieval/image timeline/credits.
   Four browser tests passed, including playback and chapter seeking in the finished video. The image browser case requires the prepared local
   `sintel-rag` project with an approved portrait, a cut and a completed render.
 
