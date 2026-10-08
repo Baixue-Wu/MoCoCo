@@ -11,7 +11,7 @@ from mococo.media import ffmpeg
 from mococo.project import Project
 
 
-def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | None = None) -> None:
+def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | None = None, film_manifest: Path | None = None, video_url: str | None = None) -> None:
     dest.mkdir(parents=True, exist_ok=True)
     records = []
     for path in sorted(source_dir.glob('*.json')):
@@ -56,6 +56,14 @@ def export(film: Path, dest: Path, source_dir: Path, evidence_project: Path | No
                 name = Path(record['file']).name
                 shutil.copyfile(project.retrieval_dir / record['file'], dest / name)
                 data['external_images'].append({**record, 'file': name})
+    if film_manifest:
+        if not video_url or not video_url.startswith('https://'):
+            raise ValueError('Provide an HTTPS --video-url for the completed film')
+        movie = json.loads(film_manifest.read_text())
+        data['movie'] = {k: movie[k] for k in ('title', 'author', 'duration', 'chapters', 'script', 'sha256', 'production')}
+        data['movie']['url'] = video_url
+        data['kind'] = 'finished_analysis_film'
+        data['changes'] = '电影片段经重剪，添加中文解说、字幕、章节与署名；概念图作为制作资料插入。'
     (dest / 'study.json').write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n')
     for path in source_dir.glob('*.json'):
         (dest / path.name).write_bytes(path.read_bytes())
@@ -67,8 +75,10 @@ def main():
     parser.add_argument('--dest', required=True, type=Path)
     parser.add_argument('--source-dir', type=Path, default=Path('mococo/examples/sintel'))
     parser.add_argument('--evidence-project', type=Path, help='Optional project containing a real, saved RAG run')
+    parser.add_argument('--film-manifest', type=Path, help='Manifest of a completed commentary video')
+    parser.add_argument('--video-url', help='Published HTTPS video URL')
     args = parser.parse_args()
-    export(args.film, args.dest, args.source_dir, args.evidence_project)
+    export(args.film, args.dest, args.source_dir, args.evidence_project, args.film_manifest, args.video_url)
 
 
 if __name__ == '__main__':

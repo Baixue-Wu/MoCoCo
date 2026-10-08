@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ImageCandidate, KnowledgeAnswer, KnowledgeChunk, KnowledgeSource } from '../api'
 import { useI18n } from '../i18n'
 
 interface Study {
   title: string
+  movie?: { title: string; author: string; duration: number; url: string; chapters: { title: string; start: number; end: number }[]; script: string }
   external_images?: (ImageCandidate & { file: string; changes: string })[]
   saved_run?: KnowledgeAnswer
   sources: KnowledgeSource[]
@@ -25,6 +26,7 @@ export function AnalysisExample() {
   const [query, setQuery] = useState('')
   const [chosen, setChosen] = useState<number[]>([])
   const [notes, setNotes] = useState('')
+  const player = useRef<HTMLVideoElement>(null)
   const [insertImage, setInsertImage] = useState(false)
   useEffect(() => {
     const controller = new AbortController()
@@ -53,12 +55,20 @@ export function AnalysisExample() {
   }
   return <div className="analysis-study">
     <Link to="/">← {label('全部项目', 'All projects')}</Link>
-    <header className="card section"><span className="badge badge-accent">{label('深度解析 · 证据样例', 'Deep analysis · evidence study')}</span><h1>{study.title}</h1>
+    <header className="card section"><span className="badge badge-accent">{label('深度解析 · 完整视频', 'Deep analysis · finished video')}</span><h1>{study.title}</h1>
       <p>{label('从一个论点出发，核对影评与画面，再决定要怎样说。', 'Start with a claim, inspect the review and the footage, then choose what to say.')}</p>
-      <p className="muted">{label('本页含剧透。解读草稿预先编写，支持资料筛选、画面对照、选择论点和导出修改；不是实时 AI 生成，也不是新的解说成片。实时 RAG 请在本地编辑器的“文案 → 资料与论据”使用。', 'Contains spoilers. These are prepared drafts, not live AI responses or a finished commentary film. Filter sources, compare frames and export your notes. Use Script → Sources and evidence in the local editor for live RAG.')}</p>
+      <p className="muted">{label('本页含完整剧透。先观看中文解析成片，再查看影评依据、原片画面和制作资料。下方笔记可交互修改；实时 RAG 和重新渲染在本地编辑器使用。', 'Contains full spoilers. Watch the finished Chinese commentary, then inspect its sources, film frames and production material. Notes below are interactive; live RAG and re-rendering use the local editor.')}</p>
       <div className="actions"><a className="btn" href={study.source_url}>{label('下载可剪辑原片（官方 ZIP）', 'Download source film (official ZIP)')}</a><a className="btn" href="https://durian.blender.org/sharing">{label('核查官方许可', 'Official license')}</a></div>
       <p className="small muted">{study.attribution} · <a href={study.license_url}>CC BY 3.0</a> · {study.changes}</p>
     </header>
+    {study.movie && <section className="card section">
+      <h2>{study.movie.title}</h2>
+      <p className="muted">{study.movie.author} · {Math.floor(study.movie.duration / 60)}:{String(Math.floor(study.movie.duration % 60)).padStart(2, '0')} · {label('中文解说 / 字幕 / 原片剪辑 / 资料图', 'Chinese narration / subtitles / film excerpts / concept art')}</p>
+      <video ref={player} controls playsInline preload="metadata" poster={`${base}/frame-669.jpg`} src={study.movie.url} style={{ width: '100%', borderRadius: 10 }} aria-label={label('Sintel 深度解析成片', 'Sintel finished analysis video')} />
+      <p><a href={study.movie.url} className="btn" target="_blank" rel="noreferrer">{label('下载完整解析视频', 'Download full commentary')}</a></p>
+      <div className="actions" style={{ flexWrap: 'wrap' }}>{study.movie.chapters.map(ch => <button className="btn btn-small" key={ch.start} onClick={() => { if (player.current) { player.current.currentTime = ch.start; void player.current.play().catch(() => {}); player.current.scrollIntoView({ behavior: 'smooth', block: 'center' }) } }}>{Math.floor(ch.start / 60)}:{String(Math.floor(ch.start % 60)).padStart(2, '0')} · {ch.title}</button>)}</div>
+      <details><summary>{label('展开成片解说词', 'Read the finished narration')}</summary><p style={{ whiteSpace: 'pre-wrap' }}>{study.movie.script}</p></details>
+    </section>}
     <section className="card section"><h2>{label('1. 核对参考资料', '1. Inspect sources')}</h2>
       <label>{label('筛选摘记（关键词，不调用模型）', 'Filter notes (keywords, no model)')}<input value={query} onChange={e => setQuery(e.target.value)} placeholder="悲剧 / 表情 / 许可 / dragon" /></label>
       <div className="actions">{['悲剧', '表情', '许可', '时间'].map(q => <button className="btn" key={q} onClick={() => setQuery(q)}>{q}</button>)}<button className="btn" onClick={() => setQuery('')}>{label('全部', 'All')}</button></div>

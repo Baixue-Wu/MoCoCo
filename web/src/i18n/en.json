@@ -194,8 +194,8 @@
   "job.error_heading": "Stage failed",
   "toast.dismiss": "Dismiss",
   "analysis.title": "From care to tragedy",
-  "analysis.badge": "Deep analysis · source evidence",
-  "analysis.hint": "Inspect a review, compare frames and export your chosen claims. A prepared study, not live generation or a finished film.",
+  "analysis.badge": "Deep analysis · finished video",
+  "analysis.hint": "Watch the finished Chinese commentary, jump between chapters and inspect its review, footage and image sources.",
   "images.export_note": "External image attribution is included in end cards and a companion file. Rerender after changing images.",
   "images.download_credits": "Download image credits (render first)"
 }

@@ -106,8 +106,9 @@ context, not an original movie shot or evidence of authorial intent.
 
 `#/examples/sintel-analysis` offers source filtering, a recorded real model run,
 side-by-side film stills, prepared interpretation drafts, user selection/edit notes
-an external-image insert plan, and a Markdown export including sources and attribution. It is not a live
-model service or a finished new commentary video. Static user edits are not
+an external-image insert plan, and a Markdown export including sources and attribution. It also hosts the finished Chinese analysis video with chapter seeking. It is not a live
+model service; video production and the editorial plan are described in
+[the film example](../examples/sintel-analysis/README.md). Static user edits are not
 persisted after navigation; the page explicitly tells users to export.
 
 Rebuild assets from a local authorized film:
